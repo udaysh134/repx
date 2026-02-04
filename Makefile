@@ -5,7 +5,12 @@
 CXX := g++
 
 # SOURCE FILES ---------------------------------------- >>
-SRC := $(wildcard src/*.cpp src/modules/*.cpp)
+SRC := $(wildcard \
+	src/*.cpp \
+	src/modules/*.cpp \
+	src/ui/*.cpp \
+	src/ui/menus/*.cpp \
+)
 
 # COMPILER FLAGS ---------------------------------------- >>
 CXXFLAGS := -std=c++20 -Wall -Wextra \
@@ -25,7 +30,7 @@ TARGET := RepX.exe
 # ----------------------------------------------------------------------------------------------------
 all: $(TARGET)
 
-$(TARGET):
+$(TARGET): $(SRC)
 	$(CXX) $(SRC) $(CXXFLAGS) $(LDFLAGS) -o $(TARGET)
 
 run: all
