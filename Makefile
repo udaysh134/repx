@@ -14,7 +14,7 @@ CXXFLAGS := -std=c++20 -Wall -Wextra \
 
 # LINKER FLAGS ---------------------------------------- >>
 LDFLAGS := \
-	-Lsrc/packages/pdcurses/lib/pdcurses.a
+	-Lsrc/packages/pdcurses/lib -l:pdcurses.a
 
 # OUTPUT ---------------------------------------- >>
 TARGET := RepX.exe
