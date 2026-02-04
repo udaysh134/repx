@@ -1,32 +1,49 @@
 #include <iostream>
 using namespace std;
 
+#include <curses.h>
+
 #include <new.hpp>
 #include <open.hpp>
 #include <exit.hpp>
 
 
 int main() {
-    int input;
+    initscr();
+    noecho();
+    cbreak();
+    keypad(stdscr, TRUE);
 
-    cout <<
-    "1. Create New" << endl << 
-    "2. Open Existing" << endl <<
-    "3. Exit";
+    mvprintw(1, 2, "RepX TUI booted.");
+    mvprintw(3, 2, "Press any key to exit.");
 
-    cin >> input;
+    refresh();
+    getch();
 
-    switch (input) {
-        case 1:
+    endwin();
+    return 0;
 
-            break;
-        case 2:
+
+    // int input;
+
+    // cout <<
+    // "1. Create New" << endl << 
+    // "2. Open Existing" << endl <<
+    // "3. Exit";
+
+    // cin >> input;
+
+    // switch (input) {
+    //     case 1:
+
+    //         break;
+    //     case 2:
         
-            break;
-        case 3:
+    //         break;
+    //     case 3:
         
-            break;
-        default:
-            break;
-    }
+    //         break;
+    //     default:
+    //         break;
+    // }
 }
