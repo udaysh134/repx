@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../app_state.hpp"
+#include "../screen.hpp"
 
-AppState runExitMenu();
+Screen runExitMenu();

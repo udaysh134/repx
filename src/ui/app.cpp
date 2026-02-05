@@ -1,5 +1,6 @@
+// Headers
 #include "app.hpp"
-#include "app_state.hpp"
+#include "screen.hpp"
 
 #include "menus/main_menu.hpp"
 #include "menus/new_menu.hpp"
@@ -7,24 +8,29 @@
 #include "menus/exit_menu.hpp"
 
 
+/*
+----------------------------------------------------------------------------------------------------
+PROGRAM RUN
+----------------------------------------------------------------------------------------------------
+*/
 void runApp() {
-    AppState state = AppState::MAIN_MENU;
+    Screen state = Screen::MAIN_MENU;
 
-    while (state != AppState::EXIT_MENU) {
+    while (state != Screen::EXIT_MENU) {
         switch (state) {
-            case AppState::MAIN_MENU:
+            case Screen::MAIN_MENU:
                 state = runMainMenu();
                 break;
 
-            case AppState::NEW_MENU:
+            case Screen::NEW_MENU:
                 state = runNewMenu();
                 break;
 
-            case AppState::OPEN_MENU:
+            case Screen::OPEN_MENU:
                 state = runOpenMenu();
                 break;
 
-            case AppState::EXIT_MENU:
+            case Screen::EXIT_MENU:
                 break;
         }
     }

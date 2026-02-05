@@ -1,6 +1,6 @@
 #pragma once
 
-enum class AppState {
+enum class Screen {
     MAIN_MENU,
     
     NEW_MENU,

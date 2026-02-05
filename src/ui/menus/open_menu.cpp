@@ -1,9 +1,16 @@
+// Headers
 #include <curses.h>
 
 #include "open_menu.hpp"
-#include "../app_state.hpp"
+#include "../screen.hpp"
 
-AppState runOpenMenu() {
+
+/*
+----------------------------------------------------------------------------------------------------
+OPEN MENU
+----------------------------------------------------------------------------------------------------
+*/
+Screen runOpenMenu() {
     getch();
-    return AppState::OPEN_MENU;
+    return Screen::OPEN_MENU;
 }

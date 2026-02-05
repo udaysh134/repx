@@ -1,9 +1,16 @@
+// Headers
 #include <curses.h>
 
+#include "../screen.hpp"
 #include "exit_menu.hpp"
-#include "../app_state.hpp"
 
-AppState runExitMenu() {
+
+/*
+----------------------------------------------------------------------------------------------------
+EXIT MENU
+----------------------------------------------------------------------------------------------------
+*/
+Screen runExitMenu() {
     getch();
-    return AppState::EXIT_MENU;
+    return Screen::EXIT_MENU;
 }

@@ -1,9 +1,16 @@
+// Headers
 #include <curses.h>
 
+#include "../screen.hpp"
 #include "new_menu.hpp"
-#include "../app_state.hpp"
 
-AppState runNewMenu() {
+
+/*
+----------------------------------------------------------------------------------------------------
+NEW MENU
+----------------------------------------------------------------------------------------------------
+*/
+Screen runNewMenu() {
     getch();
-    return AppState::NEW_MENU;
+    return Screen::NEW_MENU;
 }
