@@ -28,7 +28,7 @@ void start() {
     // Footer Box
     console::drawBox(0, headerH + bodyH, width, footerH, h_char, v_char,c_char);
 
-    std::string title = "RepX";
+    std::string title = "RepX v0.0.0";
     int titleX = (width - title.length()) / 2;
     int titleY = 2;
 
