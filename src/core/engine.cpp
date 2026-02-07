@@ -1,16 +1,20 @@
 // Headers
-#include <curses.h>
+#include <iostream>
 
-#include "../screen.hpp"
-#include "new_menu.hpp"
+
+using namespace std;
 
 
 /*
 ----------------------------------------------------------------------------------------------------
-NEW MENU
+MAIN LOOP
 ----------------------------------------------------------------------------------------------------
 */
-Screen runNewMenu() {
-    getch();
-    return Screen::NEW_MENU;
+void runApp() {
+    int i = 0;
+
+    while (i < 5) {
+        cout << "This is test " << i << "\n";
+        i++;
+    }   
 }

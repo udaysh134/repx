@@ -7,19 +7,19 @@ CXX := g++
 # SOURCE FILES ---------------------------------------- >>
 SRC := $(wildcard \
 	src/*.cpp \
+	src/core/*.cpp \
 	src/modules/*.cpp \
-	src/ui/*.cpp \
-	src/ui/menus/*.cpp \
 )
 
 # COMPILER FLAGS ---------------------------------------- >>
 CXXFLAGS := -std=c++20 -Wall -Wextra \
-	-Isrc/include \
-	-Isrc/packages/pdcurses/include
+	-Isrc/core \
+	-Isrc/modules \
+	# -Isrc/packages/pdcurses/include
 
 # LINKER FLAGS ---------------------------------------- >>
 LDFLAGS := \
-	-Lsrc/packages/pdcurses/lib -l:pdcurses.a
+	# -Lsrc/packages/pdcurses/lib -l:pdcurses.a
 
 # OUTPUT ---------------------------------------- >>
 TARGET := RepX.exe
