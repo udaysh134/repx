@@ -48,37 +48,4 @@ namespace console {
 
         SetConsoleCursorPosition(hConsole, pos);
     }
-
-
-    // ------=>> | DRAW THE BOX | <<=------
-    /**
-     * - x : cursor on x-axis
-     * - y : cursor on y-axis
-     * - w : width of the terminal
-     * - h : height of the terminal
-     * - h_char : character used for drawing horizontal line
-     * - v_char : character used for drawing vertical line
-     * - c_char : character used for corners
-     */
-    void drawBox(int x, int y, int w, int h, char h_char, char v_char, char c_char) {
-        // Top
-        draw::horizontalLine(x + 1, y, w - 2, h_char);
-        // Bottom
-        draw::horizontalLine(x + 1, y + h - 1, w - 2, h_char);
-
-        // Left
-        draw::verticalLine(x, y + 1, h - 2, v_char);
-        // Right
-        draw::verticalLine(x + w - 1, y + 1, h - 2, v_char);
-
-        // Corners
-        console::moveCursor(x, y);
-        std::cout << c_char;
-        console::moveCursor(x + w - 1, y);
-        std::cout << c_char;
-        console::moveCursor(x, y + h - 1);
-        std::cout << c_char;
-        console::moveCursor(x + w - 1, y + h - 1);
-        std::cout << c_char;
-    }
 }

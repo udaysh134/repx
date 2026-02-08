@@ -1,6 +1,8 @@
 // Headers
 #include <iostream>
+
 #include "utils.hpp"
+#include "layout.hpp"
 
 
 /*
@@ -22,11 +24,11 @@ void start() {
     char c_char = '+';
 
     // Header Box
-    console::drawBox(0, 0, width, headerH, h_char, v_char,c_char);
+    draw::drawBox(0, 0, width, headerH, h_char, v_char,c_char);
     // Body Box
-    console::drawBox(0, headerH, width, bodyH, h_char, v_char,c_char);
+    draw::drawBox(0, headerH, width, bodyH, h_char, v_char,c_char);
     // Footer Box
-    console::drawBox(0, headerH + bodyH, width, footerH, h_char, v_char,c_char);
+    draw::drawBox(0, headerH + bodyH, width, footerH, h_char, v_char,c_char);
 
     std::string title = "RepX v0.0.0";
     int titleX = (width - title.length()) / 2;
