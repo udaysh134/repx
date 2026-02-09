@@ -1,54 +1,53 @@
 // Headers
 #include <iostream>
+
 #include "utils.hpp"
+#include "settings.hpp"
 
 
 /*
 ----------------------------------------------------------------------------------------------------
-UI LAYOUT FUNCTIONS
+BOX DRAW FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
 namespace draw {
-    void horizontalLine(int x, int y, int width, char ch) {
-        console::moveCursor(x, y);
-        for (int i = 0; i < width; i++) { std::cout << ch; }
-    }
-
-
-    void verticalLine(int x, int y, int height, char ch) {
-        for (int i = 0; i < height; i++) {
-            console::moveCursor(x, y + i);
-            std::cout << ch;
+    void horzLine(int x, int y, int width) {
+        console::mvCursor(x, y);
+        for (int i = 0; i < width; i++) {
+            std::cout << cfg.screen.border.charac.horz;
         }
     }
 
+    void vertLine(int x, int y, int height) {
+        for (int i = 0; i < height; i++) {
+            console::mvCursor(x, y + i);
+            std::cout << cfg.screen.border.charac.vert;
+        }
+    }
 
     /**
      * - x : cursor on x-axis
      * - y : cursor on y-axis
-     * - w : width of the terminal
-     * - h : height of the terminal
-     * - h_char : character used for drawing horizontal line
-     * - v_char : character used for drawing vertical line
-     * - c_char : character used for corners
+     * - w : width of the region
+     * - h : height of the region
      */
-    void drawBox(int x, int y, int w, int h, char h_char, char v_char, char c_char) {
+    void drawBox(int x, int y, int w, int h) {
         // Top & Bottom
-        horizontalLine(x + 1, y, w - 2, h_char);
-        horizontalLine(x + 1, y + h - 1, w - 2, h_char);
+        horzLine(x + 1, y, w - 2);
+        horzLine(x + 1, y + h - 1, w - 2);
 
         // Left & Right
-        verticalLine(x, y + 1, h - 2, v_char);
-        verticalLine(x + w - 1, y + 1, h - 2, v_char);
+        vertLine(x, y + 1, h - 2);
+        vertLine(x + w - 1, y + 1, h - 2);
 
         // Corners
-        console::moveCursor(x, y);
-        std::cout << c_char;
-        console::moveCursor(x + w - 1, y);
-        std::cout << c_char;
-        console::moveCursor(x, y + h - 1);
-        std::cout << c_char;
-        console::moveCursor(x + w - 1, y + h - 1);
-        std::cout << c_char;
+        console::mvCursor(x, y);
+        std::cout << cfg.screen.border.charac.corner.tl;
+        console::mvCursor(x + w - 1, y);
+        std::cout << cfg.screen.border.charac.corner.tr;
+        console::mvCursor(x, y + h - 1);
+        std::cout << cfg.screen.border.charac.corner.bl;
+        console::mvCursor(x + w - 1, y + h - 1);
+        std::cout << cfg.screen.border.charac.corner.br;
     }
 }
