@@ -1,9 +1,6 @@
 // Headers
-#include <iostream>
-#include <windows.h>
 #include <string>
-
-#include "layout.hpp"
+#include <windows.h>
 
 
 /*
@@ -55,7 +52,6 @@ namespace alignTxt {
     /**
      * - w : width of the current screen
      * - str : the text being put on the screen
-     * - y : the line at which this text goes
      */
     int center(int w, std::string str) { return (w - str.length()) / 2; }
 }

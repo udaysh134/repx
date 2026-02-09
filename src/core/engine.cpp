@@ -3,9 +3,9 @@
 #include <string>
 #include <conio.h>
 
+#include "settings.hpp"
 #include "utils.hpp"
 #include "layout.hpp"
-#include "settings.hpp"
 
 
 /*
