@@ -5,58 +5,50 @@
 
 #include "utils.hpp"
 #include "layout.hpp"
-
-// Constants
-constexpr int MIN_SCR_WIDTH  = 60;
-constexpr int MIN_SCR_HEIGHT = 20;
+#include "settings.hpp"
 
 
 /*
 ----------------------------------------------------------------------------------------------------
-MAIN LOOP
+MAIN CHECK & LOOP
 ----------------------------------------------------------------------------------------------------
 */
 void start() {
-    int width, height;
-    console::getTerminalSize(width, height);
+    int scrnWidth, scrnHeight;
 
-    if (width < MIN_SCR_WIDTH || height < MIN_SCR_HEIGHT) {
-        std::string errLine_1 = "Error : Terminal too small";
-        std::string errLine_2 = "Minimum required screen resolution : " + std::to_string(MIN_SCR_WIDTH) + " x " + std::to_string(MIN_SCR_HEIGHT);
+    int min_W = cfg.screen.min_W;
+    int min_H = cfg.screen.min_H;
 
-        console::clearScreen();
+    std::string errLine_1 = "Error : Terminal too small";
+    std::string errLine_2 = "Minimum required screen resolution : " + std::to_string(min_W) + " x " + std::to_string(min_H);
 
-        int centerY = height / 2;
-        int err1X = (width - errLine_1.length()) / 2;
-        int err2X = (width - errLine_2.length()) / 2;
+    console::getTermSize(scrnWidth, scrnHeight);
 
-        console::moveCursor(err1X, centerY - 1);
+    if (scrnWidth < min_W || scrnHeight < min_H) {
+        console::clrScr();
+
+        int centerY = scrnHeight / 2;
+        int err1X = (scrnWidth - errLine_1.length()) / 2;
+        int err2X = (scrnWidth - errLine_2.length()) / 2;
+
+        console::mvCursor(err1X, centerY - 1);
         std::cout << color::RED << errLine_1 << color::RESET;
 
-        console::moveCursor(err2X, centerY);
+        console::mvCursor(err2X, centerY);
         std::cout << color::BLUE << errLine_2 << color::RESET;
     }
 
-    int headerH = 5;
-    int footerH = 5;
-    int bodyH = height - headerH - footerH;
 
-    char h_char = '-';
-    char v_char = '|';
-    char c_char = '+';
+    int boxHeight_H = cfg.screen.layout.height.h;
+    int boxHeight_F = cfg.screen.layout.height.f;
+    int boxHeight_B = scrnHeight - boxHeight_H - boxHeight_F;
 
-    // Header Box
-    draw::drawBox(0, 0, width, headerH, h_char, v_char,c_char);
-    // Body Box
-    draw::drawBox(0, headerH, width, bodyH, h_char, v_char,c_char);
-    // Footer Box
-    draw::drawBox(0, headerH + bodyH, width, footerH, h_char, v_char,c_char);
+    draw::drawBox(0, 0, scrnWidth, boxHeight_H);
+    draw::drawBox(0, boxHeight_H, scrnWidth, boxHeight_B);
+    draw::drawBox(0, boxHeight_H + boxHeight_B, scrnWidth, boxHeight_F);
 
     std::string title = "RepX v0.0.0";
-    int titleX = (width - title.length()) / 2;
-    int titleY = 2;
-
-    console::moveCursor(titleX, titleY);
+    console::mvCursor(alignTxt::center(scrnWidth, title), 2);
     std::cout << title;
 
     getch();
