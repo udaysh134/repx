@@ -1,6 +1,8 @@
 // Headers
 #include <iostream>
 #include <windows.h>
+#include <string>
+
 #include "layout.hpp"
 
 
@@ -10,13 +12,11 @@ CONSOLE FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
 namespace console {
-    // ------=>> | GET TERMINAL SIZE | <<=------
     /**
-     * - Create variables
-     * - Pass variables as arguments : width, height
-     * - Get width and height of the screen directly 
+     * - width : local variable to store fetched width
+     * - height : local variable to store fetched height
      */
-    void getTerminalSize(int &width, int &height) {
+    void getTermSize(int &width, int &height) {
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         CONSOLE_SCREEN_BUFFER_INFO csbi;
 
@@ -26,20 +26,15 @@ namespace console {
         height = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
     }
 
-
-    // ------=>> | CLEAR SCREEN | <<=------
-    void clearScreen() {
+    void clrScr() {
         system("cls");
     }
 
-
-    // ------=>> | MOVE CURSOR | <<=------
     /**
-     * - Directly pass the position where cursor is needed
-     * - 1st arg : cursor on x-axis
-     * - 2nd arg : cursor on y-axis
+     * - x : cursor on x-axis
+     * - y : cursor on y-axis
      */
-    void moveCursor(int x, int y) {
+    void mvCursor(int x, int y) {
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
         COORD pos;
@@ -48,4 +43,19 @@ namespace console {
 
         SetConsoleCursorPosition(hConsole, pos);
     }
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+TEXT ALIGN FUNCTIONS
+----------------------------------------------------------------------------------------------------
+*/
+namespace alignTxt {
+    /**
+     * - w : width of the current screen
+     * - str : the text being put on the screen
+     * - y : the line at which this text goes
+     */
+    int center(int w, std::string str) { return (w - str.length()) / 2; }
 }

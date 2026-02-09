@@ -1,12 +1,5 @@
 #pragma once
 
-namespace console {
-    void getTerminalSize(int &width, int &height);
-    void clearScreen();
-    void moveCursor(int x, int y);
-}
-
-
 namespace color {
     inline constexpr const char* BLACK = "\033[0;30m";
     inline constexpr const char* RED = "\033[0;31m";
@@ -17,4 +10,14 @@ namespace color {
     inline constexpr const char* CYAN = "\033[0;36m";
     inline constexpr const char* WHITE = "\033[0;37m";
     inline constexpr const char* RESET = "\033[0m";
+}
+
+namespace console {
+    void getTermSize(int &width, int &height);
+    void clrScr();
+    void mvCursor(int x, int y);
+}
+
+namespace alignTxt {
+    int center(int w, std::string str);
 }
