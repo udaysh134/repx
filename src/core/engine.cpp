@@ -20,7 +20,7 @@ void start() {
     int min_H = cfg.screen.min_H;
 
     std::string errLine_1 = "Error : Terminal too small";
-    std::string errLine_2 = "Minimum required screen resolution : " + std::to_string(min_W) + " x " + std::to_string(min_H);
+    std::string errLine_2 = "Minimum required screen size : " + std::to_string(min_W) + " x " + std::to_string(min_H);
 
     console::getTermSize(scrnWidth, scrnHeight);
 
@@ -47,7 +47,7 @@ void start() {
     draw::drawBox(0, boxHeight_H, scrnWidth, boxHeight_B);
     draw::drawBox(0, boxHeight_H + boxHeight_B, scrnWidth, boxHeight_F);
 
-    std::string title = "RepX v0.0.0";
+    std::string title = std::string(cfg.program.name) + " " + std::string(cfg.program.version);
     console::mvCursor(alignTxt::center(scrnWidth, title), 2);
     std::cout << title;
 
