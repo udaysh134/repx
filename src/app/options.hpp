@@ -6,29 +6,22 @@
 
 #include "navigation.hpp"
 
-class Options {
+class OptionRegistry {
     public:
+        enum class Type { ACTION, INPUT, TEXT, SELECTION };
+        enum class Placement { BODY, FOOTER };
+
         struct Item {
             std::string label;
-            Navigation::PageId targetPage;
-        };
-
-        struct PageItems {
-            std::vector<Item> pageItems;
+            Type type;
+            Placement placement;
+            Navigation::PageId targetPage = Navigation::PageId::IDLE;
         };
 
     public:
-        Options();
-
-        void moveUp();
-        void moveDown();
-
-        int currentIndex() const;
-        const std::vector<Item>& currentItems(Navigation::PageId page) const;
-
-        Navigation::PageId activate(Navigation::PageId page) const;
+        OptionRegistry();
+        const std::vector<Item>& get(Navigation::PageId page) const;
 
     private:
-        std::unordered_map<Navigation::PageId, PageItems> pages;
-        int selectedIndex = 0;
+        std::unordered_map<Navigation::PageId, std::vector<Item>> options;
 };

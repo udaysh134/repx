@@ -11,15 +11,16 @@ class Navigation {
 
             BROWSE,
             ERROR,
+            SUCCESS,
             CONFIRMATION,
 
             NEW,
             OPEN,
 
-            CONSOLE,
             ENTRIES,
             ENTRY_ADD,
             GEN_LB,
+            CONSOLE_HELP,
 
             GEN_LB_WEEKLY,
             GEN_LB_MONTHLY,
@@ -28,6 +29,8 @@ class Navigation {
 
             SETTINGS,
             EXIT,
+
+            IDLE
         };
 
         struct PageContext {
