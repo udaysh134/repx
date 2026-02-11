@@ -31,7 +31,7 @@ class Navigation {
         };
 
         struct PageContext {
-            std::string label;
+            std::string pathLabel;
             std::string title;
             std::string message;
         };
