@@ -4,17 +4,17 @@
 
 /*
 ----------------------------------------------------------------------------------------------------
-Constructore Definition
+Constructor Definition
 ----------------------------------------------------------------------------------------------------
 */
 Navigation::Navigation() {
-    lineUp.push_back({ PageId::HOME, { "Home" }});
+    lineUp.push_back({ PageId::HOME, { "Home/" }});
 }
 
 
 /*
 ----------------------------------------------------------------------------------------------------
-Member Functions' Definition 
+Member Function Definitions
 ----------------------------------------------------------------------------------------------------
 */
 void Navigation::enter(PageId page, PageContext context) {

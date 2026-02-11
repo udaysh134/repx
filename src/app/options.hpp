@@ -6,30 +6,29 @@
 
 #include "navigation.hpp"
 
-
-class Menu {
+class Options {
     public:
-        struct Option {
+        struct Item {
             std::string label;
             Navigation::PageId targetPage;
         };
-    
-        struct PageOptions {
-            std::vector<Option> options;
+
+        struct PageItems {
+            std::vector<Item> pageItems;
         };
-    
+
     public:
-        Menu();
-    
+        Options();
+
         void moveUp();
         void moveDown();
-    
+
         int currentIndex() const;
-        const std::vector<Option>& currentOptions(Navigation::PageId page) const;
-    
+        const std::vector<Item>& currentItems(Navigation::PageId page) const;
+
         Navigation::PageId activate(Navigation::PageId page) const;
-    
+
     private:
-        std::unordered_map<Navigation::PageId, PageOptions> menus;
+        std::unordered_map<Navigation::PageId, PageItems> pages;
         int selectedIndex = 0;
 };
