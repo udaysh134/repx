@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 namespace color {
     inline constexpr const char* BLACK = "\033[0;30m";
     inline constexpr const char* RED = "\033[0;31m";
