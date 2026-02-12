@@ -6,7 +6,7 @@
 
 #include "navigation.hpp"
 
-class OptionRegistry {
+class Options {
     public:
         enum class Type { ACTION, INPUT, TEXT, SELECTION };
         enum class Placement { BODY, FOOTER };
@@ -19,9 +19,9 @@ class OptionRegistry {
         };
 
     public:
-        OptionRegistry();
+        Options();
         const std::vector<Item>& get(Navigation::PageId page) const;
 
     private:
-        std::unordered_map<Navigation::PageId, std::vector<Item>> options;
+        std::unordered_map<Navigation::PageId, std::vector<Item>> opt;
 };

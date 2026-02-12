@@ -4,8 +4,8 @@
 
 // Declarations
 using page = Navigation::PageId;
-using type = OptionRegistry::Type;
-using placement = OptionRegistry::Placement;
+using type = Options::Type;
+using placement = Options::Placement;
 using target = Navigation::PageId;
 
 
@@ -14,8 +14,8 @@ using target = Navigation::PageId;
 Constructor Definition
 ----------------------------------------------------------------------------------------------------
 */
-OptionRegistry::OptionRegistry() {
-    options[page::HOME] = {
+Options::Options() {
+    opt[page::HOME] = {
         { "Create New", type::ACTION, placement::BODY, target::BROWSE },
         { "Open Existing", type::ACTION, placement::BODY, target::BROWSE },
         { "Settings", type::ACTION, placement::BODY, target::SETTINGS },
@@ -23,29 +23,29 @@ OptionRegistry::OptionRegistry() {
     };
     
 
-    options[page::BROWSE] = {
+    opt[page::BROWSE] = {
         { "Select File", type::ACTION, placement::BODY },
         { "Path", type::INPUT, placement::BODY },
     };
 
 
-    options[page::ERROR] = {
+    opt[page::ERROR] = {
         { "Ok", type::ACTION, placement::BODY },
     };
 
 
-    options[page::SUCCESS] = {
+    opt[page::SUCCESS] = {
         { "Ok", type::ACTION, placement::BODY },
     };
 
 
-    options[page::CONFIRMATION] = {
+    opt[page::CONFIRMATION] = {
         { "Yes", type::ACTION, placement::BODY },
         { "No", type::ACTION, placement::BODY },
     };
 
 
-    options[page::NEW] = {
+    opt[page::NEW] = {
         { "Name", type::INPUT, placement::BODY },
         { "Description", type::INPUT, placement::BODY },
         { "Author", type::INPUT, placement::BODY },
@@ -55,7 +55,7 @@ OptionRegistry::OptionRegistry() {
     };
 
 
-    options[page::OPEN] = {
+    opt[page::OPEN] = {
         { "View Entries", type::ACTION, placement::BODY, target::ENTRIES },
         { "Add an Entry", type::ACTION, placement::BODY, target::ENTRY_ADD },
         { "Generate Leaderboard", type::ACTION, placement::BODY, target::GEN_LB },
@@ -65,13 +65,13 @@ OptionRegistry::OptionRegistry() {
     };
 
 
-    options[page::ENTRIES] = {
+    opt[page::ENTRIES] = {
         { "", type::TEXT, placement::BODY },
         { "Back", type::ACTION, placement::FOOTER, target::OPEN },
     };
 
 
-    options[page::ENTRY_ADD] = {
+    opt[page::ENTRY_ADD] = {
         { "Name", type::INPUT, placement::BODY },
         { "Increase", type::SELECTION, placement::BODY },
         { "Decrease", type::SELECTION, placement::BODY },
@@ -82,7 +82,7 @@ OptionRegistry::OptionRegistry() {
     };
 
 
-    options[page::GEN_LB] = {
+    opt[page::GEN_LB] = {
         { "Weekly", type::ACTION, placement::BODY, target::GEN_LB_WEEKLY },
         { "Monthly", type::ACTION, placement::BODY, target::GEN_LB_MONTHLY },
         { "Yearly", type::ACTION, placement::BODY, target::GEN_LB_YEARLY },
@@ -91,31 +91,31 @@ OptionRegistry::OptionRegistry() {
     };
 
 
-    options[page::CONSOLE_HELP] = {
+    opt[page::CONSOLE_HELP] = {
         { "", type::TEXT, placement::BODY },
         { "Back", type::ACTION, placement::FOOTER, target::OPEN },
     };
 
 
-    options[page::GEN_LB_WEEKLY] = {
+    opt[page::GEN_LB_WEEKLY] = {
         { "This Week", type::ACTION, placement::BODY },
         { "Last Week", type::ACTION, placement::BODY },
     };
 
 
-    options[page::GEN_LB_MONTHLY] = {
+    opt[page::GEN_LB_MONTHLY] = {
         { "This Month", type::ACTION, placement::BODY },
         { "Last Month", type::ACTION, placement::BODY },
     };
 
 
-    options[page::GEN_LB_YEARLY] = {
+    opt[page::GEN_LB_YEARLY] = {
         { "This Year", type::ACTION, placement::BODY },
         { "Last Year", type::ACTION, placement::BODY },
     };
 
 
-    options[page::GEN_LB_CUSTOM] = {
+    opt[page::GEN_LB_CUSTOM] = {
         { "Start Date", type::INPUT, placement::BODY },
         { "End Date", type::INPUT, placement::BODY },
 
@@ -124,18 +124,18 @@ OptionRegistry::OptionRegistry() {
     };
 
 
-    options[page::SETTINGS] = {
+    opt[page::SETTINGS] = {
         { "Back", type::ACTION, placement::FOOTER, target::HOME },
     };
 
 
-    options[page::EXIT] = {
+    opt[page::EXIT] = {
         { "Yes", type::ACTION, placement::BODY, target::EXIT },
         { "No", type::ACTION, placement::BODY, target::HOME },
     };
 
 
-    options[page::IDLE] = {
+    opt[page::IDLE] = {
         { "", type::TEXT, placement::BODY },
     };
 }
