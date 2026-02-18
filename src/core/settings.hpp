@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 struct DEF_CONFIG {
     /*
     ----------------------------------------------------------------------------------------------------
@@ -21,23 +23,22 @@ struct DEF_CONFIG {
         const int min_H = 20;
 
         struct BoxBorder {
-            struct Characters {
-                const char *horz = "─"; // ─
-                const char *vert = "│"; // │
+            const char *horz = "─";
+            const char *vert = "│";
 
-                struct Corner {
-                    const char *tl = "╭"; // ┌ ╭
-                    const char *tr = "╮"; // ┐ ╮
-                    const char *bl = "╰"; // └ ╰
-                    const char *br = "╯"; // ┘ ╯
-                } corner;
-            } charac;
+            struct Corners {
+                const std::string flat[4] = {"┌", "┐", "└", "┘"};
+                const std::string rounded[4] = {"╭", "╮", "╰", "╯"};
+            } corners;
         } border;
 
         struct Layout {
+            const bool dynamicFrame = true;
+
             struct Height {
-                const int h = 5;
-                const int f = 7;
+                const int h = 3;
+                const int b = 11;
+                const int f = 5;
             } height;
         } layout;
     } screen;
