@@ -3,7 +3,6 @@
 #include <vector>
 #include <string>
 
-
 class Navigation {
     public:
         enum class PageId {
