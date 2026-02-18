@@ -14,14 +14,14 @@ namespace draw {
     void horzLine(int x, int y, int width) {
         console::mvCursor(x, y);
         for (int i = 0; i < width; i++) {
-            std::cout << cfg.screen.border.charac.horz;
+            std::cout << cfg.screen.border.horz;
         }
     }
 
     void vertLine(int x, int y, int height) {
         for (int i = 0; i < height; i++) {
             console::mvCursor(x, y + i);
-            std::cout << cfg.screen.border.charac.vert;
+            std::cout << cfg.screen.border.vert;
         }
     }
 
@@ -42,12 +42,12 @@ namespace draw {
 
         // Corners
         console::mvCursor(x, y);
-        std::cout << cfg.screen.border.charac.corner.tl;
+        std::cout << cfg.screen.border.corner.rounded.tl;
         console::mvCursor(x + w - 1, y);
-        std::cout << cfg.screen.border.charac.corner.tr;
+        std::cout << cfg.screen.border.corner.rounded.tr;
         console::mvCursor(x, y + h - 1);
-        std::cout << cfg.screen.border.charac.corner.bl;
+        std::cout << cfg.screen.border.corner.rounded.bl;
         console::mvCursor(x + w - 1, y + h - 1);
-        std::cout << cfg.screen.border.charac.corner.br;
+        std::cout << cfg.screen.border.corner.rounded.br;
     }
 }

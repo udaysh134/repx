@@ -38,7 +38,7 @@ struct DEF_CONFIG {
                     const char *bl = "╰";
                     const char *br = "╯";
                 } rounded;
-            } corners;
+            } corner;
         } border;
 
         struct Layout {
