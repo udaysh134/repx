@@ -50,30 +50,39 @@ Private Functions
 ----------------------------------------------------------------------------------------------------
 */
 void Renderer::clrScreen() const {
-    system("cls");
+    console::mvCursor(0, 0);
 }
 
 void Renderer::drawBox(int x, int y, int w, int h) const {
     const char* horz = cfg.screen.border.horz;
     const char* vert = cfg.screen.border.vert;
 
-    console::mvCursor(x, y);
-    for (int i = 0; i < w; ++i) {
-        std::cout << horz;
-    }
+    const std::string tl = cfg.screen.border.corner.rounded.tl;
+    const std::string tr = cfg.screen.border.corner.rounded.tr;
+    const std::string bl = cfg.screen.border.corner.rounded.bl;
+    const std::string br = cfg.screen.border.corner.rounded.br;
 
+    console::mvCursor(x, y);
+    for (int i = 0; i < w; ++i) std::cout << horz;
+    
     for (int i = 1; i < h - 1; ++i) {
         console::mvCursor(x, y + i);
         std::cout << vert;
-
         console::mvCursor(x + w - 1, y + i);
         std::cout << vert;
     }
 
     console::mvCursor(x, y + h - 1);
-    for (int i = 0; i < w; ++i) {
-        std::cout << horz;
-    }
+    for (int i = 0; i < w; ++i) std::cout << horz;
+
+    console::mvCursor(x, y);
+    std::cout << tl;
+    console::mvCursor(x + w - 1, y);
+    std::cout << tr;
+    console::mvCursor(x, y + h - 1);
+    std::cout << bl;
+    console::mvCursor(x + w - 1, y + h - 1);
+    std::cout << br;
 }
 
 void Renderer::drawHeader(const Layout::Geometry& geo) const {
