@@ -1,60 +1,99 @@
 // Headers
 #include <iostream>
-#include <string>
 #include <conio.h>
 
 #include "settings.hpp"
 #include "utils.hpp"
 #include "layout.hpp"
+#include "renderer.hpp"
+#include "navigation.hpp"
+#include "options.hpp"
+#include "state.hpp"
 
 
 /*
 ----------------------------------------------------------------------------------------------------
-MAIN CHECK & LOOP
+Main Running
 ----------------------------------------------------------------------------------------------------
 */
 void start() {
-    int scrnWidth, scrnHeight;
+    Layout layout;
+    Renderer renderer;
+    Navigation navigation;
+    Options optionsManager;
+    State state;
 
-    int min_W = cfg.screen.min_W;
-    int min_H = cfg.screen.min_H;
+    bool running = true;
 
-    std::string errLine_1 = "Error : Terminal too small";
-    std::string errLine_2 = "Minimum required screen size : " + std::to_string(min_W) + " x " + std::to_string(min_H);
-
-    console::getTermSize(scrnWidth, scrnHeight);
-
-    if (scrnWidth < min_W || scrnHeight < min_H) {
-        console::clrScreen();
-
-        int centerY = scrnHeight / 2;
-        int err1X = (scrnWidth - errLine_1.length()) / 2;
-        int err2X = (scrnWidth - errLine_2.length()) / 2;
-
-        console::mvCursor(err1X, centerY - 1);
-        std::cout << color::RED << errLine_1 << color::RESET;
-
-        console::mvCursor(err2X, centerY);
-        std::cout << color::BLUE << errLine_2 << color::RESET;
-    }
-
-
-    int boxHeight_H = cfg.screen.layout.height.h;
-    int boxHeight_F = cfg.screen.layout.height.f;
-    int boxHeight_B = scrnHeight - boxHeight_H - boxHeight_F;
-
-    draw::drawBox(0, 0, scrnWidth, boxHeight_H);
-    draw::drawBox(0, boxHeight_H, scrnWidth, boxHeight_B);
-    draw::drawBox(0, boxHeight_H + boxHeight_B, scrnWidth, boxHeight_F);
-
-    std::string title = std::string(cfg.program.name) + " " + std::string(cfg.program.version);
-    console::mvCursor(alignTxt::center(scrnWidth, title), 2);
-    std::cout << title;
-
-    getch();
-
-    bool  running = true;
     while (running) {
-        
+        // 1. Get Terminal Size
+        int termW, termH;
+        console::getTermSize(termW, termH);
+
+        // 2. Get Current Page
+        auto currentPage = navigation.current().page;
+
+        // 3. Get Options for Current Page
+        const auto& items = optionsManager.get(currentPage);
+
+        // 4. Count BODY items (for layout spacing)
+        int bodyCount = 0;
+        for (const auto& item : items) { if (item.placement == Options::Placement::BODY) bodyCount++; }
+
+        // 5. Compute Layout Geometry
+        auto geo = layout.compute(termW, termH, bodyCount);
+
+        // 6. Render Everything
+        renderer.render(geo, state, items);
+
+        // 7. Input Handling (Test Phase Basic)
+        int key = _getch();
+
+        switch (key) {
+            case 72: // Up Arrow
+                state.moveUp(items.size());
+                break;
+
+            case 80: // Down Arrow
+                state.moveDown(items.size());
+                break;
+
+            case 13: // Enter
+                if (items.empty()) break;
+
+                const auto& selected = items[state.index()];
+
+                if (selected.type == Options::Type::ACTION) {
+                    navigation.enter(selected.targetPage, {});
+                    state.reset();
+                } else if (selected.type == Options::Type::INPUT) {
+                    state.startEditing();
+                } else if (selected.type == Options::Type::SELECTION) {
+                    state.toggleSelection(state.index());
+                }
+                break;
+
+            case 27: // ESC
+                if (navigation.canGoBack()) {
+                    navigation.back();
+                    state.reset();
+                } else {
+                    running = false;
+                }
+                break;
+
+            default:
+                if (state.isEditing()) {
+                    if (key == 8) { // Backspace
+                        state.removeChar();
+                    } else {
+                        state.appendChar(static_cast<char>(key));
+                    }
+                }
+                break;
+        }
+
+        // Exit condition
+        if (navigation.shouldExit()) running = false;
     }
 }
