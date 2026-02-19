@@ -7,12 +7,14 @@ CXX := g++
 # SOURCE FILES ---------------------------------------- >>
 SRC := $(wildcard \
 	src/*.cpp \
+	src/app/*.cpp \
 	src/core/*.cpp \
 	src/modules/*.cpp \
 )
 
 # COMPILER FLAGS ---------------------------------------- >>
 CXXFLAGS := -std=c++20 -Wall -Wextra \
+	-Isrc/app \
 	-Isrc/core \
 	-Isrc/modules \
 	# -Isrc/packages/pdcurses/include

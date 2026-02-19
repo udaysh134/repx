@@ -139,3 +139,13 @@ Options::Options() {
         { "", type::TEXT, placement::BODY },
     };
 }
+
+
+/*
+----------------------------------------------------------------------------------------------------
+Function Definition
+----------------------------------------------------------------------------------------------------
+*/
+const std::vector<Options::Item>& Options::get(Navigation::PageId page) const {
+    return opt.at(page);
+}
