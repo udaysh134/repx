@@ -8,7 +8,7 @@ Constructor Definition
 ----------------------------------------------------------------------------------------------------
 */
 Navigation::Navigation() {
-    lineUp.push_back({ PageId::HOME, { "Home/" }});
+    lineUp.push_back({ PageId::HOME, { "Home/", "", "" }});
 }
 
 
