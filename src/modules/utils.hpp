@@ -16,10 +16,15 @@ namespace color {
 
 namespace console {
     void getTermSize(int &width, int &height);
-    void clrScreen();
     void mvCursor(int x, int y);
 }
 
 namespace alignTxt {
     int center(int w, std::string str);
+}
+
+namespace draw {
+    void horzLine(int x, int y, int width);
+    void vertLine(int x, int y, int height);
+    void drawBox(int x, int y, int w, int h);
 }
