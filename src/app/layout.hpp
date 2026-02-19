@@ -10,17 +10,16 @@ class Layout {
             int term_width;
             int term_height;
 
-            int frame_x;
-            int frame_y;
-            int frame_width;
-            int frame_height;
+            struct Region {
+                int x;
+                int y;
+                int width;
+                int height;
+            };
 
-            int header_y;
-            int body_y;
-            int footer_y;
-
-            int body_width;
-            int body_height;
+            Region header;
+            Region body;
+            Region footer;
 
             std::vector<int> option_rows;
         };
