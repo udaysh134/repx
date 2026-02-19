@@ -16,7 +16,7 @@ namespace color {
 
 namespace console {
     void getTermSize(int &width, int &height);
-    void clrScr();
+    void clrScreen();
     void mvCursor(int x, int y);
 }
 

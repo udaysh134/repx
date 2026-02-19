@@ -25,7 +25,7 @@ void start() {
     console::getTermSize(scrnWidth, scrnHeight);
 
     if (scrnWidth < min_W || scrnHeight < min_H) {
-        console::clrScr();
+        console::clrScreen();
 
         int centerY = scrnHeight / 2;
         int err1X = (scrnWidth - errLine_1.length()) / 2;

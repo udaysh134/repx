@@ -23,7 +23,7 @@ namespace console {
         height = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
     }
 
-    void clrScr() {
+    void clrScreen() {
         system("cls");
     }
 
