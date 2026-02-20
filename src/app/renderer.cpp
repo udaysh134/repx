@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <windows.h>
 
 #include "renderer.hpp"
 #include "settings.hpp"
@@ -50,7 +51,23 @@ Private Functions
 ----------------------------------------------------------------------------------------------------
 */
 void Renderer::clrScreen() const {
-    console::mvCursor(0, 0);
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(hOut, &csbi);
+
+    DWORD cellCount = csbi.dwSize.X * csbi.dwSize.Y;
+    DWORD count;
+    COORD homeCoords = { 0, 0 };
+
+    // Fill entire screen with spaces
+    FillConsoleOutputCharacter(hOut, ' ', cellCount, homeCoords, &count);
+
+    // Reset attributes
+    FillConsoleOutputAttribute(hOut, csbi.wAttributes, cellCount, homeCoords, &count);
+
+    // Move cursor back to top-left
+    SetConsoleCursorPosition(hOut, homeCoords);
 }
 
 void Renderer::drawBox(int x, int y, int w, int h) const {
