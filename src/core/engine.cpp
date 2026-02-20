@@ -50,15 +50,17 @@ void start() {
         int key = _getch();
 
         switch (key) {
-            case 72: // Up Arrow
+            case 72: { // Up Arrow
                 state.moveUp(items.size());
                 break;
+            }
 
-            case 80: // Down Arrow
+            case 80: { // Down Arrow
                 state.moveDown(items.size());
                 break;
+            }
 
-            case 13: // Enter
+            case 13: { // Enter
                 if (items.empty()) break;
 
                 const auto& selected = items[state.index()];
@@ -72,8 +74,9 @@ void start() {
                     state.toggleSelection(state.index());
                 }
                 break;
-
-            case 27: // ESC
+            }
+            
+            case 27: { // ESC
                 if (navigation.canGoBack()) {
                     navigation.back();
                     state.reset();
@@ -81,8 +84,9 @@ void start() {
                     running = false;
                 }
                 break;
+            }
 
-            default:
+            default: {
                 if (state.isEditing()) {
                     if (key == 8) { // Backspace
                         state.removeChar();
@@ -91,6 +95,7 @@ void start() {
                     }
                 }
                 break;
+            }
         }
 
         // Exit condition
