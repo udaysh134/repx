@@ -29,7 +29,7 @@ Options::Options() {
     };
 
 
-    opt[page::ERROR] = {
+    opt[page::ERR_PAGE] = {
         { "Ok", type::ACTION, placement::BODY },
     };
 

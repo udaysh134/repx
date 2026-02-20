@@ -9,7 +9,7 @@ class Navigation {
             HOME,
 
             BROWSE,
-            ERROR,
+            ERR_PAGE,
             SUCCESS,
             CONFIRMATION,
 
