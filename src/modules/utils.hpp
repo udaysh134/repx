@@ -15,8 +15,10 @@ namespace color {
 }
 
 namespace console {
+    void clrScreen();
     void getTermSize(int &width, int &height);
     void mvCursor(int x, int y);
+    void showCursor(bool choice);
 }
 
 namespace alignTxt {

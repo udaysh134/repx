@@ -12,6 +12,10 @@ CONSOLE FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 */
 namespace console {
+    void clrScreen() {
+        system("cls");
+    }
+
     /**
      * - width : local variable to store fetched width
      * - height : local variable to store fetched height
@@ -38,6 +42,15 @@ namespace console {
         pos.Y = static_cast<SHORT>(y);
 
         SetConsoleCursorPosition(hConsole, pos);
+    }
+
+    void showCursor(bool choice) {
+        HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+        CONSOLE_CURSOR_INFO cursorInfo;
+
+        GetConsoleCursorInfo(hOut, &cursorInfo);
+        cursorInfo.bVisible = choice;
+        SetConsoleCursorInfo(hOut, &cursorInfo);
     }
 }
 
