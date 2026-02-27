@@ -17,7 +17,7 @@ RepX ensures accountability, integrity, and trust by design - not by assumption.
 
 <div align="center">
 
-## **The Problem & The Vision**
+## 🧭 **The Problem & The Vision**
 </div>
 
 Most reputation systems focus on scoring. RepX focuses on accountability.
@@ -47,7 +47,7 @@ Because every entry is traceable, the system enables :
 
 <div align="center">
 
-## **Who Is RepX For?**
+## 👥 **Who Is RepX For?**
 </div>
 
 RepX is built for any environment where reputation matters and accountability is important.
@@ -66,27 +66,27 @@ If someone can earn reputation, RepX can record it.
 
 <div align="center">
 
-## **Features**
+## ✨ **Features**
 </div>
 
-### Open Source :
+### 🌐 Open Source :
 - **Fully transparent and community-driven** - Find RepX repo in GitHub.
-### Core Integrity :
+### 🛡️ Core Integrity :
 - **Controlled Write Access Only** - Scores cannot be edited manually.
 - **Tamper-Resistant History Linkage** - Every entry is permanently traceable.
 - **Encrypted Reputation Data Storage** - Secure `repboard.json` file.
-### Engine Design :
+### 🕹️ Engine Design :
 - **Lightweight C++ Executable** - No heavy runtime dependencies.
 - **Portable Single Executable** - Manage reputation and generate leaderboards with one file.
 - **Structured CLI Interaction** - Controlled, predictable command flow.
-### Usability :
+### 🧲 Usability :
 - **Terminal-Based Navigation UI** - Keyboard-driven interface with structured navigation.
 - **Automatic Leaderboard Generation** - Convert accumulated data into clean leaderboard output.
 
 
 <div align="center">
 
-## **Why RepX?**
+## ⚖️ **Why RepX?**
 </div>
 
 Reputation can be tracked in many ways - spreadsheets, Discord bots, LMS systems, HR tools, etc.
@@ -112,7 +112,7 @@ RepX prioritizes structure over flexibility and accountability over convenience.
 
 <div align="center">
 
-## **How It Works?**
+## ⚙️ **How It Works?**
 </div>
  
 RepX follows a controlled reputation flow.
@@ -129,12 +129,22 @@ Leaderboard Generation
 leaderboard.md
 ```
 
+<div align="center">
+
 *Below is the most basic navigation flow of the application -*
-![Documentation Status](/docs/flowcharts/App_Layout_v1.png)
+    <table>
+        <tr>
+            <td>
+                <img src="docs/flowcharts/App_Layout_v1.png" width="400"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
 
 <div align="center">
 
-## **Developer Section**
+## 💻 **Developer Section**
 </div>
 
 RepX is built as a modular, engine-style system - not as a monolithic script. The architecture emphasizes :
@@ -166,7 +176,7 @@ src/
 
 To view the whole project structure, follow [STRUCTURE](/STRUCTURE.md).
 
-### Design Principles :
+### 🪴 Design Principles :
 - No silent mutations
 - No accidental globals
 - No direct score modification
@@ -175,7 +185,7 @@ To view the whole project structure, follow [STRUCTURE](/STRUCTURE.md).
 
 RepX treats reputation as infrastructure - not a feature.
 
-### Contribution :
+### 🤝 Contribution :
 Before contributing, understand that RepX prioritizes structure, integrity, and architectural clarity over rapid feature addition.
 
 1. Fork the repository
@@ -187,7 +197,7 @@ Before contributing, understand that RepX prioritizes structure, integrity, and 
 
 <div align="center">
 
-## **License**
+## 📜 **License**
 </div>
 
 RepX is open-source software. It is distributed under the terms specified in the [LICENSE](/LICENSE) file of this repository.
