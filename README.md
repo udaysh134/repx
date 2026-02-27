@@ -5,7 +5,6 @@
 
 ![Maintained](https://img.shields.io/badge/Maintained-Yes-green)
 ![Documentation Status](https://img.shields.io/badge/Documentation-Active-blue)
-![Version](https://img.shields.io/badge/Version-0.1.0-orange)
 
 </div>
 
@@ -130,6 +129,9 @@ Leaderboard Generation
 leaderboard.md
 ```
 
+*Below is the most basic navigation flow of the application -*
+![Documentation Status](/docs/flowcharts/App_Layout_v1.png)
+
 <div align="center">
 
 ## **Developer Section**
@@ -162,7 +164,7 @@ src/
 │ └── utils
 ```
 
-To view the whole project structure, follow `STRUCTURE.md`.
+To view the whole project structure, follow [STRUCTURE](/STRUCTURE.md).
 
 ### Design Principles :
 - No silent mutations
@@ -173,7 +175,7 @@ To view the whole project structure, follow `STRUCTURE.md`.
 
 RepX treats reputation as infrastructure - not a feature.
 
-### Contributing :
+### Contribution :
 Before contributing, understand that RepX prioritizes structure, integrity, and architectural clarity over rapid feature addition.
 
 1. Fork the repository
@@ -188,6 +190,6 @@ Before contributing, understand that RepX prioritizes structure, integrity, and 
 ## **License**
 </div>
 
-RepX is open-source software. It is distributed under the terms specified in the `LICENSE.md` file of this repository.
+RepX is open-source software. It is distributed under the terms specified in the [LICENSE](/LICENSE) file of this repository.
 
 You are free to use, modify, and distribute RepX in accordance with those terms. By keeping RepX open, the system remains transparent, auditable, and community-driven - aligned with its core philosophy of accountability and trust.
