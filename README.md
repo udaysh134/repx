@@ -135,7 +135,7 @@ leaderboard.md
     <table>
         <tr>
             <td>
-                <img src="docs/flowcharts/App_Layout_v1.png" width="400"/>
+                <img src="docs/flowcharts/App_Layout_v1.png" width="800"/>
             </td>
         </tr>
     </table>
