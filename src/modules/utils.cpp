@@ -6,34 +6,31 @@
 #include "settings.hpp"
 
 
-/*
-----------------------------------------------------------------------------------------------------
-CONSOLE FUNCTIONS
-----------------------------------------------------------------------------------------------------
-*/
+// ----------------------------------------------------------------------------------------------------
+// Console Utility
+// ----------------------------------------------------------------------------------------------------
+
 namespace console {
+    // Clear Screen ---------------------------------------- >>
+    
     void clrScreen() {
         system("cls");
     }
 
-    /**
-     * - width : local variable to store fetched width
-     * - height : local variable to store fetched height
-     */
+    // Get Terminal Size ---------------------------------------- >>
+
     void getTermSize(int &width, int &height) {
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         CONSOLE_SCREEN_BUFFER_INFO csbi;
 
         GetConsoleScreenBufferInfo(hConsole, &csbi);
 
-        width = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-        height = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+        width  = csbi.srWindow.Right  - csbi.srWindow.Left + 1;
+        height = csbi.srWindow.Bottom - csbi.srWindow.Top  + 1;
     }
 
-    /**
-     * - x : cursor on x-axis
-     * - y : cursor on y-axis
-     */
+    // Move Cursor ---------------------------------------- >>
+
     void mvCursor(int x, int y) {
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -43,6 +40,8 @@ namespace console {
 
         SetConsoleCursorPosition(hConsole, pos);
     }
+
+    // Show Cursor ---------------------------------------- >>
 
     void showCursor(bool choice) {
         HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -55,15 +54,14 @@ namespace console {
 }
 
 
-/*
-----------------------------------------------------------------------------------------------------
-TEXT ALIGN FUNCTIONS
-----------------------------------------------------------------------------------------------------
-*/
-namespace alignTxt {
-    /**
-     * - w : width of the current screen
-     * - str : the text being put on the screen
-     */
-    int center(int w, std::string str) { return (w - str.length()) / 2; }
+// ----------------------------------------------------------------------------------------------------
+// Text Aligning Utility
+// ----------------------------------------------------------------------------------------------------
+
+namespace alignText {
+    // For Center ---------------------------------------- >>
+
+    int center(int width, std::string str) {
+        return (width - str.length()) / 2;
+    }
 }
