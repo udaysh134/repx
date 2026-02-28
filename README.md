@@ -194,6 +194,8 @@ Before contributing, understand that RepX prioritizes structure, integrity, and 
 4. Keep changes modular and intentional
 5. Submit a pull request with a clear description
 
+> [!NOTE]
+> RepX uses IntelliSense-optimized documentation style for documenting inline codes. Certain Doxygen tags are repurposed for enhanced IDE hover formatting.
 
 <div align="center">
 
