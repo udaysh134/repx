@@ -3,18 +3,18 @@
 #include "settings.hpp"
 
 
-/*
-----------------------------------------------------------------------------------------------------
-Main Function
-----------------------------------------------------------------------------------------------------
-*/
+// ----------------------------------------------------------------------------------------------------
+// Layout Geometry Computation
+// ----------------------------------------------------------------------------------------------------
+
 Layout::Geometry Layout::compute(int term_width, int term_height, int option_count) const {
     Geometry geo{};
 
     geo.term_width = term_width;
     geo.term_height = term_height;
 
-    // Minimum Size Validation
+    // Minimum Size Validation ---------------------------------------- >>
+
     if (term_width < cfg.screen.min_W || term_height < cfg.screen.min_H) {
         geo.valid = false;
         return geo;
@@ -22,7 +22,8 @@ Layout::Geometry Layout::compute(int term_width, int term_height, int option_cou
 
     geo.valid = true;
 
-    // Determine Usable Area
+    // Determine Usable Area ---------------------------------------- >>
+
     int usable_width = term_width;
     int usable_height = term_height;
 
@@ -31,40 +32,55 @@ Layout::Geometry Layout::compute(int term_width, int term_height, int option_cou
         usable_height = cfg.screen.min_H;
     }
 
-    // Center if fixed
+    // Center Offset Calculation ---------------------------------------- >>
+
     int offset_x = (term_width - usable_width) / 2;
     int offset_y = (term_height - usable_height) / 2;
 
+    // Heights From Configuration ---------------------------------------- >>
 
-    // Heights from config
     int header_h = cfg.screen.layout.height.h;
     int body_h = cfg.screen.layout.height.b;
     int footer_h = cfg.screen.layout.height.f;
 
-    // Optional margin from terminal edges
-    int margin = 0;
-    int box_width = usable_width - (margin * 2);
+    int total_program_height = header_h + body_h + footer_h;
+    int margin = cfg.screen.margin;
+
+    // After margin is applied to whole layout
+    int inner_width = usable_width - (margin * 2);
+    int inner_height = usable_height - (margin * 2);
+
+    // Safety: Ensure program fits inside margin-adjusted area
+    if (total_program_height > inner_height) {
+        geo.valid = false;
+        return geo;
+    }
+
+    // Starting point for entire program block ---------------------------------------- >>
+
+    int program_x = offset_x + margin;
+    int program_y = offset_y + margin;
 
     // Header Region
-    geo.header.x = offset_x + margin;
-    geo.header.y = offset_y + margin;
-    geo.header.width = box_width;
+    geo.header.x = program_x;
+    geo.header.y = program_y;
+    geo.header.width = inner_width;
     geo.header.height = header_h;
 
     // Body Region
-    geo.body.x = geo.header.x;
+    geo.body.x = program_x;
     geo.body.y = geo.header.y + geo.header.height;
-    geo.body.width = box_width;
+    geo.body.width = inner_width;
     geo.body.height = body_h;
 
     // Footer Region
-    geo.footer.x = geo.body.x;
+    geo.footer.x = program_x;
     geo.footer.y = geo.body.y + geo.body.height;
-    geo.footer.width = box_width;
+    geo.footer.width = inner_width;
     geo.footer.height = footer_h;
 
-    
-    // 7. Distribute option rows inside body
+    // Distribute Option Rows Inside Body ---------------------------------------- >>
+
     geo.option_rows.clear();
 
     if (option_count > 0) {
