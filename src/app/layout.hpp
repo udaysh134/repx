@@ -28,14 +28,16 @@ class Layout {
         /**
          * Holds computed layout information.
          * 
-         * - valid : Container to check and allow/disallow box layout computation.
-         * - term_width : Stores visible terminal's width.
-         * - term_height : Stores visible terminal's height.
-         * - Region : Struct layouts from which header/body/footer boxes are formed.
-         * - header : Variable to store/access computation data for Header Box.
-         * - body : Variable to store/access computation data for Body Box.
-         * - footer : Variable to store/access computation data for Footer Box.
-         * - option_rows : Sequential y-coords stored in a vector for the display of clickable options in a menu page with even spacing.
+        ```
+         * valid : Container to check and allow/disallow box layout computation.
+         * term_width : Stores visible terminal's width.
+         * term_height : Stores visible terminal's height.
+         * Region : Struct layouts from which header/body/footer boxes are formed.
+         * header : Variable to store/access computation data for Header Box.
+         * body : Variable to store/access computation data for Body Box.
+         * footer : Variable to store/access computation data for Footer Box.
+         * option_rows : Sequential y-coords stored in a vector for the display of clickable options in a menu page with even spacing.
+        ```
          */
         struct Geometry {
             bool valid; ///< Checks the validity of whole logic computation. Will return, if FALSE (where terminal dimension < minimum required), will compute, if TRUE.
@@ -73,13 +75,15 @@ class Layout {
          *
          * @return "Geometry" struct containing :
          * 
-         * - valid
-         * - term_width
-         * - term_height
-         * - header
-         * - body
-         * - footer
-         * - option_rows
+        ```
+         * valid
+         * term_width
+         * term_height
+         * header
+         * body
+         * footer
+         * option_rows
+        ```
          */
         Geometry compute(int term_width, int term_height, int option_count) const;
 };
