@@ -62,8 +62,8 @@ namespace console {
     /**
      * Moves cursor to (x, y).
      * 
-     * @param[in] x Position of X-Coordinate in integer.
-     * @param[in] y Position of Y-Coordinate in integer.
+     * @param[in] x Position of x-coordinate in integer.
+     * @param[in] y Position of y-coordinate in integer.
      */
     void mvCursor(int x, int y);
 
@@ -93,7 +93,7 @@ namespace alignText {
      * @param[in] width Total available width.
      * @param[in] str Text which is to be centered.
      * 
-     * @return Starting X-Coordinate as integer.
+     * @return Starting x-coordinate as integer.
      */
     int center(int width, std::string str);
 }
