@@ -2,38 +2,46 @@
 #include "navigation.hpp"
 
 
-/*
-----------------------------------------------------------------------------------------------------
-Constructor Definition
-----------------------------------------------------------------------------------------------------
-*/
+// ----------------------------------------------------------------------------------------------------
+// Constructor Definition
+// ----------------------------------------------------------------------------------------------------
+
 Navigation::Navigation() {
-    lineUp.push_back({ PageId::HOME, { "Home/", "", "" }});
+    stack.push_back({ PageId::HOME, { "Home/", "", "" } });
 }
 
 
-/*
-----------------------------------------------------------------------------------------------------
-Member Function Definitions
-----------------------------------------------------------------------------------------------------
-*/
+// ----------------------------------------------------------------------------------------------------
+// Member Function Definitions
+// ----------------------------------------------------------------------------------------------------
+
+// Enter a specific Page ---------------------------------------- >>
+
 void Navigation::enter(PageId page, PageContext context) {
-    lineUp.push_back({ page, context });
+    stack.push_back({ page, context });
 }
+
+// Go Back to the previous page ---------------------------------------- >>
 
 void Navigation::back() {
-    if (lineUp.size() > 1) {
-        lineUp.pop_back();
+    if (stack.size() > 1) {
+        stack.pop_back();
     }
 }
 
+// Get Current Page ---------------------------------------- >>
+
 const Navigation::NavNode& Navigation::current() const {
-    return lineUp.back();
+    return stack.back();
 }
 
+// Can Go Back ---------------------------------------- >>
+
 bool Navigation::canGoBack() const {
-    return lineUp.size() > 1;
+    return stack.size() > 1;
 }
+
+// Should Exit ---------------------------------------- >>
 
 bool Navigation::shouldExit() const {
     return current().page == PageId::EXIT;
