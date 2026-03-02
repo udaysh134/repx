@@ -9,13 +9,18 @@
 #include "utils.hpp"
 
 
-/*
-----------------------------------------------------------------------------------------------------
-Public Functions
-----------------------------------------------------------------------------------------------------
-*/
-void Renderer::render(const Layout::Geometry& geo, const State& state, const std::vector<Options::Item>& options) {
-    clrScreen();
+// ----------------------------------------------------------------------------------------------------
+// Public Functions
+// ----------------------------------------------------------------------------------------------------
+
+// Render Page ---------------------------------------- >>
+
+void Renderer::render(
+    const Layout::Geometry& geo,
+    const State& state,
+    const std::vector<Options::Item>& options
+) {
+    Renderer::clrScreen();
 
     if (!geo.valid) {
         std::string errLine_1 = "Error : Terminal too small";
@@ -45,11 +50,12 @@ void Renderer::render(const Layout::Geometry& geo, const State& state, const std
 }
 
 
-/*
-----------------------------------------------------------------------------------------------------
-Private Functions
-----------------------------------------------------------------------------------------------------
-*/
+// ----------------------------------------------------------------------------------------------------
+// Private Functions
+// ----------------------------------------------------------------------------------------------------
+
+// Clear Screen ---------------------------------------- >>
+
 void Renderer::clrScreen() const {
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -70,6 +76,8 @@ void Renderer::clrScreen() const {
     SetConsoleCursorPosition(hOut, homeCoords);
 }
 
+// Draw Box ---------------------------------------- >>
+
 void Renderer::drawBox(int x, int y, int w, int h) const {
     const char* horz = cfg.screen.border.horz;
     const char* vert = cfg.screen.border.vert;
@@ -79,9 +87,10 @@ void Renderer::drawBox(int x, int y, int w, int h) const {
     const std::string bl = cfg.screen.border.corner.rounded.bl;
     const std::string br = cfg.screen.border.corner.rounded.br;
 
+    // Horizontal and Verical Lines
     console::mvCursor(x, y);
     for (int i = 0; i < w; ++i) std::cout << horz;
-    
+
     for (int i = 1; i < h - 1; ++i) {
         console::mvCursor(x, y + i);
         std::cout << vert;
@@ -92,6 +101,7 @@ void Renderer::drawBox(int x, int y, int w, int h) const {
     console::mvCursor(x, y + h - 1);
     for (int i = 0; i < w; ++i) std::cout << horz;
 
+    // Building Corners
     console::mvCursor(x, y);
     std::cout << tl;
     console::mvCursor(x + w - 1, y);
@@ -101,6 +111,8 @@ void Renderer::drawBox(int x, int y, int w, int h) const {
     console::mvCursor(x + w - 1, y + h - 1);
     std::cout << br;
 }
+
+// Draw Header ---------------------------------------- >>
 
 void Renderer::drawHeader(const Layout::Geometry& geo) const {
     std::string title = std::string(cfg.program.name) + " " + std::string(cfg.program.version);
@@ -115,7 +127,13 @@ void Renderer::drawHeader(const Layout::Geometry& geo) const {
     std::cout << title;
 }
 
-void Renderer::drawBody(const Layout::Geometry& geo, const State& state, const std::vector<Options::Item>& options) const {
+// Draw Body ---------------------------------------- >>
+
+void Renderer::drawBody(
+    const Layout::Geometry& geo,
+    const State& state,
+    const std::vector<Options::Item>& options
+) const {
     std::size_t bodyIndex = 0;
 
     for (std::size_t i = 0; i < options.size(); ++i) {
@@ -131,7 +149,13 @@ void Renderer::drawBody(const Layout::Geometry& geo, const State& state, const s
     }
 }
 
-void Renderer::drawFooter(const Layout::Geometry& geo, const State& state, const std::vector<Options::Item>& options) const {
+// Draw Footer ---------------------------------------- >>
+
+void Renderer::drawFooter(
+    const Layout::Geometry& geo,
+    const State& state,
+    const std::vector<Options::Item>& options
+) const {
     int y = geo.footer.y + 1;
     int x = geo.footer.x + 2;
 
@@ -148,7 +172,16 @@ void Renderer::drawFooter(const Layout::Geometry& geo, const State& state, const
     }
 }
 
-void Renderer::drawOption(const Layout::Geometry& geo, const Options::Item& opt, int y, bool selected, const State& state, std::size_t optionIndex) const {
+// Draw a single Option label ---------------------------------------- >>
+
+void Renderer::drawOption(
+    const Layout::Geometry& geo,
+    const Options::Item& opt,
+    int y,
+    bool selected,
+    const State& state,
+    std::size_t optionIndex
+) const {
     int x = geo.body.x + 2;
     console::mvCursor(x, y);
 
