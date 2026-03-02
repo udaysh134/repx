@@ -18,7 +18,7 @@ struct DEF_CONFIG {
     */
     struct Screen {
         const int min_W = 60;
-        const int min_H = 19;
+        const int min_H = 25;
         const int margin_Vert = 0;
         const int margin_Horz = 0;
 
@@ -47,9 +47,9 @@ struct DEF_CONFIG {
             const bool dynamicFrame = true;
 
             struct Height {
-                const int h = 3;
-                const int b = 11;
-                const int f = 5;
+                const int h = 5;
+                const int b = 13;
+                const int f = 7;
             } height;
         } layout;
     } screen;

@@ -37,14 +37,6 @@ Layout::Geometry Layout::compute(int term_width, int term_height, int option_cou
     int offset_x = (term_width - usable_width) / 2;
     int offset_y = (term_height - usable_height) / 2;
 
-    // Heights From Configuration ---------------------------------------- >>
-
-    int header_h = cfg.screen.layout.height.h;
-    int body_h = cfg.screen.layout.height.b;
-    int footer_h = cfg.screen.layout.height.f;
-
-    int total_program_height = header_h + body_h + footer_h;
-
     // Taking Margin into consideration ---------------------------------------- >>
 
     int margin_h = cfg.screen.margin_Horz;
@@ -58,6 +50,27 @@ Layout::Geometry Layout::compute(int term_width, int term_height, int option_cou
         geo.valid = false;
         return geo;
     }
+    
+    // Heights From Configuration ---------------------------------------- >>
+
+    int header_h = cfg.screen.layout.height.h;
+    int body_h;
+    int footer_h = cfg.screen.layout.height.f;
+
+    if (!cfg.screen.layout.dynamicFrame) {
+        // Strict layout mode
+        body_h = cfg.screen.layout.height.b;
+    } else {
+        // Dynamic layout mode
+        body_h = inner_height - header_h - footer_h;
+
+        if (body_h <= 0) {
+            geo.valid = false;
+            return geo;
+        }
+    }
+
+    int total_program_height = header_h + body_h + footer_h;
 
     if (total_program_height > inner_height) {
         geo.valid = false;
