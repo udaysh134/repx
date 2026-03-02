@@ -51,7 +51,8 @@ void start() {
 
         // Render Frame ---------------------------------------- >>
 
-        renderer.render(geo, state, items);
+        std::string breadCrumb = navigation.breadCrumb();
+        renderer.render(geo, state, items, breadCrumb);
 
         // Input Handling ---------------------------------------- >>
 

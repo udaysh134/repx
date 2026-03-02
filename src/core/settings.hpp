@@ -8,6 +8,9 @@
 
 #pragma once
 
+#include <string>
+
+#include "utils.hpp"
 
 // ----------------------------------------------------------------------------------------------------
 // Global Configuration Structure
@@ -25,6 +28,12 @@ struct DEF_CONFIG {
     struct Program {
         const char* name = "RepX"; ///< Program name.
         const char* version = "v0.0.0"; ///< Program version string.
+
+        struct Prefix {
+            const std::string action = "> "; ///< Default moving icon like character during hover.
+            const std::string input = " : "; ///< Prefix for Input fields.
+            const std::string selection = "[x] "; ///< Default prefix to represent selection of a SELECTION type button.
+        } prefix;
     } program;
 
     // Screen Configurations ---------------------------------------- >>

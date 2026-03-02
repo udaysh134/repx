@@ -7,7 +7,7 @@
 // ----------------------------------------------------------------------------------------------------
 
 Navigation::Navigation() {
-    stack.push_back({ PageId::HOME, { "Home/", "", "" } });
+    stack.push_back({ PageId::HOME, { "home", "", "" } });
 }
 
 
@@ -45,4 +45,17 @@ bool Navigation::canGoBack() const {
 
 bool Navigation::shouldExit() const {
     return current().page == PageId::EXIT;
+}
+
+// Bread Crumb ---------------------------------------- >>
+
+std::string Navigation::breadCrumb() const {
+    std::string path;
+
+    for (const auto& node : stack) {
+        path += node.context.pathLabel;
+        path += " / ";
+    }
+
+    return path;
 }

@@ -36,6 +36,7 @@ class Layout {
          * header : Variable to store/access computation data for Header Box.
          * body : Variable to store/access computation data for Body Box.
          * footer : Variable to store/access computation data for Footer Box.
+         * breadCrumb_row : Variable for storing string of path labels with slashes, to display page navigation on top.
          * option_rows : Sequential y-coords stored in a vector for the display of clickable options in a menu page with even spacing.
         ```
          */
@@ -59,6 +60,8 @@ class Layout {
             Region header; ///< Variable to store/access computation data for Header Box. "Region" struct containing : x, y, width, height.
             Region body; ///< Variable to store/access computation data for Body Box. "Region" struct containing : x, y, width, height.
             Region footer; ///< Variable to store/access computation data for Footer Box. "Region" struct containing : x, y, width, height.
+
+            int breadCrumb_row; ///< Y-coordinate where breadcrumb will be rendered inside body.
 
             std::vector<int> option_rows; ///< Sequential y-coordinates for evenly spaced option rows inside the body region.
         };

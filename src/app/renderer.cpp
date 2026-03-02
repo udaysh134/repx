@@ -18,7 +18,8 @@
 void Renderer::render(
     const Layout::Geometry& geo,
     const State& state,
-    const std::vector<Options::Item>& options
+    const std::vector<Options::Item>& options,
+    const std::string& breadCrumb
 ) {
     Renderer::clrScreen();
 
@@ -45,7 +46,7 @@ void Renderer::render(
     drawBox(geo.footer.x, geo.footer.y, geo.footer.width, geo.footer.height);
 
     drawHeader(geo);
-    drawBody(geo, state, options);
+    drawBody(geo, state, options, breadCrumb);
     drawFooter(geo, state, options);
 }
 
@@ -132,8 +133,29 @@ void Renderer::drawHeader(const Layout::Geometry& geo) const {
 void Renderer::drawBody(
     const Layout::Geometry& geo,
     const State& state,
-    const std::vector<Options::Item>& options
+    const std::vector<Options::Item>& options,
+    const std::string& breadCrumb
 ) const {
+    // Draw Bread Crumb
+
+    console::mvCursor(geo.body.x + 3, geo.breadCrumb_row);
+    std::cout << breadCrumb;
+
+    // Draw separator Line
+
+    int sepY = geo.breadCrumb_row + 1;
+
+    int startX = geo.body.x + 1;
+    int endX = geo.body.x + geo.body.width - 2;
+
+    console::mvCursor(startX, sepY);
+
+    for (int i = startX; i <= endX; ++i) {
+        std::cout << "-";
+    }
+
+    // Draw Options
+    
     std::size_t bodyIndex = 0;
 
     for (std::size_t i = 0; i < options.size(); ++i) {
@@ -182,18 +204,44 @@ void Renderer::drawOption(
     const State& state,
     std::size_t optionIndex
 ) const {
-    int x = geo.body.x + 2;
+    int content_width = geo.body.width - 2;
+    int text_width = static_cast<int>(opt.label.length());
+
+    // Account for prefixes like "> " or "[x] "
+    int prefix_width = 0;
+
+    switch (opt.type) {
+        case Options::Type::ACTION:
+            prefix_width = 2; // "> "
+            break;
+        case Options::Type::SELECTION:
+            prefix_width = 4; // "[x] "
+            break;
+        case Options::Type::INPUT:
+            prefix_width = 3; // " : "
+            break;
+        default:
+            prefix_width = 0;
+    }
+
+    int total_width = prefix_width + text_width;
+
+    int x = geo.body.x + 1 + (content_width - total_width) / 2;
     console::mvCursor(x, y);
+
+    std::string prefix_ACTION = cfg.program.prefix.action;
+    std::string prefix_INPUT = cfg.program.prefix.input;
+    std::string prefix_SELECTION = cfg.program.prefix.selection;
 
     switch (opt.type) {
         case Options::Type::ACTION: {
-            std::cout << (selected ? "> " : "  ");
+            std::cout << (selected ? prefix_ACTION : "  ");
             std::cout << opt.label;
             break;
         }
 
         case Options::Type::INPUT: {
-            std::cout << opt.label << " : ";
+            std::cout << opt.label << prefix_INPUT;
             std::cout << state.buffer();
 
             if (selected && state.isEditing()) std::cout << "|";
@@ -203,7 +251,7 @@ void Renderer::drawOption(
         case Options::Type::SELECTION: {
             bool isSelected = state.isSelected(optionIndex);
 
-            std::cout << (isSelected ? "[x] " : "[ ] ");
+            std::cout << (isSelected ? prefix_SELECTION : "[ ] ");
             std::cout << opt.label;
             break;
         }

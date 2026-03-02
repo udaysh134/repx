@@ -122,6 +122,13 @@ class Navigation {
          */
         bool shouldExit() const;
 
+        /**
+         * Builds breadcrumb path from navigation stack.
+         *
+         * @return Concatenated path string for breadcrumb display.
+         */
+        std::string breadCrumb() const;
+
 
     private:
 
@@ -131,9 +138,9 @@ class Navigation {
          * 
         ```
         {
-            { HOME, { "Home/", "Main Menu", "The default page after program runs." } },
-            { NEW, { "New/", "Create Repboard", "Create a new repboard to start reputation collection." } },
-            { BROWSE, { "Browse/", "", "" } }
+            { HOME, { "home", "Main Menu", "The default page after program runs." } },
+            { NEW, { "new", "Create Repboard", "Create a new repboard to start reputation collection." } },
+            { BROWSE, { "browse", "", "" } }
         }
         ```
          * 

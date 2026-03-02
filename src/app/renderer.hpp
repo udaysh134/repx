@@ -9,6 +9,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
 #include "layout.hpp"
 #include "state.hpp"
@@ -37,7 +38,8 @@ class Renderer {
         void render(
             const Layout::Geometry& geo,
             const State& state,
-            const std::vector<Options::Item>& options
+            const std::vector<Options::Item>& options,
+            const std::string& breadCrumb
         );
 
 
@@ -76,7 +78,8 @@ class Renderer {
         void drawBody(
             const Layout::Geometry& geo,
             const State& state,
-            const std::vector<Options::Item>& options
+            const std::vector<Options::Item>& options,
+            const std::string& breadCrumb
         ) const;
 
         /**

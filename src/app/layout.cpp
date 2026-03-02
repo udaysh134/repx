@@ -103,15 +103,20 @@ Layout::Geometry Layout::compute(int term_width, int term_height, int option_cou
     // Distribute Option Rows Inside Body ---------------------------------------- >>
 
     geo.option_rows.clear();
+    geo.breadCrumb_row = geo.body.y + 1;
 
     if (option_count > 0) {
-        int usable_body_height = geo.body.height - 2;
+        // -2 for body borders (top & bottom)
+        // -1 for breadcrumb row
+        // -1 for the separator line
+        int usable_body_height = geo.body.height - 4;
 
         if (usable_body_height > 0) {
-            int spacing = usable_body_height / option_count;
-
+            int gaps = option_count + 1;
+            int spacing = usable_body_height / gaps;
+            
             for (int i = 0; i < option_count; ++i) {
-                int row = geo.body.y + 1 + (i * spacing);
+                int row = geo.breadCrumb_row + 2 + spacing * (i + 1);
                 geo.option_rows.push_back(row);
             }
         }
