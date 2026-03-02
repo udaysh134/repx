@@ -27,7 +27,7 @@ struct DEF_CONFIG {
 
     struct Program {
         const char* name = "RepX"; ///< Program name.
-        const char* version = "v0.0.0"; ///< Program version string.
+        const char* version = "v0.1.0"; ///< Program version string.
 
         struct Prefix {
             const std::string action = "> "; ///< Default moving icon like character during hover.
