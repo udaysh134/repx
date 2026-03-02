@@ -19,7 +19,8 @@ struct DEF_CONFIG {
     struct Screen {
         const int min_W = 60;
         const int min_H = 19;
-        const int margin = 0;
+        const int margin_Vert = 0;
+        const int margin_Horz = 0;
 
         struct BoxBorder {
             const char *horz = "─";

@@ -44,13 +44,21 @@ Layout::Geometry Layout::compute(int term_width, int term_height, int option_cou
     int footer_h = cfg.screen.layout.height.f;
 
     int total_program_height = header_h + body_h + footer_h;
-    int margin = cfg.screen.margin;
 
-    // After margin is applied to whole layout
-    int inner_width = usable_width - (margin * 2);
-    int inner_height = usable_height - (margin * 2);
+    // Taking Margin into consideration ---------------------------------------- >>
+
+    int margin_h = cfg.screen.margin_Horz;
+    int margin_v = cfg.screen.margin_Vert;
+
+    int inner_width = usable_width - (margin_h * 2);
+    int inner_height = usable_height - (margin_v * 2);
 
     // Safety: Ensure program fits inside margin-adjusted area
+    if (inner_width <= 0 || inner_height <= 0) {
+        geo.valid = false;
+        return geo;
+    }
+
     if (total_program_height > inner_height) {
         geo.valid = false;
         return geo;
@@ -58,8 +66,8 @@ Layout::Geometry Layout::compute(int term_width, int term_height, int option_cou
 
     // Starting point for entire program block ---------------------------------------- >>
 
-    int program_x = offset_x + margin;
-    int program_y = offset_y + margin;
+    int program_x = offset_x + margin_h;
+    int program_y = offset_y + margin_v;
 
     // Header Region
     geo.header.x = program_x;
