@@ -5,6 +5,8 @@ This format is inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.
 
 This project adheres to Semantic Versioning.
 
+---
+
 <!-- New release after this line -->
 
 ## 🧩 [RepX v0.1.0](https://github.com/udaysh134/repx/releases/tag/v0.1.0) - Foundational Release (Mar 04, 2026)
