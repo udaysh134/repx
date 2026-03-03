@@ -77,7 +77,7 @@ RepX follows the **Conventional Commits** format.
 
 ### Correct format :
 ```
-<type(scope)>: <short_description> <optional_explanation>
+<type(optional_scope)>: <short_description> <optional_explanation>
 ```
 
 ### Example :
@@ -114,6 +114,9 @@ When modifying public interfaces :
 - Keep explanations clear and practical.
 - Avoid unnecessary verbosity.
 - Maintain formatting consistency.
+
+> [!NOTE]  
+> RepX uses IntelliSense-optimized documentation style for documenting inline codes. Certain Doxygen tags are repurposed for enhanced IDE hover formatting.
 
 
 ## 🛡️ Integrity Rules
