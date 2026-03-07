@@ -41,6 +41,7 @@ RULES (Important)
     `Impact` : Explanation here.
 
     (The two dots above represent two trailing spaces.)
+9. Never use backticks (`) for anything other than "Reason" & "Impact".
 
 --------------------------------------------------
 
@@ -66,8 +67,8 @@ TEMPLATE (Example)
 - Separated layout computation from renderer responsibilities.
 - Removed implicit dimension recalculations inside render layer.
 
-- `Reason` : Renderer performing computation blurred module responsibility and weakened deterministic flow.
-- `Impact` : Layout is now finalized before rendering begins, improving predictability and future scalability.
+`Reason` : Renderer performing computation blurred module responsibility and weakened deterministic flow.  
+`Impact` : Layout is now finalized before rendering begins, improving predictability and future scalability.
 
 #### [Dev_2](https://github.com/dev_2)
 - Introduced a centralized configuration struct inside core instead of passing scattered constants across modules.
@@ -75,7 +76,7 @@ TEMPLATE (Example)
 - Decided not to introduce a third-party terminal abstraction library.
 - Kept rendering dependent on native Windows console APIs.
 
-- `Reason` : Configuration was implicitly spreading across multiple files, which risked silent inconsistency as the system grows.
+`Reason` : Configuration was implicitly spreading across multiple files, which risked silent inconsistency as the system grows.
 
 
 ===========================================================================
@@ -87,3 +88,10 @@ IMPORTANT NOTES
 - This file is for architectural memory - not activity tracking.
 - Never modify or remove this guidelines section.
 -->
+## 🗞️ Mar 08, 2026 - Sunday
+#### [Uday](https://github.com/udaysh134)
+- Implemented dynamic resizing for the main rendering frame and overall application layout.
+- Made "*clrScreen()*" static to enable Windows buffer-level screen clearing to be used internally across modules.
+
+`Reason` : The interface needed to adapt to changing terminal dimensions to maintain a GUI-like experience. Without dynamic adjustment, the fixed layout makes it obvious that the program is operating on a character-based row-and-column terminal grid.  
+`Impact` : The application now automatically recalculates and adjusts the entire layout based on the available screen space during runtime. Due to the way the Windows screen buffer operates, this can leave behind residual artifacts outside the visible frame. The active viewport continues to render correctly, but scrolling may reveal these underlying buffer remnants.
