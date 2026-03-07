@@ -57,7 +57,7 @@ void Renderer::render(
 
 // Clear Screen ---------------------------------------- >>
 
-void Renderer::clrScreen() const {
+void Renderer::clrScreen() {
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 
     CONSOLE_SCREEN_BUFFER_INFO csbi;

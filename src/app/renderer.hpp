@@ -42,13 +42,13 @@ class Renderer {
             const std::string& breadCrumb
         );
 
-
-    private:
         /**
          * Clears the terminal screen using Windows API and not system("cls").
          */
-        void clrScreen() const;
+        static void clrScreen();
 
+
+    private:
         /**
          * Draws a rectangular box.
          *
