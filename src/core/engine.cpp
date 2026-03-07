@@ -1,7 +1,8 @@
 // Headers
 #include <iostream>
-#include <conio.h>
+#include <windows.h>
 
+#include "engine.hpp"
 #include "settings.hpp"
 #include "utils.hpp"
 #include "layout.hpp"
@@ -10,110 +11,173 @@
 #include "state.hpp"
 #include "renderer.hpp"
 
+// Constants
+#define UPDATE_PARAMS lyt, nav, opt, state, rdr
+
 
 // ----------------------------------------------------------------------------------------------------
 // Engine Main Loop
 // ----------------------------------------------------------------------------------------------------
 
 void start() {
-    Layout layout;
-    Renderer renderer;
-    Navigation navigation;
-    Options optionsManager;
+    Layout lyt;
+    Navigation nav;
+    Options opt;
     State state;
+    Renderer rdr;
 
     bool running = true;
 
+    // Enabeling Window's Events
+
+    HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
+    DWORD mode;
+
+    GetConsoleMode(hInput, &mode);
+    mode |= ENABLE_WINDOW_INPUT;
+    SetConsoleMode(hInput, mode);
+
+    // Initialize the program
+
+    updateFrame(UPDATE_PARAMS);
+
+
+    // Main Engine loop
+
     while (running) {
-        // Get Terminal Size ---------------------------------------- >>
+        INPUT_RECORD record;
+        DWORD events;
 
-        int termW;
-        int termH;
-        console::getTermSize(termW, termH);
+        ReadConsoleInput(hInput, &record, 1, &events);
 
-        // Resolve Current Page ---------------------------------------- >>
+        switch (record.EventType) {
 
-        auto currentPage = navigation.current().page;
-        const auto& items = optionsManager.get(currentPage);
+            // If user tries to navigate within the program ---------------------------------------- >>
 
-        // Count BODY Items ---------------------------------------- >>
+            case KEY_EVENT: {
+                auto &keyEvent = record.Event.KeyEvent;
+                if (!keyEvent.bKeyDown) break;
 
-        int bodyCount = 0;
-        for (const auto& item : items) {
-            if (item.placement == Options::Placement::BODY) {
-                bodyCount++;
-            }
-        }
+                int key = keyEvent.wVirtualKeyCode;
+                char c = keyEvent.uChar.AsciiChar;
 
-        // Compute Layout ---------------------------------------- >>
+                auto currentPage = nav.current().page;
+                const auto &items = opt.get(currentPage);
 
-        auto geo = layout.compute(termW, termH, bodyCount);
+                switch (key) {
+                    case VK_UP : { // Up Arrow
+                        state.moveUp(items.size());
+                        updateFrame(UPDATE_PARAMS);
+                        break;
+                    }
 
-        // Render Frame ---------------------------------------- >>
+                    case VK_DOWN : { // Down Arrow
+                        state.moveDown(items.size());
+                        updateFrame(UPDATE_PARAMS);
+                        break;
+                    }
 
-        std::string breadCrumb = navigation.breadCrumb();
-        renderer.render(geo, state, items, breadCrumb);
+                    case VK_RETURN : { // Enter
+                        if (items.empty()) break;
 
-        // Input Handling ---------------------------------------- >>
+                        const auto &selected = items[state.index()];
 
-        int key = _getch();
+                        if (selected.type == Options::Type::ACTION) {
+                            nav.enter(selected.targetPage, {});
+                            state.reset();
+                            updateFrame(UPDATE_PARAMS);
+                        } else if (selected.type == Options::Type::INPUT) {
+                            state.startEditing();
+                            updateFrame(UPDATE_PARAMS);
+                        } else if (selected.type == Options::Type::SELECTION) {
+                            state.toggleSelection(state.index());
+                            updateFrame(UPDATE_PARAMS);
+                        }
 
-        switch (key) {
-            case 72 : { // Up Arrow
-                state.moveUp(items.size());
-                break;
-            }
+                        break;
+                    }
 
-            case 80 : { // Down Arrow
-                state.moveDown(items.size());
-                break;
-            }
+                    case VK_ESCAPE : { // ESC
+                        if (nav.canGoBack()) {
+                            nav.back();
+                            state.reset();
+                            updateFrame(UPDATE_PARAMS);
+                        } else {
+                            running = false;
+                            updateFrame(UPDATE_PARAMS);
+                        }
 
-            case 13 : { // Enter
-                if (items.empty()) break;
-
-                const auto& selected = items[state.index()];
-
-                if (selected.type == Options::Type::ACTION) {
-                    navigation.enter(selected.targetPage, {});
-                    state.reset();
-                } else if (selected.type == Options::Type::INPUT) {
-                    state.startEditing();
-                } else if (selected.type == Options::Type::SELECTION) {
-                    state.toggleSelection(state.index());
+                        break;
+                    }
                 }
 
-                break;
-            }
-
-            case 27 : { // ESC
-                if (navigation.canGoBack()) {
-                    navigation.back();
-                    state.reset();
-                } else {
-                    running = false;
-                }
-
-                break;
-            }
-
-            default: {
                 if (state.isEditing()) {
-                    if (key == 8) { // Backspace
+                    if (key == VK_BACK) {
                         state.removeChar();
-                    } else {
-                        state.appendChar(static_cast<char>(key));
+                        updateFrame(UPDATE_PARAMS);
+                    } else if (c >= 32 && c <= 126) {
+                        state.appendChar(c);
+                        updateFrame(UPDATE_PARAMS);
                     }
                 }
 
                 break;
             }
+            
+
+            // If user resizes the program window ---------------------------------------- >>
+
+            case WINDOW_BUFFER_SIZE_EVENT: {
+                updateFrame(UPDATE_PARAMS);
+                break;
+            }
         }
 
-        // Exit Condition ---------------------------------------- >>
+        // Exit Condition
 
-        if (navigation.shouldExit()) {
+        if (nav.shouldExit()) {
             running = false;
         }
     }
+}
+
+
+// ----------------------------------------------------------------------------------------------------
+// Helper Function
+// ----------------------------------------------------------------------------------------------------
+
+void updateFrame(
+    Layout& lyt, 
+    Navigation& nav, 
+    Options& opt, 
+    State& state, 
+    Renderer& rdr
+) {    
+    // Get Terminal Size
+
+    int termW, termH;
+    console::getTermSize(termW, termH);
+
+    // Resolve Current Page
+
+    auto currentPage = nav.current().page;
+    const auto &items = opt.get(currentPage);
+
+    // Count BODY Items
+
+    int bodyCount = 0;
+    for (const auto &item : items) {
+        if (item.placement == Options::Placement::BODY) {
+            bodyCount++;
+        }
+    }
+
+    // Compute Layout
+
+    auto geo = lyt.compute(termW, termH, bodyCount);
+
+    // Render Frame
+
+    std::string breadCrumb = nav.breadCrumb();
+    rdr.render(geo, state, items, breadCrumb);
 }

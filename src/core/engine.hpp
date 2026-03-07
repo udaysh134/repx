@@ -7,6 +7,11 @@
 
 #pragma once
 
+#include "layout.hpp"
+#include "navigation.hpp"
+#include "options.hpp"
+#include "state.hpp"
+#include "renderer.hpp"
 
 // ----------------------------------------------------------------------------------------------------
 // Engine Entry Point
@@ -19,3 +24,19 @@
  * and controlling overall program execution.
  */
 void start();
+
+
+// ----------------------------------------------------------------------------------------------------
+// Helper Functions
+// ----------------------------------------------------------------------------------------------------
+
+/**
+ * 
+ */
+void updateFrame(
+    Layout& lyt, 
+    Navigation& nav, 
+    Options& opt, 
+    State& state, 
+    Renderer& rdr
+);
