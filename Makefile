@@ -10,6 +10,7 @@ SRC := $(wildcard \
 	src/app/*.cpp \
 	src/core/*.cpp \
 	src/modules/*.cpp \
+	src/modules/pages/*.cpp \
 )
 
 # COMPILER FLAGS ---------------------------------------- >>
@@ -17,6 +18,7 @@ CXXFLAGS := -std=c++20 -Wall -Wextra \
 	-Isrc/app \
 	-Isrc/core \
 	-Isrc/modules \
+	-Isrc/modules/pages \
 	# -Isrc/packages/pdcurses/include
 
 # LINKER FLAGS ---------------------------------------- >>
