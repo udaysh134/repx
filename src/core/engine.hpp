@@ -31,7 +31,13 @@ void start();
 // ----------------------------------------------------------------------------------------------------
 
 /**
+ * Redraws the updated screen on the terminal
  * 
+ * @param[in] lyt Reference to the Layout class to be able to compute geometry.
+ * @param[in] nav Reference to the Navigation class to fetch pages with pagination.
+ * @param[in] opt Reference to the Options class o get all the items (options) on a page.
+ * @param[in] state Reference to the State class to control the cursor movement.
+ * @param[in] rdr Reference to the Renderer class to recompute everything and re-render after every function call.
  */
 void updateFrame(
     Layout& lyt, 

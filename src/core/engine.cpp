@@ -115,7 +115,7 @@ void start() {
                     if (key == VK_BACK) {
                         state.removeChar();
                         updateFrame(UPDATE_PARAMS);
-                    } else if (c >= 32 && c <= 126) {
+                    } else if (c >= 32 && c <= 126) { // only allow characters that can actually be displayed on the screen
                         state.appendChar(c);
                         updateFrame(UPDATE_PARAMS);
                     }
