@@ -161,7 +161,8 @@ Every component has a defined responsibility.
 src/  
 ├── core/  
 │ ├── engine  
-│ └── settings  
+│ ├── settings  
+│ └── utils  
 │  
 ├── app/  
 │ ├── layout  
@@ -171,7 +172,11 @@ src/
 │ └── state
 │ 
 ├── modules/
-│ └── utils
+│ ├── pageRegistry  
+│ └── pages/
+│ │ ├── HOME
+│ │ ├── NEW
+│ │ └── OPEN
 ```
 
 To view the whole project structure, follow [STRUCTURE](/STRUCTURE.md).
