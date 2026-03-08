@@ -21,7 +21,8 @@ RepX follows a layered structure :
 src/  
 ├── core/ -> Engine logic & configuration  
 ├── app/ -> UI behavior (layout, renderer, navigation, state)  
-├── modules/ -> Reusable utilities  
+├── modules/ ->  Application feature modules that extend the core engine
+│   └── pages/ -> Individual page logic modules corresponding to navigation pages
 └── packages/ -> Bundled third-party dependencies  
 ```
 To understand the whole project structure in one go, follow [STRUCTURE](/STRUCTURE.md).
