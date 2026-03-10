@@ -3,16 +3,16 @@
 
 using PageContext = Navigation::PageContext;
 
-PageContext home_Context() {
+PageContext settings_Context() {
     return {
-        "home",
-        "RepX",
+        "settings",
+        "",
         ""
     };
 }
 
 static bool registered = [](){
-    Registry::registerPage(PageId::HOME, home_Context);
+    Registry::registerPage(PageId::SETTINGS, settings_Context);
     
     return true;
 }();

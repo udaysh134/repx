@@ -5,6 +5,8 @@
 #include "engine.hpp"
 #include "settings.hpp"
 #include "utils.hpp"
+#include "pageReg.hpp"
+
 #include "layout.hpp"
 #include "navigation.hpp"
 #include "options.hpp"
@@ -66,12 +68,16 @@ void start() {
 
                 switch (key) {
                     case VK_UP : { // Up Arrow
+                        if (items.empty()) break;
+                        
                         state.moveUp(items.size());
                         updateFrame(UPDATE_PARAMS);
                         break;
                     }
 
                     case VK_DOWN : { // Down Arrow
+                        if (items.empty()) break;
+
                         state.moveDown(items.size());
                         updateFrame(UPDATE_PARAMS);
                         break;
@@ -79,11 +85,14 @@ void start() {
 
                     case VK_RETURN : { // Enter
                         if (items.empty()) break;
+                        if (state.index() >= items.size()) state.reset();
 
                         const auto &selected = items[state.index()];
 
                         if (selected.type == Options::Type::ACTION) {
-                            nav.enter(selected.targetPage, {});
+                            auto ctx = Registry::getContext(selected.targetPage);
+                            nav.enter(selected.targetPage, ctx);
+                            
                             state.reset();
                             updateFrame(UPDATE_PARAMS);
                         } else if (selected.type == Options::Type::INPUT) {
@@ -98,6 +107,8 @@ void start() {
                     }
 
                     case VK_ESCAPE : { // ESC
+                        if (items.empty()) break;
+
                         if (nav.canGoBack()) {
                             nav.back();
                             state.reset();
