@@ -1,24 +1,38 @@
 #include <stdexcept>
+#include <unordered_map>
 
 #include "registry.hpp"
 
 
-void Registry::registerPage(PageId id, ctxFunc func) {
-    getMap()[id] = func;
+void Registry::registerPage(PageId id, const PageHandler& handler) {
+    getMap()[id] = handler;
 }
 
-PageContext Registry::getContext(PageId id) {
+const Registry::PageHandler& Registry::getHandler(PageId id) {
     auto &map = getMap();
-    
     auto it = map.find(id);
+
     if (it == map.end()) {
-        return {"error", "Page missing", ""};
+        static PageHandler missing {
+            []() {
+                return PageContext{
+                    "error",
+                    "Page Missing",
+                    ""
+                };
+            },
+            nullptr,
+            nullptr,
+            nullptr
+        };
+        
+        return missing;
     }
 
-    return it->second();
+    return it->second;
 }
 
-std::unordered_map<PageId, Registry::ctxFunc>& Registry::getMap() {
-    static std::unordered_map<PageId, ctxFunc> ctxMap;
+std::unordered_map<PageId, Registry::PageHandler>& Registry::getMap() {
+    static std::unordered_map<PageId, Registry::PageHandler> ctxMap;
     return ctxMap;
 }

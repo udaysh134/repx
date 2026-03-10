@@ -90,8 +90,14 @@ void start() {
                         const auto &selected = items[state.index()];
 
                         if (selected.type == Options::Type::ACTION) {
-                            auto ctx = Registry::getContext(selected.targetPage);
-                            nav.enter(selected.targetPage, ctx);
+                            auto &handler = Registry::getHandler(selected.targetPage);
+                            nav.enter(selected.targetPage, handler.context());
+
+                            // Giving control to the Registry handler
+                            
+                            if (handler.onEnter) handler.onEnter(nav, state);
+                            if (handler.onAction) handler.onAction(nav, state, selected);
+                            if (handler.onInput) handler.onInput(nav, state, key);
                             
                             state.reset();
                             updateFrame(UPDATE_PARAMS);

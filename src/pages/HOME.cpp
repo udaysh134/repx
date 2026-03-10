@@ -1,18 +1,28 @@
 #include "navigation.hpp"
 #include "registry.hpp"
 
-using PageContext = Navigation::PageContext;
-
-PageContext home_Context() {
+static PageContext HOME_context() {
     return {
         "home",
-        "RepX",
+        "",
         ""
     };
 }
 
-static bool registered = [](){
-    Registry::registerPage(PageId::HOME, home_Context);
-    
+static void HOME_onEnter(Navigation& nav, State& state) {
+    state.reset();
+}
+
+static bool registered = []() {
+    Registry::registerPage(
+        PageId::HOME, 
+        {
+            HOME_context,
+            HOME_onEnter,
+            nullptr,
+            nullptr
+        }
+    );
+
     return true;
 }();
