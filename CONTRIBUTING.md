@@ -66,7 +66,7 @@ RepX maintains `docs/dev-logs.md`. This file is an internal engineering journal.
 When contributing meaningful structural changes :
 - Log your entry.
 - Include concise bullet points.
-- `Reason` is mandatory.
+- `Reason` is mandatory (if no impact is provided).
 - `Impact` is optional.
 - Keep it human-readable and short.
 

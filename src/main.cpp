@@ -25,7 +25,7 @@ int main() {
     // Hide cursor during TUI runtime.
     console::showCursor(FALSE);
 
-    start();// Start engine
+    start(); // Start engine
 
     // Restore console state before exit.
     console::clrScreen();
