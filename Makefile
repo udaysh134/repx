@@ -5,25 +5,21 @@
 CXX := g++
 
 # SOURCE FILES ---------------------------------------- >>
-SRC := $(wildcard \
-	src/*.cpp \
-	src/app/*.cpp \
-	src/core/*.cpp \
-	src/modules/*.cpp \
-	src/modules/pages/*.cpp \
-)
+SRC := \
+	$(wildcard src/*.cpp) \
+	$(wildcard src/*/*.cpp) \
+    $(wildcard src/*/*/*.cpp)
 
 # COMPILER FLAGS ---------------------------------------- >>
 CXXFLAGS := -std=c++20 -Wall -Wextra \
 	-Isrc/app \
 	-Isrc/core \
 	-Isrc/modules \
-	-Isrc/modules/pages \
-	# -Isrc/packages/pdcurses/include
+	# -Ipackages/pdcurses/include
 
 # LINKER FLAGS ---------------------------------------- >>
 LDFLAGS := \
-	# -Lsrc/packages/pdcurses/lib -l:pdcurses.a
+	# -Lpackages/pdcurses/lib -l:pdcurses.a
 
 # OUTPUT ---------------------------------------- >>
 TARGET := RepX.exe
