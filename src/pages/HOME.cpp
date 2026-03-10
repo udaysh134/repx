@@ -1,18 +1,18 @@
 #include "navigation.hpp"
-#include "pageReg.hpp"
+#include "registry.hpp"
 
 using PageContext = Navigation::PageContext;
 
-PageContext exit_Context() {
+PageContext home_Context() {
     return {
-        "exit",
-        "",
+        "home",
+        "RepX",
         ""
     };
 }
 
 static bool registered = [](){
-    Registry::registerPage(PageId::EXIT, exit_Context);
+    Registry::registerPage(PageId::HOME, home_Context);
     
     return true;
 }();

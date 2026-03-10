@@ -5,7 +5,7 @@
 #include "engine.hpp"
 #include "settings.hpp"
 #include "utils.hpp"
-#include "pageReg.hpp"
+#include "registry.hpp"
 
 #include "layout.hpp"
 #include "navigation.hpp"

@@ -1,6 +1,6 @@
 #include <stdexcept>
 
-#include "pageReg.hpp"
+#include "registry.hpp"
 
 
 void Registry::registerPage(PageId id, ctxFunc func) {

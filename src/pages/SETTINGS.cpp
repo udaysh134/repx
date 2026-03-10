@@ -1,5 +1,5 @@
 #include "navigation.hpp"
-#include "pageReg.hpp"
+#include "registry.hpp"
 
 using PageContext = Navigation::PageContext;
 
