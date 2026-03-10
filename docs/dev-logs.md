@@ -88,6 +88,30 @@ IMPORTANT NOTES
 - This file is for architectural memory - not activity tracking.
 - Never modify or remove this guidelines section.
 -->
+## 🗞️ Mar 10, 2026 - Sunday
+#### [Uday](https://github.com/udaysh134)
+- Debugged the initialization issue discovered the previous day while working on the Page Registry system.
+- Identified the root cause as a Static Initialization Order Fiasco, where some page modules attempted to access the global context map before it had been constructed.
+- Confirmed the behavior while isolating the issue by temporarily removing the modules folder during debugging.
+- Adjusted the initialization flow so registry and context structures exist before any page registration occurs.
+- Finally completely resolved the earlier issue where breadcrumbs rendered as empty path segments ("/ / /") due to missing context data.
+
+`Impact` : Navigation is now cleanly structured and self-descriptive. Each page registers itself with the registry, which manages its context. The engine can now resolve page transitions and breadcrumb paths reliably through a single centralized system, significantly simplifying navigation flow and improving maintainability.  
+`Learning` : 
+- **Static Initialization Order Fiasco** - understood how global objects across translation units can initialize in unpredictable order.
+- **Function Pointers** - learned how functions can be referenced and invoked through stored addresses.
+- **Lambda Functions** - explored how lambdas can attach lightweight handlers to systems like the page registry.
+
+
+## 🗞️ Mar 09, 2026 - Sunday
+#### [Uday](https://github.com/udaysh134)
+- Introduced a **Page Registry System** to centralize page registration, navigation handling, and breadcrumb context resolution across the engine.
+- Replaced the earlier implicit context requirement (which defaulted to an empty context in *engine.cpp*) with a structured registry that maps page IDs → context metadata.
+- Implemented automatic breadcrumb generation by attaching navigation context directly to each registered page, ensuring correct path labels during runtime navigation.
+
+`Reason` : The previous navigation model expected every page to provide contextual information but lacked a structured system to enforce or manage it. As a result, the engine defaulted to empty context objects, causing breadcrumb labels to render as blank segments during navigation. The Page Registry introduces a single loader-like handler that registers pages before program start and supplies the required context to the navigation system.
+
+
 ## 🗞️ Mar 08, 2026 - Sunday
 #### [Uday](https://github.com/udaysh134)
 - Implemented dynamic resizing for the main rendering frame and overall application layout.
