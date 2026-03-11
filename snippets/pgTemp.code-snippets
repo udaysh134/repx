@@ -1,0 +1,142 @@
+// ===========================================================================
+// GUIDELINES
+// ===========================================================================
+//
+// This file provides a VS Code snippet for generating a complete RepX page
+// template. It inserts the full structural layout required for implementing
+// a navigation page within the project.
+//
+//
+// ---------------------------------------------------------------------------
+// Installation
+// ---------------------------------------------------------------------------
+// 1. Copy this file.
+// 2. Paste it into your VS Code user snippets directory:
+//    - %APPDATA%\Code\User\snippets (Windows)
+// 3. Restart VS Code or reload the window.
+//
+// ---------------------------------------------------------------------------
+// Usage
+// ---------------------------------------------------------------------------
+// Type the prefix below and press TAB or ENTER:
+//
+// pgtemp → RepX page template
+//
+// This will generate the complete page structure including :
+//  - File documentation block
+//  - Required headers
+//  - Standard definitions
+//  - Context section
+//  - Options section
+//  - Logic handlers
+//  - Helper functions section
+//  - Page configuration
+//  - Page registration
+//
+// ---------------------------------------------------------------------------
+// Note
+// ---------------------------------------------------------------------------
+// - The first placeholder defines the Page ID and file name.
+// - The second placeholder defines the breadcrumb label.
+// - The third placeholder defines the footer message.
+// - The fourth placeholder is for inserting page options.
+//
+// - After generating the template, contributors only need to:
+//      1. Update the Page ID.
+//      2. Define the page context.
+//      3. Add options.
+//      4. Implement page logic.
+//
+// - The structural layout, section dividers, and registration mechanism
+//   must remain unchanged to preserve project consistency.
+//
+// - Do not modify this file or remove this commented section.
+
+{
+	"RepX Page Template": {
+		"prefix": "pgtemp",
+        "description": "RepX navigation page template",
+		"body": [
+			"/**",
+			" * @file ${1}.cpp",
+			" * @brief Page module for ${1} navigation page.",
+			" */",
+			"",
+			"// Headers",
+			"#include \"registry.hpp\"",
+			"#include \"navigation.hpp\"",
+			"#include \"options.hpp\"",
+			"#include \"state.hpp\"",
+			"",
+			"// Definitions",
+			"using type = Options::Type;",
+			"using placement = Options::Placement;",
+			"using targetPage = Navigation::PageId;",
+			"using PageConfig = Registry::PageConfig;",
+			"using Page = Navigation::PageId;",
+			"using Registrar = Registry::PageRegistrar;",
+			"",
+			"",
+			"// ----------------------------------------------------------------------------------------------------",
+			"// Context",
+			"// ----------------------------------------------------------------------------------------------------",
+			"",
+			"static Navigation::PageContext context {",
+			"    \"${2}\",",
+			"    \"${3}\"",
+			"};",
+			"",
+			"",
+			"// ----------------------------------------------------------------------------------------------------",
+			"// Options",
+			"// ----------------------------------------------------------------------------------------------------",
+			"",
+			"static std::vector<Options::Item> options = {${4}};",
+			"",
+			"",
+			"// ----------------------------------------------------------------------------------------------------",
+			"// Logic",
+			"// ----------------------------------------------------------------------------------------------------",
+			"",
+			"// On Enter ---------------------------------------- >>",
+			"",
+			"static void onEnter(Navigation& nav, State& state) {}",
+			"",
+			"// On Action ---------------------------------------- >>",
+			"",
+			"static void onAction(Navigation& nav, State& state, const Options::Item& item) {}",
+			"",
+			"// On Input ---------------------------------------- >>",
+			"",
+			"static void onInput(Navigation& nav, State& state, int key) {}",
+			"",
+			"",
+			"// ----------------------------------------------------------------------------------------------------",
+			"// Helper Functions",
+			"// ----------------------------------------------------------------------------------------------------",
+			"",
+			"",
+			"",
+			"",
+			"// ----------------------------------------------------------------------------------------------------",
+			"// Page Configuration",
+			"// ----------------------------------------------------------------------------------------------------",
+			"",
+			"static PageConfig page {",
+			"    Page::${1},",
+			"    context,",
+			"    options,",
+			"    onEnter,",
+			"    onAction,",
+			"    onInput",
+			"};",
+			"",
+			"",
+			"// ----------------------------------------------------------------------------------------------------",
+			"// Page Registration",
+			"// ----------------------------------------------------------------------------------------------------",
+			"",
+			"static Registrar reg(page);"
+		]
+	}
+}

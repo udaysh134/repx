@@ -2,29 +2,30 @@
 // GUIDELINES
 // ===========================================================================
 //
-// This file provides VS Code snippets for inserting the project's standard section dividers quickly.
+// This file provides VS Code snippets for inserting the project's standard 
+// section dividers quickly.
 //
 //
-// ------------------------------
+// ---------------------------------------------------------------------------
 // Installation
-// ------------------------------
+// ---------------------------------------------------------------------------
 // 1. Copy this file.
 // 2. Paste it into your VS Code user snippets directory: 
 // 	  - %APPDATA%\Code\User\snippets (Windows)
 // 3. Restart VS Code or reload the window.
 //
-// ------------------------------
+// ---------------------------------------------------------------------------
 // Usage
-// ------------------------------
+// ---------------------------------------------------------------------------
 // Type one of the prefixes below and press TAB or ENTER :
 //
 // sec1 → Major divider
 // sec2 → Minor divider
 // sec3 → Micro divider
 //
-// ------------------------------
+// ---------------------------------------------------------------------------
 // Note
-// ------------------------------
+// ---------------------------------------------------------------------------
 // - The cursor will appear at the section title position.
 // - You may also change the prefixes if you prefer different triggers.
 // - Do not modify this file or remove this commented section.
@@ -32,6 +33,7 @@
 {
 	"Major": {
 		"prefix": "sec1",
+		"description": "Level-1 section divider (major structural block).",
 		"body": [
 			"// ----------------------------------------------------------------------------------------------------",
 			"// $1",
@@ -41,6 +43,7 @@
 
 	"Minor": {
 		"prefix": "sec2",
+		"description": "Level-2 section divider for logic headers.",
 		"body": [
 			"// $1 ---------------------------------------- >>"
 		]
@@ -48,6 +51,7 @@
 
 	"Micro": {
 		"prefix": "sec3",
+		"description": "Level-3 micro divider for small grouped sections.",
 		"body": [
 			"// -------- [ $1 ]"
 		]

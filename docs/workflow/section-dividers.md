@@ -10,10 +10,9 @@ All contributors should follow these patterns when structuring code. The divider
 |  Level 3  | [Micro Divider](/docs/workflow/section-dividers.md#-3-micro-divider) |   Micro sections    | Small grouped state or variables     |
 |  Level 4  |       [Comment](/docs/workflow/section-dividers.md#-4-comment)       |   Normal comments   | Notes and explanations               |
 
----
 
 ## 🟥 1. Major Divider
-```
+```cpp
 // ----------------------------------------------------------------------------------------------------
 // Section Name
 // ----------------------------------------------------------------------------------------------------
@@ -31,7 +30,7 @@ This is the highest-level divider used in the project. It separates **major stru
 - Use clear and short section titles.
 - Only use this divider for large structural boundaries.
 ### Example :
-```
+```cpp
 // ----------------------------------------------------------------------------------------------------
 // Renderer
 // ----------------------------------------------------------------------------------------------------
@@ -43,7 +42,7 @@ Renderer::Renderer() {
 
 
 ## 🟧 2. Minor Divider
-```
+```cpp
 // Section name ---------------------------------------- >>
 ```
 ### Purpose :
@@ -57,7 +56,7 @@ This divider acts as a sub-heading inside code and is used to break complex logi
 - Prefer Title Case
 - Avoid very long descriptions
 ### Example :
-```
+```cpp
 // Validate Minimum Size ---------------------------------------- >>
 
 if (width < minWidth) {
@@ -71,7 +70,7 @@ int usableWidth = width - margin * 2;
 
 
 ## 🟨 3. Micro Divider
-```
+```cpp
 // -------- [ Section Name ]
 ```
 ### Purpose :
@@ -85,7 +84,7 @@ This divider is used for small grouped areas of code that need separation but do
 - Use Title Case
 - Avoid verbs when possible
 ### Example :
-```
+```cpp
 // -------- [ Cursor Cache ]
 
 int cursorX = state.cursor.x;
@@ -98,7 +97,7 @@ bool isActive = renderer.active;
 
 
 ## 🟩 4. Comment
-```
+```cpp
 // Normal comment
 ```
 ### Purpose :
@@ -111,7 +110,7 @@ Normal comments can appear in two common forms :
 - Use for explanations or small notes
 - Do not use this in place of structured dividers when separating logic
 ### Example :
-```
+```cpp
 # Inline
 
 int width = 80; // Default terminal width
