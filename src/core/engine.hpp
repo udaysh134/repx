@@ -35,6 +35,7 @@ void start();
  * 
  * @param[in] lyt Reference to the Layout class to be able to compute geometry.
  * @param[in] nav Reference to the Navigation class to fetch pages with pagination.
+ * @param[in] registry Reference to the Registry class for page options and constext.
  * @param[in] state Reference to the State class to control the cursor movement.
  * @param[in] rdr Reference to the Renderer class to recompute everything and re-render after every function call.
  */

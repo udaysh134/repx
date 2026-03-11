@@ -1,7 +1,13 @@
+/**
+ * @file HOME.cpp
+ * @brief Page module for HOME navigation page.
+ */
+
 // Headers
 #include "registry.hpp"
 #include "navigation.hpp"
 #include "options.hpp"
+#include "state.hpp"
 
 // Definitions
 using type = Options::Type;
@@ -16,7 +22,7 @@ using Registrar = Registry::PageRegistrar;
 // Context
 // ----------------------------------------------------------------------------------------------------
 
-static Navigation::PageContext ctx {
+static Navigation::PageContext context {
     "home",
     ""
 };
@@ -26,7 +32,7 @@ static Navigation::PageContext ctx {
 // Options
 // ----------------------------------------------------------------------------------------------------
 
-static std::vector<Options::Item> opt = {
+static std::vector<Options::Item> options = {
     { "Create New", type::ACTION, placement::BODY, targetPage::NEW },
     { "Open Existing", type::ACTION, placement::BODY, targetPage::OPEN },
     { "Settings", type::ACTION, placement::BODY, targetPage::SETTINGS },
@@ -38,13 +44,19 @@ static std::vector<Options::Item> opt = {
 // Logic
 // ----------------------------------------------------------------------------------------------------
 
+// On Enter ---------------------------------------- >>
+
 static void onEnter(Navigation& nav, State& state) {
     // Optional page initialization logic
 }
 
+// On Action ---------------------------------------- >>
+
 static void onAction(Navigation& nav, State& state, const Options::Item& item) {
     // Optional action logic after pressing ENTER on an ACTION item
 }
+
+// On Input ---------------------------------------- >>
 
 static void onInput(Navigation& nav, State& state, int key) {
     // Optional key handling specific to this page
@@ -52,13 +64,20 @@ static void onInput(Navigation& nav, State& state, int key) {
 
 
 // ----------------------------------------------------------------------------------------------------
-// Configuration
+// Helper Functions (Optional)
+// ----------------------------------------------------------------------------------------------------
+
+
+
+
+// ----------------------------------------------------------------------------------------------------
+// Page Configuration
 // ----------------------------------------------------------------------------------------------------
 
 static PageConfig page {
     Page::HOME,
-    ctx,
-    opt,
+    context,
+    options,
     onEnter,
     onAction,
     onInput
@@ -66,7 +85,7 @@ static PageConfig page {
 
 
 // ----------------------------------------------------------------------------------------------------
-// Registration
+// Page Registration
 // ----------------------------------------------------------------------------------------------------
 
 static Registrar reg(page);

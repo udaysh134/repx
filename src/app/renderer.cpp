@@ -136,12 +136,12 @@ void Renderer::drawBody(
     const std::vector<Options::Item>& options,
     const std::string& breadCrumb
 ) const {
-    // Draw Bread Crumb
+    // -------- [ Draw Bread Crumb ]
 
     console::mvCursor(geo.body.x + 3, geo.breadCrumb_row);
     std::cout << breadCrumb;
 
-    // Draw separator Line
+    // -------- [ Draw separator Line ]
 
     int sepY = geo.breadCrumb_row + 1;
 
@@ -154,7 +154,7 @@ void Renderer::drawBody(
         std::cout << "-";
     }
 
-    // Draw Options
+    // -------- [ Draw Options ]
     
     std::size_t bodyIndex = 0;
 
