@@ -18,22 +18,23 @@ Contributions must preserve this philosophy. If a change weakens traceability, l
 ## 🧱 Project Architecture
 RepX follows a layered structure :
 ```
-src/  
-├── core/ -> Engine logic & configuration  
-├── app/ -> UI behavior (layout, renderer, navigation, state)  
-├── modules/ ->  Application feature modules that extend the core engine
-│   └── pages/ -> Individual page logic modules corresponding to navigation pages
-└── packages/ -> Bundled third-party dependencies  
+src/
+├── core/    -> Engine layer managing system invariants, registry, configuration, and internal mechanics.
+├── app/     -> Application layer responsible for layout, rendering, navigation, and runtime state management.
+├── modules/ -> Reusable utility and feature modules that support the application without owning engine logic.
+└── pages/   -> Individual navigation pages containing UI logic and behavior for each screen.
 ```
 To understand the whole project structure in one go, follow [STRUCTURE](/STRUCTURE.md).
 
 ### Responsibilities
 - **core/**  
-  Maintains system invariants and configuration.
+  Maintains system invariants and engine logic.
 - **app/**  
   Handles layout computation, rendering flow, and navigation logic.
 - **modules/**  
   Contains isolated utilities without engine ownership.
+- **pages/**  
+  Contains all the pages responsible for individual screen logic and navigation.
 
 When contributing :
 - Do not blur layer responsibilities.
@@ -115,6 +116,7 @@ When modifying public interfaces :
 - Keep explanations clear and practical.
 - Avoid unnecessary verbosity.
 - Maintain formatting consistency.
+- Use [section dividers](/docs/workflow/section-dividers.md) wherever necessary.
 
 > [!NOTE]  
 > RepX uses IntelliSense-optimized documentation style for documenting inline codes. Certain Doxygen tags are repurposed for enhanced IDE hover formatting.
