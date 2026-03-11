@@ -3,12 +3,12 @@ This project uses a structured comment divider system to organize code into clea
 
 All contributors should follow these patterns when structuring code. The divider system follows a four-level hierarchy, each serving a different purpose.
 
-| **Level**  |             **Name**                |     **Purpose**      |           **Typical Use**             |
-| :--------: | :---------------------------------: | :------------------: | :-----------------------------------: |
-|  Level 1   |  [Major Divider](#1-major-divider)  | Major file sections  |     Large structural boundaries       |
-|  Level 2   | [Minor Divider](#2-minor-divider) |    Logic headers     | Steps inside algorithms or functions  |
-|  Level 3   |  [Micro Divider](#3-micro-divider)  |   Micro sections     |   Small grouped state or variables    |
-|  Level 4   |        [Comment](#4-comment)        |   Normal comments    |        Notes and explanations         |
+| **Level** |                               **Name**                               |     **Purpose**     | **Typical Use**                      |
+|:---------:|:--------------------------------------------------------------------:|:-------------------:|:------------------------------------ |
+|  Level 1  | [Major Divider](/docs/workflow/section-dividers.md#-1-major-divider) | Major file sections | Large structural boundaries          |
+|  Level 2  | [Minor Divider](/docs/workflow/section-dividers.md#-2-minor-divider) |    Logic headers    | Steps inside algorithms or functions |
+|  Level 3  | [Micro Divider](/docs/workflow/section-dividers.md#-3-micro-divider) |   Micro sections    | Small grouped state or variables     |
+|  Level 4  |       [Comment](/docs/workflow/section-dividers.md#-4-comment)       |   Normal comments   | Notes and explanations               |
 
 ---
 
