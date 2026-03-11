@@ -158,25 +158,26 @@ RepX avoids unnecessary abstraction and hidden state.
 Every component has a defined responsibility.
 
 ```
-src/  
-├── core/  
-│ ├── engine  
-│ ├── settings  
-│ └── utils  
-│  
-├── app/  
-│ ├── layout  
-│ ├── navigation  
-│ ├── options  
-│ ├── renderer  
+src/
+├── main
+│
+├── app/
+│ ├── layout
+│ ├── navigation
+│ ├── renderer
 │ └── state
-│ 
+│
+├── core/
+│ ├── engine
+│ ├── registry
+│ └── options
+│
 ├── modules/
-│ ├── pageRegistry  
-│ └── pages/
-│ │ ├── HOME
-│ │ ├── NEW
-│ │ └── OPEN
+│ ├── settings
+│ └── utils
+│
+└── pages/
+   └── HOME
 ```
 
 To view the whole project structure, follow [STRUCTURE](/STRUCTURE.md).
