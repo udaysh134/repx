@@ -24,7 +24,8 @@ void Navigation::enter(PageId page) {
 
     stack.push_back({
         page,
-        config.context
+        config.context,
+        0
     });
 }
 
@@ -65,4 +66,16 @@ std::string Navigation::breadCrumb() const {
     }
 
     return path;
+}
+
+// Cursor Index ---------------------------------------- >>
+
+std::size_t Navigation::cursor() const {
+    return stack.back().cursorIndex;
+}
+
+// Set Cursor's Position ---------------------------------------- >>
+
+void Navigation::setCursor(std::size_t index) {
+    stack.back().cursorIndex = index;
 }

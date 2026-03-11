@@ -72,6 +72,7 @@ class Navigation {
         struct NavNode {
             PageId page; ///< Identifier of the page.
             PageContext context; ///< Contextual data for the page.
+            std::size_t cursorIndex = 0; ///< Cursor's state on an option to store and remember back navigation.
         };
 
 
@@ -126,6 +127,26 @@ class Navigation {
          * @return Concatenated path string for breadcrumb display.
          */
         std::string breadCrumb() const;
+
+        // Cursor Queries ---------------------------------------- >>
+
+        /**
+         * Retrieves cursor index stored for the current page.
+         * Used to restore selection position when returning to a page through navigation history.
+         *
+         * @return Current cursor index for the active NavNode.
+         */
+        std::size_t cursor() const;
+
+        /**
+         * Stores cursor index for the current page.
+         *
+         * Called before navigating away from a page so the previous
+         * selection position can be restored when returning.
+         *
+         * @param[in] index Cursor index to store for the active NavNode.
+         */
+        void setCursor(std::size_t index);
 
 
     private:

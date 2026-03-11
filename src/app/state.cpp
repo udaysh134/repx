@@ -27,6 +27,10 @@ void State::reset() {
     selectedItems.clear();
 }
 
+void State::setIndex(std::size_t index) {
+    selectedIndex = index;
+}
+
 
 // ----------------------------------------------------------------------------------------------------
 // Functions for INPUT Handling

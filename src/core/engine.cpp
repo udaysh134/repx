@@ -13,7 +13,7 @@
 #include "renderer.hpp"
 
 // Constants
-#define UPDATE_PARAMS lyt, nav, state, rdr
+#define UPDATE_PARAMS lyt, nav, registry, state, rdr
 
 
 // ----------------------------------------------------------------------------------------------------
@@ -90,6 +90,7 @@ void start() {
                         const auto &selected = items[state.index()];
 
                         if (selected.type == Options::Type::ACTION) {
+                            nav.setCursor(state.index());
                             nav.enter(selected.targetPage);
                             const auto& nextPage = registry.getPage(selected.targetPage);
 
@@ -115,7 +116,7 @@ void start() {
                     case VK_ESCAPE : { // ESC
                         if (nav.canGoBack()) {
                             nav.back();
-                            state.reset();
+                            state.setIndex(nav.cursor());
                             updateFrame(UPDATE_PARAMS);
                         } else {
                             running = false;
@@ -164,11 +165,10 @@ void start() {
 void updateFrame(
     Layout& lyt, 
     Navigation& nav, 
+    Registry& registry,
     State& state, 
     Renderer& rdr
 ) {
-    Registry registry;
-
     // Get Terminal Size
 
     int termW, termH;

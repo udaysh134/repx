@@ -54,6 +54,14 @@ class State {
          */
         void reset();
 
+        /**
+         * Sets the currently selected option index.
+         * Used when restoring cursor position after returning to a page through navigation history.
+         *
+         * @param[in] index Index of the option to select.
+         */
+        void setIndex(std::size_t index);
+
         // Editing Mode ---------------------------------------- >>
 
         /**

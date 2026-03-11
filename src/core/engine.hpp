@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include "registry.hpp"
 #include "layout.hpp"
 #include "navigation.hpp"
 #include "state.hpp"
@@ -40,6 +41,7 @@ void start();
 void updateFrame(
     Layout& lyt, 
     Navigation& nav, 
+    Registry& registry,
     State& state, 
     Renderer& rdr
 );
