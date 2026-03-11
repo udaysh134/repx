@@ -88,7 +88,7 @@ IMPORTANT NOTES
 - This file is for architectural memory - not activity tracking.
 - Never modify or remove this guidelines section.
 -->
-## 🗞️ Mar 10, 2026 - Sunday
+## 🗞️ Mar 10, 2026 - Tuesday
 #### [Uday](https://github.com/udaysh134)
 - Debugged the initialization issue discovered the previous day while working on the Page Registry system.
 - Identified the root cause as a Static Initialization Order Fiasco, where some page modules attempted to access the global context map before it had been constructed.
@@ -103,7 +103,7 @@ IMPORTANT NOTES
 - **Lambda Functions** - explored how lambdas can attach lightweight handlers to systems like the page registry.
 
 
-## 🗞️ Mar 09, 2026 - Sunday
+## 🗞️ Mar 09, 2026 - Monday
 #### [Uday](https://github.com/udaysh134)
 - Introduced a **Page Registry System** to centralize page registration, navigation handling, and breadcrumb context resolution across the engine.
 - Replaced the earlier implicit context requirement (which defaulted to an empty context in *engine.cpp*) with a structured registry that maps page IDs → context metadata.
