@@ -80,7 +80,7 @@ This divider is used for small grouped areas of code that need separation but do
 - Grouping state values
 - Small internal sections inside functions
 ### Guidelines :
-- Keep titles short (1–3 words)
+- Keep titles short (1-3 words)
 - Use Title Case
 - Avoid verbs when possible
 ### Example :
