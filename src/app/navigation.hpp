@@ -31,13 +31,15 @@ class Navigation {
         enum class PageId {
             HOME,
 
+            NEW,
+            OPEN,
+            SETTINGS,
+            EXIT,
+
             BROWSE, ///< Default browse page for NEW and OPEN pages.
             ERR_PAGE, ///< Default error page for any error display.
             SUCCESS, ///< Success pop-up page for any success from an action.
             CONFIRMATION, ///< Default dialog box for confirmation before proceeding.
-
-            NEW,
-            OPEN,
 
             ENTRIES, ///< To view all the entries saved.
             ENTRY_ADD,
@@ -49,9 +51,6 @@ class Navigation {
             GEN_LB_YEARLY,
             GEN_LB_CUSTOM,
 
-            SETTINGS,
-            EXIT,
-
             IDLE ///< A placeholder page which does nothing.
         };
 
@@ -61,8 +60,7 @@ class Navigation {
          */
         struct PageContext {
             std::string pathLabel; ///< Display label for current path.
-            std::string title; ///< Optional title of the page.
-            std::string message; ///< Optional message shown on page.
+            std::string footerMsg; ///< Optional message for footer.
         };
 
         // NavNode formed using PageId and PageContext ---------------------------------------- >>
@@ -88,11 +86,11 @@ class Navigation {
 
         /**
          * Enters a new page and pushes it onto the navigation stack.
+         * Context is automatically retrieved from the page registry.
          *
          * @param[in] page Identifier of the page to enter (Use PageID enum).
-         * @param[in] context Context data associated with the page (Use an object of strings).
          */
-        void enter(PageId page, PageContext context = {});
+        void enter(PageId page);
 
         /**
          * Returns to the previous page if possible.

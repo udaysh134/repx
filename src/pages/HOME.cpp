@@ -1,28 +1,72 @@
-#include "navigation.hpp"
+// Headers
 #include "registry.hpp"
+#include "navigation.hpp"
+#include "options.hpp"
 
-static PageContext HOME_context() {
-    return {
-        "home",
-        "",
-        ""
-    };
+// Definitions
+using type = Options::Type;
+using placement = Options::Placement;
+using targetPage = Navigation::PageId;
+using PageConfig = Registry::PageConfig;
+using Page = Navigation::PageId;
+using Registrar = Registry::PageRegistrar;
+
+
+// ----------------------------------------------------------------------------------------------------
+// Context
+// ----------------------------------------------------------------------------------------------------
+
+static Navigation::PageContext ctx {
+    "home",
+    ""
+};
+
+
+// ----------------------------------------------------------------------------------------------------
+// Options
+// ----------------------------------------------------------------------------------------------------
+
+static std::vector<Options::Item> opt = {
+    { "Create New", type::ACTION, placement::BODY, targetPage::NEW },
+    { "Open Existing", type::ACTION, placement::BODY, targetPage::OPEN },
+    { "Settings", type::ACTION, placement::BODY, targetPage::SETTINGS },
+    { "Exit", type::ACTION, placement::BODY, targetPage::EXIT },
+};
+
+
+// ----------------------------------------------------------------------------------------------------
+// Logic
+// ----------------------------------------------------------------------------------------------------
+
+static void onEnter(Navigation& nav, State& state) {
+    // Optional page initialization logic
 }
 
-static void HOME_onEnter(Navigation& nav, State& state) {
-    state.reset();
+static void onAction(Navigation& nav, State& state, const Options::Item& item) {
+    // Optional action logic after pressing ENTER on an ACTION item
 }
 
-static bool registered = []() {
-    Registry::registerPage(
-        PageId::HOME, 
-        {
-            HOME_context,
-            HOME_onEnter,
-            nullptr,
-            nullptr
-        }
-    );
+static void onInput(Navigation& nav, State& state, int key) {
+    // Optional key handling specific to this page
+}
 
-    return true;
-}();
+
+// ----------------------------------------------------------------------------------------------------
+// Configuration
+// ----------------------------------------------------------------------------------------------------
+
+static PageConfig page {
+    Page::HOME,
+    ctx,
+    opt,
+    onEnter,
+    onAction,
+    onInput
+};
+
+
+// ----------------------------------------------------------------------------------------------------
+// Registration
+// ----------------------------------------------------------------------------------------------------
+
+static Registrar reg(page);

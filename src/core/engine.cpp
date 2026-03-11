@@ -9,12 +9,11 @@
 
 #include "layout.hpp"
 #include "navigation.hpp"
-#include "options.hpp"
 #include "state.hpp"
 #include "renderer.hpp"
 
 // Constants
-#define UPDATE_PARAMS lyt, nav, opt, state, rdr
+#define UPDATE_PARAMS lyt, nav, state, rdr
 
 
 // ----------------------------------------------------------------------------------------------------
@@ -24,7 +23,7 @@
 void start() {
     Layout lyt;
     Navigation nav;
-    Options opt;
+    Registry registry;
     State state;
     Renderer rdr;
 
@@ -64,7 +63,8 @@ void start() {
                 char c = keyEvent.uChar.AsciiChar;
 
                 auto currentPage = nav.current().page;
-                const auto &items = opt.get(currentPage);
+                const auto &page = registry.getPage(currentPage);
+                const auto &items = page.options;
 
                 switch (key) {
                     case VK_UP : { // Up Arrow
@@ -90,18 +90,18 @@ void start() {
                         const auto &selected = items[state.index()];
 
                         if (selected.type == Options::Type::ACTION) {
-                            auto &handler = Registry::getHandler(selected.targetPage);
-                            nav.enter(selected.targetPage, handler.context());
+                            nav.enter(selected.targetPage);
+                            const auto& nextPage = registry.getPage(selected.targetPage);
 
-                            // Giving control to the Registry handler
-                            
-                            if (handler.onEnter) handler.onEnter(nav, state);
-                            if (handler.onAction) handler.onAction(nav, state, selected);
-                            if (handler.onInput) handler.onInput(nav, state, key);
+                            if (nextPage.onEnter) nextPage.onEnter(nav, state);
+                            if (nextPage.onAction) nextPage.onAction(nav, state, selected);
                             
                             state.reset();
                             updateFrame(UPDATE_PARAMS);
                         } else if (selected.type == Options::Type::INPUT) {
+                            const auto& curPage = registry.getPage(currentPage);
+                            if (curPage.onInput) curPage.onInput(nav, state, key);
+
                             state.startEditing();
                             updateFrame(UPDATE_PARAMS);
                         } else if (selected.type == Options::Type::SELECTION) {
@@ -113,8 +113,6 @@ void start() {
                     }
 
                     case VK_ESCAPE : { // ESC
-                        if (items.empty()) break;
-
                         if (nav.canGoBack()) {
                             nav.back();
                             state.reset();
@@ -166,10 +164,11 @@ void start() {
 void updateFrame(
     Layout& lyt, 
     Navigation& nav, 
-    Options& opt, 
     State& state, 
     Renderer& rdr
-) {    
+) {
+    Registry registry;
+
     // Get Terminal Size
 
     int termW, termH;
@@ -178,7 +177,8 @@ void updateFrame(
     // Resolve Current Page
 
     auto currentPage = nav.current().page;
-    const auto &items = opt.get(currentPage);
+    const auto &page = registry.getPage(currentPage);
+    const auto &items = page.options;
 
     // Count BODY Items
 
@@ -196,5 +196,5 @@ void updateFrame(
     // Render Frame
 
     std::string breadCrumb = nav.breadCrumb();
-    rdr.render(geo, state, items, breadCrumb);
+    rdr.render(geo, state, items, nav);
 }

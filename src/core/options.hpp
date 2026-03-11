@@ -10,7 +10,6 @@
 
 #include <string>
 #include <vector>
-#include <unordered_map>
 
 #include "navigation.hpp"
 
@@ -59,31 +58,4 @@ class Options {
             Placement placement; ///< Layout placement (BODY or FOOTER).
             Navigation::PageId targetPage = Navigation::PageId::IDLE; ///< Target page for navigation actions.
         };
-
-
-    public:
-        /**
-         * Initializes all option labels with actions they hold, for all configuration mapping.
-         */
-        Options();
-
-        // Retrieve Options ---------------------------------------- >>
-
-        /**
-         * Retrieves options associated with a specific page.
-         *
-         * @param[in] page Page identifier.
-         * @return Constant reference to vector of Item.
-         */
-        const std::vector<Item>& get(Navigation::PageId page) const;
-
-
-    private:
-        /**
-         * Internal storage mapping PageId to corresponding options.
-         * 
-         * Maps as : 
-         * OPTION's LABEL -> OPTION's METADATA (Type, Placement, Target)
-         */
-        std::unordered_map<Navigation::PageId, std::vector<Item>> opt;
 };

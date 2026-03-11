@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include <unordered_map>
+
 #include "navigation.hpp"
 #include "state.hpp"
 #include "options.hpp"
@@ -10,19 +13,27 @@ using PageContext = Navigation::PageContext;
 
 class Registry {
     public:
-        using ctxFunc = PageContext (*)();
+        struct PageConfig {
+            PageId id;
+            PageContext context;
 
-        struct PageHandler {
-            ctxFunc context = nullptr;
+            std::vector<Options::Item> options;
 
             void (*onEnter)(Navigation&, State&) = nullptr;
-            void (*onAction)(Navigation&, State&, const Options::Item&) = nullptr;
+            void (*onAction)(Navigation&, State&, const Options::Item &) = nullptr;
             void (*onInput)(Navigation&, State&, int key) = nullptr;
         };
 
-        static void registerPage(PageId id, const PageHandler& handler);
-        static const PageHandler& getHandler(PageId id);
+        static void registerPage(const PageConfig& page);
+
+        struct PageRegistrar {
+            PageRegistrar(const PageConfig &page) {
+                Registry::registerPage(page);
+            }
+        };
+
+        const PageConfig& getPage(PageId id) const;
     
     private:
-        static std::unordered_map<PageId, PageHandler>& getMap();
+        static std::unordered_map<PageId, PageConfig>& getMap();
 };

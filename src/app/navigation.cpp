@@ -1,5 +1,6 @@
 // Headers
 #include "navigation.hpp"
+#include "registry.hpp"
 
 
 // ----------------------------------------------------------------------------------------------------
@@ -7,7 +8,7 @@
 // ----------------------------------------------------------------------------------------------------
 
 Navigation::Navigation() {
-    stack.push_back({ PageId::HOME, { "home", "", "" } });
+    enter(PageId::HOME);
 }
 
 
@@ -17,8 +18,14 @@ Navigation::Navigation() {
 
 // Enter a specific Page ---------------------------------------- >>
 
-void Navigation::enter(PageId page, PageContext context) {
-    stack.push_back({ page, context });
+void Navigation::enter(PageId page) {
+    Registry registry;
+    const auto& config = registry.getPage(page);
+
+    stack.push_back({
+        page,
+        config.context
+    });
 }
 
 // Go Back to the previous page ---------------------------------------- >>

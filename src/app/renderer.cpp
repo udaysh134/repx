@@ -19,7 +19,7 @@ void Renderer::render(
     const Layout::Geometry& geo,
     const State& state,
     const std::vector<Options::Item>& options,
-    const std::string& breadCrumb
+    const Navigation& nav
 ) {
     Renderer::clrScreen();
 
@@ -46,7 +46,7 @@ void Renderer::render(
     drawBox(geo.footer.x, geo.footer.y, geo.footer.width, geo.footer.height);
 
     drawHeader(geo);
-    drawBody(geo, state, options, breadCrumb);
+    drawBody(geo, state, options, nav.breadCrumb());
     drawFooter(geo, state, options);
 }
 

@@ -14,7 +14,7 @@
 #include "layout.hpp"
 #include "state.hpp"
 #include "options.hpp"
-
+#include "navigation.hpp"
 
 // ----------------------------------------------------------------------------------------------------
 // Renderer Class - Terminal Drawing Engine
@@ -34,12 +34,13 @@ class Renderer {
          * @param[in] geo Computed layout geometry (using reference of Geometry from layout.hpp).
          * @param[in] state Current application state (using reference of State class from state.hpp).
          * @param[in] options List of options associated with current page (using reference of Item in vector from options.hpp).
+         * @param[in] nav Reference of Navigation class, to retrieve breadcrumb data from nav.stack().
          */
         void render(
             const Layout::Geometry& geo,
             const State& state,
             const std::vector<Options::Item>& options,
-            const std::string& breadCrumb
+            const Navigation& nav
         );
 
         /**
