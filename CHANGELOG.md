@@ -3,8 +3,8 @@ All notable changes to this project will be documented in this file.
 
 This format is inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), but follows a custom hybrid structure designed specifically for RepX. Subtle emoji usage is intentional to improve readability and user experience, as this changelog serves both developers and end users.
 
-This project adheres to Semantic Versioning.
-
+This project adheres to Semantic Versioning.  
+Go to [`INDEX.md`](/docs/releases/INDEX.md) to get the index of all the releases untill now, with quick navigations.
 
 <!-- New release after this line -->
 ## 🧩 [RepX v0.2.0](https://github.com/udaysh134/repx/releases/tag/v0.2.0) - Architectural Expansion (Mar 12, 2026)
