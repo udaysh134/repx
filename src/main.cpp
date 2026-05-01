@@ -21,11 +21,17 @@ int main() {
     // Enable UTF-8 for proper Unicode border rendering.
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
+    
+    SetProcessDPIAware();
+
+    CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED);
 
     // Hide cursor during TUI runtime.
     console::showCursor(FALSE);
 
     start(); // Start engine
+
+    CoUninitialize();
 
     // Restore console state before exit.
     console::clrScreen();

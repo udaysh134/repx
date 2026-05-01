@@ -91,12 +91,23 @@ void start() {
 
                         if (selected.type == Options::Type::ACTION) {
                             nav.setCursor(state.index());
-                            nav.enter(selected.targetPage);
-                            const auto& nextPage = registry.getPage(selected.targetPage);
 
-                            if (nextPage.onEnter) nextPage.onEnter(nav, state);
-                            if (nextPage.onAction) nextPage.onAction(nav, state, selected);
-                            
+                            // 1. Get CURRENT page
+                            const auto &curPage = registry.getPage(currentPage);
+
+                            // 2. Run action in CURRENT page
+                            if (curPage.onAction) curPage.onAction(nav, state, selected);
+
+                            // 3. THEN navigate
+                            if (selected.targetPage != PageId::IDLE) {
+                                nav.enter(selected.targetPage);
+
+                                const auto &nextPage = registry.getPage(selected.targetPage);
+                                if (nextPage.onEnter) {
+                                    nextPage.onEnter(nav, state);
+                                }
+                            }
+
                             state.reset();
                             updateFrame(UPDATE_PARAMS);
                         } else if (selected.type == Options::Type::INPUT) {
