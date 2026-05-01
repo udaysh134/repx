@@ -1,6 +1,6 @@
 /**
- * @file HOME.cpp
- * @brief Page module for HOME navigation page.
+ * @file EXIT.cpp
+ * @brief Page module for EXIT navigation page.
  */
 
 // Headers
@@ -23,7 +23,7 @@ using Registrar = Registry::PageRegistrar;
 // ----------------------------------------------------------------------------------------------------
 
 static Navigation::PageContext context {
-    "home",
+    "exit",
     ""
 };
 
@@ -34,33 +34,17 @@ static Navigation::PageContext context {
 
 static std::vector<Options::Item> options = {
     {
-        "Create New",
-        OptionId::HOME_CREATE_NEW,
+        "Yes",
+        OptionId::EXIT_YES,
         type::ACTION,
-        placement::BODY,
-        targetPage::NEW
+        placement::FOOTER
     },
     {
-        "Open Existing",
-        OptionId::HOME_OPEN_EXISTING,
+        "Cancel",
+        OptionId::EXIT_CANCEL,
         type::ACTION,
-        placement::BODY,
-        targetPage::OPEN
-    },
-    {
-        "Settings",
-        OptionId::HOME_SETTINGS,
-        type::ACTION,
-        placement::BODY,
-        targetPage::SETTINGS
-    },
-    {
-        "Exit",
-        OptionId::HOME_EXIT,
-        type::ACTION,
-        placement::BODY,
-        targetPage::EXIT
-    },
+        placement::FOOTER
+    }
 };
 
 
@@ -70,25 +54,19 @@ static std::vector<Options::Item> options = {
 
 // On Enter ---------------------------------------- >>
 
-static void onEnter(Navigation& nav, State& state) {
-    // Optional page initialization logic
-}
+static void onEnter(Navigation& nav, State& state) {}
 
 // On Action ---------------------------------------- >>
 
-static void onAction(Navigation& nav, State& state, const Options::Item& item) {
-    // Optional action logic after pressing ENTER on an ACTION item
-}
+static void onAction(Navigation& nav, State& state, const Options::Item& item) {}
 
 // On Input ---------------------------------------- >>
 
-static void onInput(Navigation& nav, State& state, int key) {
-    // Optional key handling specific to this page
-}
+static void onInput(Navigation& nav, State& state, int key) {}
 
 
 // ----------------------------------------------------------------------------------------------------
-// Helper Functions (Optional)
+// Helper Functions
 // ----------------------------------------------------------------------------------------------------
 
 
@@ -99,7 +77,7 @@ static void onInput(Navigation& nav, State& state, int key) {
 // ----------------------------------------------------------------------------------------------------
 
 static PageConfig page {
-    Page::HOME,
+    Page::EXIT,
     context,
     options,
     onEnter,

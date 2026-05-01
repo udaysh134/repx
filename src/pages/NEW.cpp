@@ -1,6 +1,6 @@
 /**
- * @file HOME.cpp
- * @brief Page module for HOME navigation page.
+ * @file NEW.cpp
+ * @brief Page module for NEW navigation page.
  */
 
 // Headers
@@ -8,6 +8,10 @@
 #include "navigation.hpp"
 #include "options.hpp"
 #include "state.hpp"
+
+#include "repEngine.hpp"
+#include <string>
+#include <iostream>
 
 // Definitions
 using type = Options::Type;
@@ -23,7 +27,7 @@ using Registrar = Registry::PageRegistrar;
 // ----------------------------------------------------------------------------------------------------
 
 static Navigation::PageContext context {
-    "home",
+    "new",
     ""
 };
 
@@ -34,33 +38,17 @@ static Navigation::PageContext context {
 
 static std::vector<Options::Item> options = {
     {
-        "Create New",
-        OptionId::HOME_CREATE_NEW,
+        "Select Directory",
+        OptionId::NEW_SELECT_DIRECTORY,
         type::ACTION,
-        placement::BODY,
-        targetPage::NEW
+        placement::BODY
     },
     {
-        "Open Existing",
-        OptionId::HOME_OPEN_EXISTING,
-        type::ACTION,
-        placement::BODY,
-        targetPage::OPEN
-    },
-    {
-        "Settings",
-        OptionId::HOME_SETTINGS,
-        type::ACTION,
-        placement::BODY,
-        targetPage::SETTINGS
-    },
-    {
-        "Exit",
-        OptionId::HOME_EXIT,
-        type::ACTION,
-        placement::BODY,
-        targetPage::EXIT
-    },
+        "Folder Path",
+        OptionId::NEW_FOLDER_PATH,
+        type::INPUT,
+        placement::FOOTER
+    }
 };
 
 
@@ -70,25 +58,34 @@ static std::vector<Options::Item> options = {
 
 // On Enter ---------------------------------------- >>
 
-static void onEnter(Navigation& nav, State& state) {
-    // Optional page initialization logic
-}
+static void onEnter(Navigation& nav, State& state) {}
 
 // On Action ---------------------------------------- >>
 
 static void onAction(Navigation& nav, State& state, const Options::Item& item) {
-    // Optional action logic after pressing ENTER on an ACTION item
+    if(item.id == OptionId::NEW_SELECT_DIRECTORY) {
+        std::string path = RepEngine::select_directory();
+
+        if(path == "") {
+            system("cls");        
+            std::cout << "Error : You didn't select anything";
+            exit(0);
+        } else {
+            system("cls");
+            std::cout << "Verifying!";
+            std::cout << path;
+            exit(0);
+        }
+    }
 }
 
 // On Input ---------------------------------------- >>
 
-static void onInput(Navigation& nav, State& state, int key) {
-    // Optional key handling specific to this page
-}
+static void onInput(Navigation& nav, State& state, int key) {}
 
 
 // ----------------------------------------------------------------------------------------------------
-// Helper Functions (Optional)
+// Helper Functions
 // ----------------------------------------------------------------------------------------------------
 
 
@@ -99,7 +96,7 @@ static void onInput(Navigation& nav, State& state, int key) {
 // ----------------------------------------------------------------------------------------------------
 
 static PageConfig page {
-    Page::HOME,
+    Page::NEW,
     context,
     options,
     onEnter,
