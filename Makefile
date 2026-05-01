@@ -14,11 +14,13 @@ SRC := \
 CXXFLAGS := -std=c++20 -Wall -Wextra \
 	-Isrc/app \
 	-Isrc/core \
+	-Isrc/core/reputation \
 	-Isrc/modules \
 	# -Ipackages/pdcurses/include
 
 # LINKER FLAGS ---------------------------------------- >>
 LDFLAGS := \
+	-lole32 -luuid \
 	# -Lpackages/pdcurses/lib -l:pdcurses.a
 
 # OUTPUT ---------------------------------------- >>
