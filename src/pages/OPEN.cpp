@@ -9,6 +9,9 @@
 #include "options.hpp"
 #include "state.hpp"
 
+#include "repEngine.hpp"
+#include <iostream>
+
 // Definitions
 using type = Options::Type;
 using placement = Options::Placement;
@@ -58,7 +61,22 @@ static void onEnter(Navigation& nav, State& state) {}
 
 // On Action ---------------------------------------- >>
 
-static void onAction(Navigation& nav, State& state, const Options::Item& item) {}
+static void onAction(Navigation& nav, State& state, const Options::Item& item) {
+    if(item.id == OptionId::OPEN_SELECT_FILE) {
+        std::string path = RepEngine::select_file();
+
+        if(path == "") {
+            system("cls");        
+            std::cout << "Error : You didn't select anything";
+            exit(0);
+        } else {
+            system("cls");
+            std::cout << "Verifying!";
+            std::cout << path;
+            exit(0);
+        }
+    }
+}
 
 // On Input ---------------------------------------- >>
 

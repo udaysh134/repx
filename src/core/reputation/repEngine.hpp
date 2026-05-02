@@ -27,4 +27,12 @@ namespace RepEngine {
      * Returns empty string if user cancels or operation fails.
      */
     std::string select_directory();
+
+    /*
+     * Opens a native file selection dialog and returns the selected file path.
+     *
+     * @return Selected file path as UTF-8 string
+     * Returns empty string if user cancels or operation fails
+     */
+    std::string select_file();
 }
