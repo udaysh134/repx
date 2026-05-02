@@ -27,7 +27,8 @@ struct DEF_CONFIG {
 
     struct Program {
         const char* name = "RepX"; ///< Program name.
-        const char* version = "v0.1.0"; ///< Program version string.
+        const char* version = "v0.2.0"; ///< Program version string.
+        const int selector = 2; ///< 1 for Box selector, 2 for Prefix selector
 
         struct Prefix {
             const std::string action = "> "; ///< Default moving icon like character during hover.
@@ -40,7 +41,7 @@ struct DEF_CONFIG {
 
     struct Screen {
         const int min_W = 60; ///< Minimum required terminal width.
-        const int min_H = 25; ///< Minimum required terminal height.
+        const int min_H = 5 + 13 + 5; ///< Minimum required terminal height. H + B + F
         const int margin_Vert = 0; ///< Vertical margin from terminal edges.
         const int margin_Horz = 0; ///< Horizontal margin from terminal edges.
 
@@ -72,11 +73,12 @@ struct DEF_CONFIG {
 
         struct Layout {
             const bool dynamicFrame = true; ///< TRUE for dynamic resizing, FALSE for fixed frame.
+            const int footerBtnGap = 8; ///< Gap between two buttons in the footer section.
 
             struct Height {
                 const int h = 5; ///< Header height.
                 const int b = 13; ///< Body height.
-                const int f = 7; ///< Footer height.
+                const int f = 5; ///< Footer height.
             } height;
         } layout;
     } screen;
