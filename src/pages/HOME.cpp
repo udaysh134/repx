@@ -24,7 +24,7 @@ using Registrar = Registry::PageRegistrar;
 
 static Navigation::PageContext context {
     "home",
-    ""
+    "Welcome to RepX! If you're starting for the first time, create a new file and proceed or open your existing file to manage your data."
 };
 
 
@@ -60,38 +60,8 @@ static std::vector<Options::Item> options = {
         type::ACTION,
         placement::BODY,
         targetPage::EXIT
-    },
+    }
 };
-
-
-// ----------------------------------------------------------------------------------------------------
-// Logic
-// ----------------------------------------------------------------------------------------------------
-
-// On Enter ---------------------------------------- >>
-
-static void onEnter(Navigation& nav, State& state) {
-    // Optional page initialization logic
-}
-
-// On Action ---------------------------------------- >>
-
-static void onAction(Navigation& nav, State& state, const Options::Item& item) {
-    // Optional action logic after pressing ENTER on an ACTION item
-}
-
-// On Input ---------------------------------------- >>
-
-static void onInput(Navigation& nav, State& state, int key) {
-    // Optional key handling specific to this page
-}
-
-
-// ----------------------------------------------------------------------------------------------------
-// Helper Functions (Optional)
-// ----------------------------------------------------------------------------------------------------
-
-
 
 
 // ----------------------------------------------------------------------------------------------------
@@ -101,10 +71,7 @@ static void onInput(Navigation& nav, State& state, int key) {
 static PageConfig page {
     Page::HOME,
     context,
-    options,
-    onEnter,
-    onAction,
-    onInput
+    options
 };
 
 
