@@ -35,12 +35,14 @@ class Renderer {
          * @param[in] state Current application state (using reference of State class from state.hpp).
          * @param[in] options List of options associated with current page (using reference of Item in vector from options.hpp).
          * @param[in] nav Reference of Navigation class, to retrieve breadcrumb data from nav.stack().
+         * @param[in] ctx Reference of "context" object from each page to retrieve contextual information.
          */
         void render(
             const Layout::Geometry& geo,
             const State& state,
             const std::vector<Options::Item>& options,
-            const Navigation& nav
+            const Navigation& nav,
+            const Navigation::PageContext& ctx
         );
 
         /**
@@ -89,11 +91,13 @@ class Renderer {
          * @param[in] geo Computed layout geometry.
          * @param[in] state Current application state.
          * @param[in] options Options to render inside footer.
+         * @param[in] ctx Contextual data to render inside footer (especially footer message).
          */
         void drawFooter(
             const Layout::Geometry& geo,
             const State& state,
-            const std::vector<Options::Item>& options
+            const std::vector<Options::Item>& options,
+            const Navigation::PageContext& ctx
         ) const;
 
         // Draw options with labels, state, cursor etc for each page ---------------------------------------- >>

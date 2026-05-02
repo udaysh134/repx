@@ -66,23 +66,95 @@ void start() {
                 const auto &page = registry.getPage(currentPage);
                 const auto &items = page.options;
 
+                bool isFooter = false;
+
+                if (!items.empty() && state.index() < items.size()) {
+                    isFooter = (items[state.index()].placement == Options::Placement::FOOTER);
+                }
+
                 switch (key) {
                     case VK_UP : { // Up Arrow
                         if (items.empty()) break;
-                        
-                        state.moveUp(items.size());
+
+                        if (isFooter) {
+                            // Jump to last BODY item (if inside Footer)
+                            for (int i = items.size() - 1; i >= 0; --i) {
+                                if (items[i].placement == Options::Placement::BODY) {
+                                    state.setIndex(i);
+                                    break;
+                                }
+                            }
+                        } else {
+                            state.moveUp(items.size());
+                        }
+
                         updateFrame(UPDATE_PARAMS);
                         break;
                     }
+
 
                     case VK_DOWN : { // Down Arrow
                         if (items.empty()) break;
 
-                        state.moveDown(items.size());
+                        if (!isFooter) {
+                            bool isLastBody = true;
+
+                            for (int i = state.index() + 1; i < items.size(); ++i) {
+                                if (items[i].placement == Options::Placement::BODY) {
+                                    isLastBody = false;
+                                    break;
+                                }
+                            }
+
+                            if (isLastBody) {
+                                // Jump to first FOOTER item (if inside Body), if exists
+                                for (int i = 0; i < items.size(); ++i) {
+                                    if (items[i].placement == Options::Placement::FOOTER) {
+                                        state.setIndex(i);
+                                        break;
+                                    }
+                                }
+                            } else {
+                                state.moveDown(items.size());
+                            }
+                        }
+
                         updateFrame(UPDATE_PARAMS);
                         break;
                     }
 
+                    case VK_LEFT: { // Left Arrow (for footer)
+                        if (isFooter) {
+                            for (int i = state.index() - 1; i >= 0; --i) {
+                                if (items[i].placement == Options::Placement::FOOTER) {
+                                    state.setIndex(i);
+                                    break;
+                                }
+                            }
+
+                            updateFrame(UPDATE_PARAMS);
+                        }
+
+                        break;
+                    }
+
+
+                    case VK_RIGHT: { // Right Arrow (for footer)
+                        if (isFooter) {
+                            for (int i = state.index() + 1; i < items.size(); ++i) {
+                                if (items[i].placement == Options::Placement::FOOTER) {
+                                    state.setIndex(i);
+                                    break;
+                                }
+                            }
+
+                            updateFrame(UPDATE_PARAMS);
+                        }
+
+                        break;
+                    }
+
+                    
                     case VK_RETURN : { // Enter
                         if (items.empty()) break;
                         if (state.index() >= items.size()) state.reset();
@@ -190,6 +262,7 @@ void updateFrame(
     auto currentPage = nav.current().page;
     const auto &page = registry.getPage(currentPage);
     const auto &items = page.options;
+    const auto &ctx = page.context;
 
     // Count BODY Items
 
@@ -207,5 +280,5 @@ void updateFrame(
     // Render Frame
 
     std::string breadCrumb = nav.breadCrumb();
-    rdr.render(geo, state, items, nav);
+    rdr.render(geo, state, items, nav, ctx);
 }

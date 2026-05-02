@@ -19,7 +19,8 @@ void Renderer::render(
     const Layout::Geometry& geo,
     const State& state,
     const std::vector<Options::Item>& options,
-    const Navigation& nav
+    const Navigation& nav,
+    const Navigation::PageContext& ctx
 ) {
     Renderer::clrScreen();
 
@@ -47,7 +48,7 @@ void Renderer::render(
 
     drawHeader(geo);
     drawBody(geo, state, options, nav.breadCrumb());
-    drawFooter(geo, state, options);
+    drawFooter(geo, state, options, ctx);
 }
 
 
@@ -176,21 +177,101 @@ void Renderer::drawBody(
 void Renderer::drawFooter(
     const Layout::Geometry& geo,
     const State& state,
-    const std::vector<Options::Item>& options
+    const std::vector<Options::Item>& options,
+    const Navigation::PageContext& ctx
 ) const {
-    int y = geo.footer.y + 1;
-    int x = geo.footer.x + 2;
+    int gap = cfg.screen.layout.footerBtnGap;
+    int y = geo.footer.y + geo.footer.height / 2;
+
+    int innerX = geo.footer.x + 2;
+    int innerW = geo.footer.width - 4;
+
+    // -------- [ Detect buttons ]
+
+    std::vector<std::size_t> footerIndices;
 
     for (std::size_t i = 0; i < options.size(); ++i) {
-        if (options[i].placement != Options::Placement::FOOTER) continue;
+        if (options[i].placement == Options::Placement::FOOTER) {
+            footerIndices.push_back(i);
+        }
+    }
 
-        bool selected = (i == state.index());
+    bool hasFooterOptions = !footerIndices.empty();
 
-        console::mvCursor(x, y);
-        std::cout << (selected ? "> " : "  ");
-        std::cout << options[i].label;
+    // -------- [ Render Footer Buttons ]
 
-        x += options[i].label.length() + 4;
+    if (hasFooterOptions) {
+        int count = footerIndices.size();
+
+        // Calculate total width
+        int totalWidth = 0;
+        for (auto i : footerIndices) {
+            totalWidth += options[i].label.length();
+        }
+
+        totalWidth += gap * (count - 1);
+
+        // Center based on label width
+        int startX = innerX + (innerW - totalWidth) / 2;
+
+        int x = startX;
+
+        for (auto i : footerIndices) {
+            bool selected = (i == state.index());
+
+            // Move cursor slightly LEFT for selector so it doesn't affect centering
+            if (selected) {
+                console::mvCursor(x - 2, y); // Draw selector outside layout
+                std::cout << cfg.program.prefix.action;
+            }
+
+            console::mvCursor(x, y);
+            std::cout << options[i].label;
+
+            x += options[i].label.length() + gap;
+        }
+
+        return;
+    }
+
+    // -------- [ Render Footer Message ]
+
+    if (!ctx.footerMsg.empty()) {
+        std::string msg = ctx.footerMsg;
+
+        int maxWidth = innerW;
+        int maxLines = geo.footer.height - 2;
+
+        std::vector<std::string> lines;
+
+        // Wrap text manually
+
+        for (size_t i = 0; i < msg.length(); i += maxWidth) {
+            lines.push_back(msg.substr(i, maxWidth));
+        }
+
+        // Trim if exceeds height
+        if ((int)lines.size() > maxLines) {
+            lines.resize(maxLines);
+
+            // Add "..." to last line
+            std::string &last = lines.back();
+            if (last.length() >= 3) {
+                last = last.substr(0, last.length() - 3) + "...";
+            }
+        }
+
+        // Vertical centering
+        int startY = geo.footer.y + (geo.footer.height - lines.size()) / 2;
+
+        // Render lines centered
+        for (int i = 0; i < lines.size(); ++i) {
+            const std::string &line = lines[i];
+            int startX = innerX + (innerW - line.length()) / 2;
+
+            console::mvCursor(startX, startY + i);
+            std::cout << line;
+        }
     }
 }
 
@@ -207,42 +288,46 @@ void Renderer::drawOption(
     int content_width = geo.body.width - 2;
     int text_width = static_cast<int>(opt.label.length());
 
-    // Account for prefixes like "> " or "[x] "
+    std::string prefix_ACTION = cfg.program.prefix.action;
+    std::string prefix_INPUT = cfg.program.prefix.input;
+    std::string prefix_SELECTION = cfg.program.prefix.selection;
+
+    // Account for prefixes
     int prefix_width = 0;
 
     switch (opt.type) {
         case Options::Type::ACTION:
-            prefix_width = 2; // "> "
+            prefix_width = prefix_ACTION.length(); // "> ", 2 string length
             break;
         case Options::Type::SELECTION:
-            prefix_width = 4; // "[x] "
+            prefix_width = prefix_SELECTION.length(); // "[x] ", 4 string length
             break;
         case Options::Type::INPUT:
-            prefix_width = 3; // " : "
+            prefix_width = prefix_INPUT.length(); // " : ", 3 string length
             break;
         default:
             prefix_width = 0;
     }
 
-    int total_width = prefix_width + text_width;
-
-    int x = geo.body.x + 1 + (content_width - total_width) / 2;
+    
+    int x = geo.body.x + 1 + (content_width - text_width) / 2;
     console::mvCursor(x, y);
-
-    std::string prefix_ACTION = cfg.program.prefix.action;
-    std::string prefix_INPUT = cfg.program.prefix.input;
-    std::string prefix_SELECTION = cfg.program.prefix.selection;
 
     switch (opt.type) {
         case Options::Type::ACTION: {
-            std::cout << (selected ? prefix_ACTION : "  ");
+            if (selected) {
+                console::mvCursor(x - prefix_ACTION.length(), y);
+                std::cout << prefix_ACTION;
+            }
+
+            console::mvCursor(x, y);
             std::cout << opt.label;
             break;
         }
 
         case Options::Type::INPUT: {
-            std::cout << opt.label << prefix_INPUT;
-            std::cout << state.buffer();
+            console::mvCursor(x, y);
+            std::cout << opt.label << prefix_INPUT << state.buffer();
 
             if (selected && state.isEditing()) std::cout << "|";
             break;
@@ -251,12 +336,18 @@ void Renderer::drawOption(
         case Options::Type::SELECTION: {
             bool isSelected = state.isSelected(optionIndex);
 
-            std::cout << (isSelected ? prefix_SELECTION : "[ ] ");
+            if (isSelected) {
+                console::mvCursor(x - prefix_SELECTION.length(), y);
+                std::cout << prefix_SELECTION;
+            }
+
+            console::mvCursor(x, y);
             std::cout << opt.label;
             break;
         }
 
         case Options::Type::TEXT: {
+            console::mvCursor(x, y);
             std::cout << opt.label;
             break;
         }
