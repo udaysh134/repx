@@ -187,10 +187,34 @@ static Navigation::PageContext context {
 // ----------------------------------------------------------------------------------------------------
 
 static std::vector<Options::Item> options = {
-    { "Option 1", type::ACTION, placement::BODY, targetPage::PAGE_1 },
-    { "Option 2", type::INPUT, placement::BODY, targetPage::PAGE_2 },
-    { "Option 3", type::TEXT, placement::BODY, targetPage::PAGE_3 },
-    { "Option 4", type::SELECTION, placement::FOOTER, targetPage::PAGE_4 },
+    {
+        "Option 1",
+        OptionId::EXAMPLE_PAGE_OPTION_1,
+        type::ACTION,
+        placement::BODY,
+        targetPage::PAGE_1
+    },
+    { 
+        "Option 2",
+        OptionId::EXAMPLE_PAGE_OPTION_2,
+        type::INPUT,
+        placement::BODY,
+        targetPage::PAGE_2
+    },
+    { 
+        "Option 3",
+        OptionId::EXAMPLE_PAGE_OPTION_3,
+        type::TEXT,
+        placement::BODY,
+        targetPage::PAGE_3
+    },
+    { 
+        "Option 4",
+        OptionId::EXAMPLE_PAGE_OPTION_4,
+        type::SELECTION,
+        placement::FOOTER,
+        // No target page for this option
+    },
 };
 
 
