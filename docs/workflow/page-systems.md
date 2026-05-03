@@ -6,6 +6,11 @@ Pages represent the individual navigation screens of the program. Each page defi
     - [📄 1. Directly inside pages](/docs/workflow/page-systems.md#1-directly-inside-pages)
     - [📁 2. Inside a single featured folder](/docs/workflow/page-systems.md#2-inside-a-single-featured-folder)
 - [🧩 Page ID Registration](/docs/workflow/page-systems.md#-page-id-registration)
+- [🆔 Option ID System](/docs/workflow/page-systems.md#-option-id-system)
+    - [🧷 1. Definition](/docs/workflow/page-systems.md#-1-definition)
+    - [🏗️ 2. Naming Convention for Containers](/docs/workflow/page-systems.md#️-2-naming-convention-for-containers)
+    - [🔤 3. Naming Convention for ID String](/docs/workflow/page-systems.md#-3-naming-convention-for-id-string)
+    - [🔁 4. Usage Flow](/docs/workflow/page-systems.md#-4-usage-flow)
 - [🏷️ Page Naming Convention](/docs/workflow/page-systems.md#️-page-naming-convention)
 - [🧱 Page File Structure](/docs/workflow/page-systems.md#-page-file-structure)
 - [🔍 Template Explanation](/docs/workflow/page-systems.md#-template-explanation)
@@ -66,6 +71,68 @@ enum class PageId {
 ```
 > [!Important]  
 > This step is **mandatory** as the navigation system relies on these identifiers to link and manage pages.
+
+
+## 🆔 Option ID System
+Every option in the system must be assigned a unique Option ID, defined centrally inside `src/core/options.hpp`. This ensures that UI interactions are handled consistently across all pages and removes reliance on labels for identifying actions.
+
+> [!Important]  
+> Every new option must have a corresponding entry in the **OptionId** namespace before it is used inside any page.
+### 🧷 1. Definition
+All Option IDs are declared inside :
+```cpp
+namespace OptionId {
+    inline constexpr std::string_view HOME_CREATE_NEW = "home-crt_new";
+    inline constexpr std::string_view NEW_SELECT_DIRECTORY = "new-slct_dir";
+    ...
+}
+```
+To create a new ID, duplicate an existing line and update both the container name and string value.
+### 🏗️ 2. Naming Convention for Containers
+```cpp
+# Format
+
+PAGE_ACTION_NAME
+```
+```cpp
+# Example
+
+HOME_CREATE_NEW
+OPEN_SELECT_FILE
+SETTINGS_DYNAMIC_RESIZE
+```
+- Always use page name as the prefix
+- Use UPPERCASE with underscores
+- This prevents collisions and keeps IDs grouped by page
+### 🔤 3. Naming Convention for ID String
+```cpp
+# Format
+
+page-name + "-" + short_label
+```
+```cpp
+# Example
+
+home-crt_new
+new-slct_dir
+open-slct_file
+settings-dynm_res
+```
+- Each variable maps to a compact string
+- Page name → full word (`home`, `open`, `settings`)
+- Label → shortened (3–4 characters per word)
+- Words separated using `_` (underscore)
+- Page and label separated using `-` (hyphen / dash)
+- Remove vowels where possible (`folder → fldr`, `path → pth`)
+- Keep readability over strict shortening
+- Allow longer forms when necessary (`settings → stngs`)
+### 🔁 4. Usage Flow
+When creating a new page :
+- Define required option IDs in `options.hpp`
+- Use those IDs inside the page's `options` vector
+- Implement logic using the assigned IDs
+
+This establishes a consistent interaction pipeline across the system.
 
 
 ## 🏷️ Page Naming Convention
@@ -239,9 +306,24 @@ static std::vector<Options::Item> options
 ```
 Each entry defines a selectable option on the page.
 
-- **Structure** : `{ label, type, placement, targetPage }`
-- **Example** : `{ "Settings", type::ACTION, placement::BODY, targetPage::SETTINGS }`
-
+- **Structure** : `{ label, optionId, type, placement, targetPage }`
+- **Example** : 
+```cpp
+    {
+        "Create New",
+        OptionId::HOME_CREATE_NEW,
+        type::ACTION,
+        placement::BODY,
+        targetPage::NEW
+    },
+    {
+        "Open Existing",
+        OptionId::HOME_OPEN_EXISTING,
+        type::ACTION,
+        placement::BODY,
+        targetPage::OPEN
+    }
+```
 These values come from [`options.hpp`](/src/core/options.hpp)
 ### ⚙️ 6. Logic Handlers
 Three optional handlers are available for now :
