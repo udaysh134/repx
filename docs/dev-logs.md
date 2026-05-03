@@ -88,6 +88,23 @@ IMPORTANT NOTES
 - This file is for architectural memory - not activity tracking.
 - Never modify or remove this guidelines section.
 -->
+## 🗞️ May 03, 2026 - Saturday
+#### [Uday](https://github.com/udaysh134)
+- Synced release documentation by linking docs/releases/INDEX.md and updating references in CHANGELOG and v0.2.0 notes.
+- Set up initial reputation engine structure with Windows directory selection to establish base input flow.
+- Added COM initialization in main and fixed current page resolution to stabilize navigation and file dialog usage.
+- Introduced centralized option ID system to map UI options to consistent actions across all pages.
+- Updated Makefile to support new modules and Windows COM dependencies.
+- Added file selection support using Windows File Explorer with filtering for `.repx` workflows.
+- Improved settings to support selector customization and configurable footer button spacing.
+- Implemented dynamic footer system with context-based messages, wrapping, centering, overflow handling, and button priority.
+- Fixed alignment issues by decoupling layout from selector/prefix width in both body and footer rendering.
+- Added directional navigation: vertical for body (↑ ↓) and horizontal for footer (← →) with proper section transitions.
+
+`Reason` : Focus shifted from static structure to making the system interaction-ready—connecting filesystem input, stabilizing navigation flow, and making UI behavior consistent across pages.
+`Impact` : RepX now has a working input pipeline for `.repx` data, a reliable action-mapping system via option IDs, and a much more stable and intuitive UI layout and navigation model.
+
+
 ## 🗞️ Mar 11, 2026 - Wednesday
 #### [Uday](https://github.com/udaysh134)
 - Replaced the centralized options.cpp model with a modular per-page configuration system.
