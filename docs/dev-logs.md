@@ -101,7 +101,7 @@ IMPORTANT NOTES
 - Fixed alignment issues by decoupling layout from selector/prefix width in both body and footer rendering.
 - Added directional navigation: vertical for body (↑ ↓) and horizontal for footer (← →) with proper section transitions.
 
-`Reason` : Focus shifted from static structure to making the system interaction-ready—connecting filesystem input, stabilizing navigation flow, and making UI behavior consistent across pages.
+`Reason` : Focus shifted from static structure to making the system interaction-ready—connecting filesystem input, stabilizing navigation flow, and making UI behavior consistent across pages.  
 `Impact` : RepX now has a working input pipeline for `.repx` data, a reliable action-mapping system via option IDs, and a much more stable and intuitive UI layout and navigation model.
 
 
