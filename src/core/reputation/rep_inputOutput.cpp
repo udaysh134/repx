@@ -68,7 +68,7 @@ std::string RepEngine::select_file() {
             { L"RepX Files (*.repx)", L"*.repx" }
         };
 
-        dialog->SetFileTypes(2, filters);
+        dialog->SetFileTypes(1, filters);
         dialog->SetFileTypeIndex(1);
 
         // Show dialog
