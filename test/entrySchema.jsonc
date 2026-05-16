@@ -1,0 +1,121 @@
+{
+    // ----------------------------------------------------------------------------------------------------
+    // METADATA ABOUT THE IMPORTANT ASPECTS OF THE FILE
+    // ----------------------------------------------------------------------------------------------------
+
+    "meta": {
+        "schemaVersion": 1, // Schema Version to identify data structure
+        "progVersion": "v0.1.0", // Program version and Schema version may differ
+        "project": "New Project", // Name of the Project
+        "description": "",
+        "owner": 1, // User id exclusive to the owner
+        "stats": {
+            "admins": 2, // Total ADMINS including the OWNER
+            "entries": {
+                "sysEntries": 0, // System Entries, because every action is an entry
+                "datEntries": 3 // Data Entries, responsible for contributing to the data
+            },
+            "subjects": {
+                "activeSubs": 3, // Who are still currently maintained
+                "deadSubs": 0 // Who are removed or not maintained, but exist in the history
+            }
+        },
+        "createdAt": 1778936526728, // When the file was created for teh first time
+        "modifiedAt": 1778936529437 // Every time a change happens in this file, legally
+    },
+
+
+    // ----------------------------------------------------------------------------------------------------
+    // ALL THE ADMINS, INCLUDING THE OWNER THEMSELVES
+    // ----------------------------------------------------------------------------------------------------
+
+    "signers": [
+        {
+            "role": "OWNER",
+            "name": "user_001",
+            "uid": 1, // Every user gets a user ID, be them admins or subjects
+            "pubkey": "BASE64...",
+            "createdAt": 1778936526728 // Always same as meta.createdAt for the OWNER
+        },
+        {
+            "role": "ADMIN",
+            "name": "user_002",
+            "uid": 2,
+            "pubkey": "BASE64...",
+            "createdAt": 1778936525314
+        }
+    ],
+
+
+    // ----------------------------------------------------------------------------------------------------
+    // ALL THE USERS WHO GET SCORED
+    // ----------------------------------------------------------------------------------------------------
+
+    "subjects": [
+        {
+            "name": "user_123",
+            "uid": 3,
+            "score": 1, // Updates after every computation
+            "createdAt": 1778936529011,
+            "modifiedAt": 1778936543943 // Updates only when a new score is assigned
+        },
+        {
+            "name": "user_456",
+            "uid": 4,
+            "score": 1,
+            "createdAt": 1778936525367,
+            "modifiedAt": 1778936534829
+        },
+        {
+            "name": "user_789",
+            "uid": 5,
+            "score": 1,
+            "createdAt": 17789365297816,
+            "modifiedAt": 1778936539577
+        }
+    ],
+
+
+    // ----------------------------------------------------------------------------------------------------
+    // ALL OF THE SOURCE OF TRUTH FOR THIS PROJECT FILE
+    // ----------------------------------------------------------------------------------------------------
+
+    "entries": [
+        {
+            "id": 1, // Entry id, always incrementing
+            "timestamp": 1778936523123, // When this specific event occured
+            "type": "REP", // Can be other types for system entries
+            "target": 3, // Subject's user id
+            "delta": 1, // Can only be 1 or -1
+            "reason": "Completed task", // Always mandatory
+            "author": 1, // Signer's user id
+            "prevhash": "abc123...",
+            "hash": "def456...",
+            "sig": "BASE64..."
+        },
+        {
+            "id": 2,
+            "timestamp": 1778936523438,
+            "type": "REP",
+            "target": 4,
+            "delta": -1,
+            "reason": "Disrespectful behaviour",
+            "author": 2,
+            "prevhash": "abc123...",
+            "hash": "def456...",
+            "sig": "BASE64..."
+        },
+        {
+            "id": 3,
+            "timestamp": 1778936523594,
+            "type": "REP",
+            "target": 5,
+            "delta": 1,
+            "reason": "Submitted assignment",
+            "author": 1,
+            "prevhash": "abc123...",
+            "hash": "def456...",
+            "sig": "BASE64..."
+        }
+    ]
+}
