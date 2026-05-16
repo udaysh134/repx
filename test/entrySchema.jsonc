@@ -9,19 +9,29 @@
         "project": "New Project", // Name of the Project
         "description": "",
         "owner": 1, // User id exclusive to the owner
-        "stats": {
-            "admins": 2, // Total ADMINS including the OWNER
-            "entries": {
-                "sysEntries": 0, // System Entries, because every action is an entry
-                "datEntries": 3 // Data Entries, responsible for contributing to the data
-            },
-            "subjects": {
-                "activeSubs": 3, // Who are still currently maintained
-                "deadSubs": 0 // Who are removed or not maintained, but exist in the history
-            }
-        },
         "createdAt": 1778936526728, // When the file was created for teh first time
         "modifiedAt": 1778936529437 // Every time a change happens in this file, legally
+    },
+
+
+    // ----------------------------------------------------------------------------------------------------
+    // ALL THE STATS ABOUT THE PROJECT ACCESSIBLE QUICKLY
+    // ----------------------------------------------------------------------------------------------------
+
+    "stats": {
+        "users": 5, // All the total ADMINS + SUBJECTS, active or inactive, untill now
+        "entries": {
+            "sysEntries": 0, // System Entries, because every action is an entry
+            "datEntries": 3 // Data Entries, responsible for contributing to the data
+        },
+        "admins": {
+            "activeAdmins": 2, // Total active ADMINS including the OWNER
+            "deadAdmins": 0 // Who are removed or not maintained, but exist in the history
+        },
+        "subjects": {
+            "activeSubs": 3, // Who are still currently maintained
+            "deadSubs": 0 // Who are removed or not maintained, but exist in the history
+        }
     },
 
 
@@ -34,6 +44,7 @@
             "role": "OWNER",
             "name": "user_001",
             "uid": 1, // Every user gets a user ID, be them admins or subjects
+            "active": true, // Shows the activity status of the user
             "pubkey": "BASE64...",
             "createdAt": 1778936526728 // Always same as meta.createdAt for the OWNER
         },
@@ -41,6 +52,7 @@
             "role": "ADMIN",
             "name": "user_002",
             "uid": 2,
+            "active": true,
             "pubkey": "BASE64...",
             "createdAt": 1778936525314
         }
@@ -56,6 +68,7 @@
             "name": "user_123",
             "uid": 3,
             "score": 1, // Updates after every computation
+            "active": true,
             "createdAt": 1778936529011,
             "modifiedAt": 1778936543943 // Updates only when a new score is assigned
         },
@@ -63,6 +76,7 @@
             "name": "user_456",
             "uid": 4,
             "score": 1,
+            "active": true,
             "createdAt": 1778936525367,
             "modifiedAt": 1778936534829
         },
@@ -70,6 +84,7 @@
             "name": "user_789",
             "uid": 5,
             "score": 1,
+            "active": false, // If the user is no longer associated with the project anymore
             "createdAt": 17789365297816,
             "modifiedAt": 1778936539577
         }
