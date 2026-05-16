@@ -2,46 +2,55 @@
     "entries": [
         {
             "id": 1,
-            "ts": 1778936523123,
+            "timestamp": 1778936523123,
             "type": "REP",
-            "subject": "user_123",
+            "subject": {
+                "name": "user_123",
+                "uid": 1
+            },
             "delta": 1,
             "reason": "Completed task",
             "author": {
                 "name": "author_1",
-                "public_key": "BASE64..."
+                "pubkey": "BASE64..."
             },
-            "p_hash": "abc123...",
+            "prevhash": "abc123...",
             "hash": "def456...",
             "sig": "BASE64..."
         },
         {
             "id": 2,
-            "ts": 1778936523438,
+            "timestamp": 1778936523438,
             "type": "REP",
-            "subject": "user_456",
+            "subject": {
+                "name": "user_456",
+                "uid": 2
+            },
             "delta": -1,
             "reason": "Disrespectful behaviour",
             "author": {
                 "name": "owner",
-                "public_key": "BASE64..."
+                "pubkey": "BASE64..."
             },
-            "p_hash": "abc123...",
+            "prevhash": "abc123...",
             "hash": "def456...",
             "sig": "BASE64..."
         },
         {
             "id": 3,
-            "ts": 1778936523594,
+            "timestamp": 1778936523594,
             "type": "REP",
-            "subject": "user_789",
+            "subject": {
+                "name": "user_789",
+                "uid": 3
+            },
             "delta": 1,
             "reason": "Submitted assignment",
             "author": {
                 "name": "author_2",
-                "public_key": "BASE64..."
+                "pubkey": "BASE64..."
             },
-            "p_hash": "abc123...",
+            "prevhash": "abc123...",
             "hash": "def456...",
             "sig": "BASE64..."
         }
