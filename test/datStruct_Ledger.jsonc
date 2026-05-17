@@ -5,11 +5,12 @@
 
     "meta": {
         "schemaVersion": 1, // Schema Version to identify data structure
-        "progVersion": "v0.1.0", // Program version and Schema version may differ
+        "progVersion": "0.1.0", // Program version and Schema version may differ
+        "mode": "ledger", // States the type of the file
         "project": "New Project", // Name of the Project
         "description": "",
-        "owner": 1, // User id exclusive to the owner
-        "createdAt": 1778936526728, // When the file was created for teh first time
+        "owner": 1, // User id of 1, exclusive to the owner
+        "createdAt": 1778936526728, // When the file was created for the first time
         "modifiedAt": 1778936529437 // Every time a change happens in this file, legally
     },
 
@@ -44,6 +45,7 @@
             "role": "OWNER",
             "name": "user_001",
             "uid": 1, // Every user gets a user ID, be them admins or subjects
+            "actions": 2,
             "active": true, // Shows the activity status of the user
             "pubkey": "BASE64...",
             "createdAt": 1778936526728 // Always same as meta.createdAt for the OWNER
@@ -52,6 +54,7 @@
             "role": "ADMIN",
             "name": "user_002",
             "uid": 2,
+            "actions": 1,
             "active": true,
             "pubkey": "BASE64...",
             "createdAt": 1778936525314
@@ -68,6 +71,9 @@
             "name": "user_123",
             "uid": 3,
             "score": 1, // Updates after every computation
+            "rating": "A",
+            "highest": 1,
+            "lowest": 0,
             "active": true,
             "createdAt": 1778936529011,
             "modifiedAt": 1778936543943 // Updates only when a new score is assigned
@@ -76,6 +82,9 @@
             "name": "user_456",
             "uid": 4,
             "score": 1,
+            "rating": "B",
+            "highest": 0,
+            "lowest": -1,
             "active": true,
             "createdAt": 1778936525367,
             "modifiedAt": 1778936534829
@@ -84,6 +93,9 @@
             "name": "user_789",
             "uid": 5,
             "score": 1,
+            "rating": "C",
+            "highest": 1,
+            "lowest": 0,
             "active": false, // If the user is no longer associated with the project anymore
             "createdAt": 17789365297816,
             "modifiedAt": 1778936539577
