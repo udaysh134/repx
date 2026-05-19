@@ -29,18 +29,7 @@ RULES (Important)
 5. Use bullet points for main log entries.
 6. Keep entries concise (one-liners or short summaries).
 7. Avoid logging trivial or cosmetic changes.
-8. When writing `Reason` and `Impact` :
-   - Write them on consecutive lines.
-   - Add TWO trailing spaces at the end of the `Reason` line.
-   - Do NOT insert a blank line between them.
-   - This ensures proper line break without visual spacing gap.
-
-    Correct format:
-
-    `Reason` : Explanation here.··
-    `Impact` : Explanation here.
-
-    (The two dots above represent two trailing spaces.)
+8. Use writings like `Reason`, `Impact`, etc - to explain your devlogs.
 9. Never use backticks (`) for anything other than "Reason" & "Impact".
 
 --------------------------------------------------
@@ -67,8 +56,10 @@ TEMPLATE (Example)
 - Separated layout computation from renderer responsibilities.
 - Removed implicit dimension recalculations inside render layer.
 
-`Reason` : Renderer performing computation blurred module responsibility and weakened deterministic flow.  
+`Reason` : Renderer performing computation blurred module responsibility and weakened deterministic flow.
+
 `Impact` : Layout is now finalized before rendering begins, improving predictability and future scalability.
+
 
 #### [Dev_2](https://github.com/dev_2)
 - Introduced a centralized configuration struct inside core instead of passing scattered constants across modules.
@@ -104,6 +95,7 @@ IMPORTANT NOTES
 - Reorganized prototype schemas into a dedicated prototype directory.
 
 `Reason` : The earlier architecture mixed immutable history, runtime state, and operational projections too tightly, which created replay ambiguity, mutable trust leaks, and growing structural complexity as new event types and authority systems were introduced. Multiple iterations were spent refining replay semantics, runtime reconstruction, canonicalization stability, lifecycle handling, and authority ownership boundaries until the ledger model became deterministic and operationally coherent.
+
 `Impact` : RepX now has a stable replay-driven ledger foundation capable of reconstructing runtime state entirely from immutable event history. The architecture is now significantly more scalable, auditable, and implementation-ready, while still preserving local-first operation, deterministic validation, and future compatibility for cloud synchronization layers. All of this will provide a direction to the project for implementations in future, but tinkering, iterating, re-evaluating, reshaping structures and finalizing schemas was necessary part to be done now, to actually move forward for the project's progress.
 
 
@@ -120,7 +112,8 @@ IMPORTANT NOTES
 - Fixed alignment issues by decoupling layout from selector/prefix width in both body and footer rendering.
 - Added directional navigation: vertical for body (↑ ↓) and horizontal for footer (← →) with proper section transitions.
 
-`Reason` : Focus shifted from static structure to making the system interaction-ready—connecting filesystem input, stabilizing navigation flow, and making UI behavior consistent across pages.  
+`Reason` : Focus shifted from static structure to making the system interaction-ready—connecting filesystem input, stabilizing navigation flow, and making UI behavior consistent across pages.
+
 `Impact` : RepX now has a working input pipeline for `.repx` data, a reliable action-mapping system via option IDs, and a much more stable and intuitive UI layout and navigation model.
 
 
@@ -137,7 +130,8 @@ IMPORTANT NOTES
 - Added page template snippets to simplify consistent page creation.
 - Performed a repository-wide documentation pass for newly introduced systems.
 
-`Reason` : The previous centralized option definition created tight coupling between page modules and a single configuration file, which reduced modularity and made page development unnecessarily rigid. By shifting to a self-contained page architecture, each page now owns its behavior, options, and context, enabling true modular expansion of the system. At the same time, extensive contributor documentation and snippet tooling were introduced to standardize development patterns and reduce onboarding friction.  
+`Reason` : The previous centralized option definition created tight coupling between page modules and a single configuration file, which reduced modularity and made page development unnecessarily rigid. By shifting to a self-contained page architecture, each page now owns its behavior, options, and context, enabling true modular expansion of the system. At the same time, extensive contributor documentation and snippet tooling were introduced to standardize development patterns and reduce onboarding friction.
+
 `Impact` : Page development is now decentralized and significantly easier to extend. New pages can be created as independent modules without modifying centralized configuration files, improving maintainability and scalability of the engine. Cursor preservation also improves navigation continuity, making the interface behave more like a polished application rather than a stateless menu system.
 
 
@@ -149,7 +143,8 @@ IMPORTANT NOTES
 - Adjusted the initialization flow so registry and context structures exist before any page registration occurs.
 - Finally completely resolved the earlier issue where breadcrumbs rendered as empty path segments ("/ / /") due to missing context data.
 
-`Impact` : Navigation is now cleanly structured and self-descriptive. Each page registers itself with the registry, which manages its context. The engine can now resolve page transitions and breadcrumb paths reliably through a single centralized system, significantly simplifying navigation flow and improving maintainability.  
+`Impact` : Navigation is now cleanly structured and self-descriptive. Each page registers itself with the registry, which manages its context. The engine can now resolve page transitions and breadcrumb paths reliably through a single centralized system, significantly simplifying navigation flow and improving maintainability.
+
 `Learning` : 
 - **Static Initialization Order Fiasco** - understood how global objects across translation units can initialize in unpredictable order.
 - **Function Pointers** - learned how functions can be referenced and invoked through stored addresses.
@@ -170,5 +165,6 @@ IMPORTANT NOTES
 - Implemented dynamic resizing for the main rendering frame and overall application layout.
 - Made "*clrScreen()*" static to enable Windows buffer-level screen clearing to be used internally across modules.
 
-`Reason` : The interface needed to adapt to changing terminal dimensions to maintain a GUI-like experience. Without dynamic adjustment, the fixed layout makes it obvious that the program is operating on a character-based row-and-column terminal grid.  
+`Reason` : The interface needed to adapt to changing terminal dimensions to maintain a GUI-like experience. Without dynamic adjustment, the fixed layout makes it obvious that the program is operating on a character-based row-and-column terminal grid.
+
 `Impact` : The application now automatically recalculates and adjusts the entire layout based on the available screen space during runtime. Due to the way the Windows screen buffer operates, this can leave behind residual artifacts outside the visible frame. The active viewport continues to render correctly, but scrolling may reveal these underlying buffer remnants.
