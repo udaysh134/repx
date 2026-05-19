@@ -1,0 +1,204 @@
+// ----------------------------------------------------------------------------------------------------
+// Entries for LEDGER MODE file type
+// ----------------------------------------------------------------------------------------------------
+
+[
+    // GENESIS ---------------------------------------- >>
+
+    {
+        "id": 0,
+        "timestamp": 1778936523123,
+        "type": "GENESIS",
+        "schema": 1,
+        "engine": "0.1.0",
+        "mode": "ledger",
+        "project": {
+            "name": "",
+            "description": ""
+        },
+        "owner": {
+            "uid": 1,
+            "name": "",
+            "pubKey": "BASE64..."
+        },
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // SUBJECT_CREATE ---------------------------------------- >>
+
+    {
+        "id": 1,
+        "timestamp": 1778936523123,
+        "type": "SUBJECT_CREATE",
+        "uid": 2,
+        "name": "user_0001",
+        "reason": "Skipped",
+        "author": 1,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // SUBJECT_DEACTIVATE ---------------------------------------- >>
+
+    {
+        "id": 2,
+        "timestamp": 1778936523123,
+        "type": "SUBJECT_DEACTIVATE",
+        "target": 2,
+        "reason": "Subject created for testing purpose.",
+        "author": 1,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // SUBJECT_REACTIVATE ---------------------------------------- >>
+
+    {
+        "id": 3,
+        "timestamp": 1778936523123,
+        "type": "SUBJECT_REACTIVATE",
+        "target": 2,
+        "reason": "Subject reactivated.",
+        "author": 1,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // REP ---------------------------------------- >>
+
+    {
+        "id": 4,
+        "timestamp": 1778936523123,
+        "type": "REP",
+        "target": 2,
+        "delta": 1,
+        "reason": "Completed task",
+        "author": 1,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // ADMIN_ASSIGN ---------------------------------------- >>
+
+    {
+        "id": 5,
+        "timestamp": 1778936523123,
+        "type": "ADMIN_ASSIGN",
+        "admin": {
+            "uid": 3,
+            "name": "admin_0001",
+            "pubKey": "BASE64..."
+        },
+        "reason": "Another access backup for the owner.",
+        "author": 1,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // ADMIN_REVOKE ---------------------------------------- >>
+
+    {
+        "id": 6,
+        "timestamp": 1778936523123,
+        "type": "ADMIN_REVOKE",
+        "target": 3,
+        "reason": "Malicious act of data manipulation.",
+        "author": 1,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // ADMIN_RESTORE ---------------------------------------- >>
+
+    {
+        "id": 7,
+        "timestamp": 1778936523123,
+        "type": "ADMIN_RESTORE",
+        "target": 3,
+        "reason": "Appealed not to do same thing again.",
+        "author": 1,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // USER_RENAME ---------------------------------------- >>
+
+    {
+        "id": 8,
+        "timestamp": 1778936523123,
+        "type": "USER_RENAME",
+        "target": 2,
+        "new": "Spider Man",
+        "reason": "User requested their name to be changed.",
+        "author": 3,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // PROJECT_UPDATE ---------------------------------------- >>
+
+    {
+        "id": 9,
+        "timestamp": 1778936523123,
+        "type": "PROJECT_UPDATE",
+        "project": {
+            "name": "",
+            "description": ""
+        },
+        "reason": "",
+        "author": 3,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // CONFIG_UPDATE ---------------------------------------- >>
+
+    {
+        "id": 10,
+        "timestamp": 1778936523123,
+        "type": "CONFIG_UPDATE",
+        "config": {},
+        "reason": "Changes needed for project settings.",
+        "author": 3,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // ARCHIVE ---------------------------------------- >>
+
+    {
+        "id": 11,
+        "timestamp": 1778936523123,
+        "type": "ARCHIVE",
+        "reason": "Project finalized and permanently archived.",
+        "author": 1,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // UNARCHIVE ---------------------------------------- >>
+
+    {
+        "id": 12,
+        "timestamp": 1778936523123,
+        "type": "UNARCHIVE",
+        "reason": "Emergency restoration of archived project.",
+        "author": 1,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    }
+]
