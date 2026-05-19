@@ -88,6 +88,25 @@ IMPORTANT NOTES
 - This file is for architectural memory - not activity tracking.
 - Never modify or remove this guidelines section.
 -->
+## 🗞️ May 19, 2026 - Tuesday
+#### [Uday](https://github.com/udaysh134)
+- Finalized the first stable prototype architecture for RepX LEDGER mode after multiple iterations of schema redesign and replay-model refinement.
+- Stabilized canonical string generation for deterministic hashing and type-specific event canonicalization.
+- Refactored project/config update events to support partial object patching instead of full-state replacement semantics.
+- Finalized immutable ledger event schemas for lifecycle, authority, configuration, and reputation operations.
+- Introduced replay-oriented runtime state reconstruction separated entirely from immutable ledger storage.
+- Reorganized runtime hierarchy around dependency flow instead of visual grouping.
+- Added runtime aggregation structures for signer actions, subject histories, and project statistics.
+- Reworked on a very clever archival lifecycle handling using entry-reference arrays instead of boolean state flags.
+- Finalized owner/admin authority enrollment flow around self-generated keypairs and public-key approval.
+- Removed earlier assumptions around centralized private-key generation to preserve cryptographic ownership boundaries.
+- Refined ledger/runtime separation so immutable entries remain minimal while runtime state handles indexing, aggregation, and fast data access.
+- Reorganized prototype schemas into a dedicated prototype directory.
+
+`Reason` : The earlier architecture mixed immutable history, runtime state, and operational projections too tightly, which created replay ambiguity, mutable trust leaks, and growing structural complexity as new event types and authority systems were introduced. Multiple iterations were spent refining replay semantics, runtime reconstruction, canonicalization stability, lifecycle handling, and authority ownership boundaries until the ledger model became deterministic and operationally coherent.
+`Impact` : RepX now has a stable replay-driven ledger foundation capable of reconstructing runtime state entirely from immutable event history. The architecture is now significantly more scalable, auditable, and implementation-ready, while still preserving local-first operation, deterministic validation, and future compatibility for cloud synchronization layers. All of this will provide a direction to the project for implementations in future, but tinkering, iterating, re-evaluating, reshaping structures and finalizing schemas was necessary part to be done now, to actually move forward for the project's progress.
+
+
 ## 🗞️ May 03, 2026 - Saturday
 #### [Uday](https://github.com/udaysh134)
 - Synced release documentation by linking docs/releases/INDEX.md and updating references in CHANGELOG and v0.2.0 notes.
