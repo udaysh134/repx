@@ -42,13 +42,13 @@
         {
             "uid": 1,
             "name": "user_001",
-            "pubkey": "BASE64...",
+            "pubKey": "BASE64...",
             "role": "OWNER",
             "active": true,
             "actions": {
                 "sysActs": [1, 2, 3, 5, 6, 11, 12],
                 "datActs": [4, 7],
-                "scoresGiven": 8
+                "repsGiven": 8
             },
             "createdAt": 1778936526728,
             "modifiedAt": 1778936526728
@@ -56,13 +56,13 @@
         {
             "uid": 2,
             "name": "user_002",
-            "pubkey": "BASE64...",
+            "pubKey": "BASE64...",
             "role": "ADMIN",
             "active": true,
             "actions": {
                 "sysActs": [8, 9, 10],
                 "datActs": [13, 14, 15, 16],
-                "scoresGiven": 17
+                "repsGiven": 17
             },
             "createdAt": 1778936525314,
             "modifiedAt": 1778936525314
@@ -144,7 +144,7 @@
             "ownerEntries": 21,
             "adminEntries": 28
         },
-        "totalScoresGiven": 25
+        "totalReps": 25
     },
 
     
