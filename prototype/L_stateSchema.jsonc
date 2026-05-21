@@ -7,7 +7,13 @@
 
     "status": {
         "tampered": false,
+        "terminated": true,
         "archived": [11, 12]
+    },
+
+    "session": {
+        "locked": false,
+        "pubKey": "BASE64..."
     },
 
     // METADATA ABOUT THIS PROJECT ---------------------------------------- >>
@@ -139,5 +145,12 @@
             "adminEntries": 28
         },
         "totalScoresGiven": 25
-    }
+    },
+
+    
+    // ----------------------------------------------------------------------------------------------------
+    // UN-COMMITED EVENT LOGS ACCUMULATED AS ENTRIES FOR THE CURRENT SESSION
+    // ----------------------------------------------------------------------------------------------------
+
+    "entries": []
 }

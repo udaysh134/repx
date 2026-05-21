@@ -12,8 +12,10 @@
     "ADMIN_REVOKE": "id | timestamp | type | target | reason | author | prevHash",
     "ADMIN_RESTORE": "id | timestamp | type | target | reason | author | prevHash",
     "USER_RENAME": "id | timestamp | type | target | new | reason | author | prevHash",
+    "ROTATE_KEY": "id | timestamp | type | key.old | key.new | reason | author | prevHash",
     "PROJECT_UPDATE": "id | timestamp | type | project{} | reason | author | prevHash",
     "CONFIG_UPDATE": "id | timestamp | type | config{} | reason | author | prevHash",
+    "TAIL": "id | timestamp | type | author | prevHash",
     "ARCHIVE": "id | timestamp | type | reason | author | prevHash",
     "UNARCHIVE": "id | timestamp | type | reason | author | prevHash"
 }

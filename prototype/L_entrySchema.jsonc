@@ -145,10 +145,27 @@
         "sig": "BASE64..."
     },
 
-    // PROJECT_UPDATE ---------------------------------------- >>
+    // ROTATE_KEY ---------------------------------------- >>
 
     {
         "id": 9,
+        "timestamp": 1778936523123,
+        "type": "ROTATE_KEY",
+        "key": {
+            "old": "Old_BASE64...",
+            "new": "New_BASE64..."
+        },
+        "reason": "",
+        "author": 1,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
+    // PROJECT_UPDATE ---------------------------------------- >>
+
+    {
+        "id": 10,
         "timestamp": 1778936523123,
         "type": "PROJECT_UPDATE",
         "project": {
@@ -165,7 +182,7 @@
     // CONFIG_UPDATE ---------------------------------------- >>
 
     {
-        "id": 10,
+        "id": 11,
         "timestamp": 1778936523123,
         "type": "CONFIG_UPDATE",
         "config": {},
@@ -176,10 +193,22 @@
         "sig": "BASE64..."
     },
 
+    // TAIL ---------------------------------------- >>
+
+    {
+        "id": 12,
+        "timestamp": 1778936523123,
+        "type": "TAIL",
+        "author": 1,
+        "prevHash": "abc123...",
+        "hash": "def456...",
+        "sig": "BASE64..."
+    },
+
     // ARCHIVE ---------------------------------------- >>
 
     {
-        "id": 11,
+        "id": 13,
         "timestamp": 1778936523123,
         "type": "ARCHIVE",
         "reason": "Project finalized and permanently archived.",
@@ -192,7 +221,7 @@
     // UNARCHIVE ---------------------------------------- >>
 
     {
-        "id": 12,
+        "id": 14,
         "timestamp": 1778936523123,
         "type": "UNARCHIVE",
         "reason": "Emergency restoration of archived project.",
