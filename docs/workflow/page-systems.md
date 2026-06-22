@@ -28,7 +28,7 @@ Pages represent the individual navigation screens of the program. Each page defi
 
 
 ## 📂 Page Location
-All page implementations must be placed inside `src/pages/`.
+All page implementations must be placed inside `src/interfaces/tui/pages/`.
 
 Pages may exist in two possible layouts :
 ### 📄 1. Directly inside pages
@@ -36,28 +36,28 @@ Used for standalone pages that are not part of a specific feature group.
 ```
 # Example
 
-src/pages/HOME.cpp
-src/pages/SETTINGS.cpp
-src/pages/EXIT.cpp
+src/interfaces/tui/pages/HOME.cpp
+src/interfaces/tui/pages/SETTINGS.cpp
+src/interfaces/tui/pages/EXIT.cpp
 ```
 ### 📁 2. Inside a single featured folder
 If multiple pages belong to the same feature, a subfolder may be created.
 ```
 # Example
 
-src/pages/entry/VIEW_ENTRIES.cpp
-src/pages/entry/ENTRY_ADD.cpp
+src/interfaces/tui/pages/entry/VIEW_ENTRIES.cpp
+src/interfaces/tui/pages/entry/ENTRY_ADD.cpp
 
-src/pages/leaderboard/GEN_LB.cpp
-src/pages/leaderboard/GEN_LB_WEEKLY.cpp
-src/pages/leaderboard/GEN_LB_MONTHLY.cpp
+src/interfaces/tui/pages/leaderboard/GEN_LB.cpp
+src/interfaces/tui/pages/leaderboard/GEN_LB_WEEKLY.cpp
+src/interfaces/tui/pages/leaderboard/GEN_LB_MONTHLY.cpp
 ```
 > [!NOTE]  
-> Only **one level of subfolder** inside `src/pages/` is allowed. Deeper nesting (e.g., `src/pages/leaderboard/generator/...`) is not permitted to keep the structure simple and consistent.
+> Only **one level of subfolder** inside `src/interfaces/tui/pages/` is allowed. Deeper nesting (e.g., `src/interfaces/tui/pages/leaderboard/generator/...`) is not permitted to keep the structure simple and consistent.
 
 
 ## 🧩 Page ID Registration
-Every page must be declared inside `src/app/navigation.hpp`, specifically in : `enum class PageId`.
+Every page must be declared inside `src/interfaces/tui/app/navigation.hpp`, specifically in : `enum class PageId`.
 ```cpp
 # Example
 
@@ -74,7 +74,7 @@ enum class PageId {
 
 
 ## 🆔 Option ID System
-Every option in the system must be assigned a unique Option ID, defined centrally inside `src/core/options.hpp`. This ensures that UI interactions are handled consistently across all pages and removes reliance on labels for identifying actions.
+Every option in the system must be assigned a unique Option ID, defined centrally inside `src/interfaces/tui/core/options.hpp`. This ensures that UI interactions are handled consistently across all pages and removes reliance on labels for identifying actions.
 
 > [!Important]  
 > Every new option must have a corresponding entry in the **OptionId** namespace before it is used inside any page.
@@ -348,7 +348,7 @@ Each entry defines a selectable option on the page.
         targetPage::OPEN
     }
 ```
-These values come from [`options.hpp`](/src/core/options.hpp)
+These values come from [`options.hpp`](/src/interfaces/tui/core/options.hpp)
 ### ⚙️ 6. Logic Handlers
 Three optional handlers are available for now :
 ```cpp

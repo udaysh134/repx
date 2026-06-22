@@ -6,16 +6,16 @@ CXX := g++
 
 # SOURCE FILES ---------------------------------------- >>
 SRC := \
-	$(wildcard src/*.cpp) \
-	$(wildcard src/*/*.cpp) \
-    $(wildcard src/*/*/*.cpp)
+	$(wildcard src/interfaces/tui/*.cpp) \
+	$(wildcard src/interfaces/tui/*/*.cpp) \
+	$(wildcard src/interfaces/tui/*/*/*.cpp)
 
 # COMPILER FLAGS ---------------------------------------- >>
 CXXFLAGS := -std=c++20 -Wall -Wextra \
-	-Isrc/app \
-	-Isrc/core \
-	-Isrc/core/reputation \
-	-Isrc/modules \
+	-Isrc/interfaces/tui/app \
+	-Isrc/interfaces/tui/core \
+	-Isrc/interfaces/tui/core/reputation \
+	-Isrc/interfaces/tui/modules \
 	# -Ipackages/pdcurses/include
 
 # LINKER FLAGS ---------------------------------------- >>

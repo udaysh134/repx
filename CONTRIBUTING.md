@@ -18,7 +18,7 @@ Contributions must preserve this philosophy. If a change weakens traceability, l
 ## 🧱 Project Architecture
 RepX follows a layered structure :
 ```
-src/
+src/interfaces/tui/
 ├── core/    -> Engine layer managing system invariants, registry, configuration, and internal mechanics.
 ├── app/     -> Application layer responsible for layout, rendering, navigation, and runtime state management.
 ├── modules/ -> Reusable utility and feature modules that support the application without owning engine logic.
@@ -27,13 +27,13 @@ src/
 To understand the whole project structure in one go, follow [STRUCTURE](/STRUCTURE.md).
 
 ### Responsibilities
-- **core/**  
+- **core/** (inside `src/interfaces/tui/`)  
   Maintains system invariants and engine logic.
-- **app/**  
+- **app/** (inside `src/interfaces/tui/`)  
   Handles layout computation, rendering flow, and navigation logic.
-- **modules/**  
+- **modules/** (inside `src/interfaces/tui/`)  
   Contains isolated utilities without engine ownership.
-- **pages/**  
+- **pages/** (inside `src/interfaces/tui/`)  
   Contains all the pages responsible for individual screen logic and navigation.
 
 When contributing :

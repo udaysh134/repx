@@ -159,25 +159,27 @@ Every component has a defined responsibility.
 
 ```
 src/
-├── main
-│
-├── app/
-│ ├── layout
-│ ├── navigation
-│ ├── renderer
-│ └── state
-│
-├── core/
-│ ├── engine
-│ ├── registry
-│ └── options
-│
-├── modules/
-│ ├── settings
-│ └── utils
-│
-└── pages/
-   └── HOME
+└── interfaces/
+    └── tui/
+        ├── main
+        │
+        ├── app/
+        │   ├── layout
+        │   ├── navigation
+        │   ├── renderer
+        │   └── state
+        │
+        ├── core/
+        │   ├── engine
+        │   ├── registry
+        │   └── options
+        │
+        ├── modules/
+        │   ├── settings
+        │   └── utils
+        │
+        └── pages/
+            └── HOME
 ```
 
 To view the whole project structure, follow [STRUCTURE](/STRUCTURE.md).
