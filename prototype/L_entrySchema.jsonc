@@ -151,10 +151,8 @@
         "id": 9,
         "timestamp": 1778936523123,
         "type": "ROTATE_KEY",
-        "key": {
-            "old": "Old_BASE64...",
-            "new": "New_BASE64..."
-        },
+        "target": 3,
+        "key": "New_BASE64...",
         "reason": "",
         "author": 1,
         "prevHash": "abc123...",
