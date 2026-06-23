@@ -39,14 +39,21 @@ The project follows a layered architecture separating engine logic, application 
 |       \---lib
 |               pdcurses.a
 |               
++---prototype
+|       canonicalStrings.jsonc
+|       L_entrySchema.jsonc
+|       L_stateSchema.jsonc
+|       S_entrySchema.jsonc
+|       S_stateSchema.jsonc
+|       
 +---snippets
 |       pgTemp.code-snippets
 |       secDiv.code-snippets
 |       
 \---src
     +---engine
-    |       .gitignore
-    |       
+    |   |   .gitignore
+    |           
     +---interfaces
     |   +---cli
     |   |       .gitignore
@@ -54,46 +61,43 @@ The project follows a layered architecture separating engine logic, application 
     |   +---gui
     |   |       .gitignore
     |   |       
-    |   +---tui
-    |   |   |   main.cpp
-    |   |   |   
-    |   |   +---app
-    |   |   |       layout.cpp
-    |   |   |       layout.hpp
-    |   |   |       navigation.cpp
-    |   |   |       navigation.hpp
-    |   |   |       renderer.cpp
-    |   |   |       renderer.hpp
-    |   |   |       state.cpp
-    |   |   |       state.hpp
-    |   |   |       
-    |   |   +---core
-    |   |   |   |   engine.cpp
-    |   |   |   |   engine.hpp
-    |   |   |   |   options.hpp
-    |   |   |   |   registry.cpp
-    |   |   |   |   registry.hpp
-    |   |   |   |   
-    |   |   |   \---reputation
-    |   |   |           repEngine.hpp
-    |   |   |           rep_inputOutput.cpp
-    |   |   |           
-    |   |   +---modules
-    |   |   |       settings.cpp
-    |   |   |       settings.hpp
-    |   |   |       utils.cpp
-    |   |   |       utils.hpp
-    |   |   |       
-    |   |   \---pages
-    |   |           EXIT.cpp
-    |   |           HOME.cpp
-    |   |           NEW.cpp
-    |   |           OPEN.cpp
-    |   |           SETTINGS.cpp
-    |   |           
-    |   \---web
-    |           .gitignore
-    |           
+    |   \---tui
+    |       |   main.cpp
+    |       |   
+    |       +---app
+    |       |       layout.cpp
+    |       |       layout.hpp
+    |       |       navigation.cpp
+    |       |       navigation.hpp
+    |       |       renderer.cpp
+    |       |       renderer.hpp
+    |       |       state.cpp
+    |       |       state.hpp
+    |       |       
+    |       +---core
+    |       |   |   engine.cpp
+    |       |   |   engine.hpp
+    |       |   |   options.hpp
+    |       |   |   registry.cpp
+    |       |   |   registry.hpp
+    |       |   |   
+    |       |   \---reputation
+    |       |           repEngine.hpp
+    |       |           rep_inputOutput.cpp
+    |       |           
+    |       +---modules
+    |       |       settings.cpp
+    |       |       settings.hpp
+    |       |       utils.cpp
+    |       |       utils.hpp
+    |       |       
+    |       \---pages
+    |               EXIT.cpp
+    |               HOME.cpp
+    |               NEW.cpp
+    |               OPEN.cpp
+    |               SETTINGS.cpp
+    |               
     \---modes
         +---ledger
         |       .gitignore
@@ -119,12 +123,11 @@ Primary source code directory, structurally split by interface/functionality.
 - **engine/** - Code for the core engine logic (shared across interfaces).
 - **modes/** - Mode-specific configuration and behavior (e.g., standard, ledger).
 - **interfaces/** - User interface implementations.
-  - **cli/** - Command line interface (CLI) logic.
-  - **gui/** - Graphical user interface (GUI) logic.
-  - **web/** - Web interface logic.
-  - **tui/** - Terminal user interface (TUI) logic.
-    - **main.cpp** - Entry point of the TUI application.
-    - **app/** - Application layer which handles layout, rendering, navigation, and state logic.
-    - **core/** - Integral architectural layer which maintains engine, registry and system invariants.
-    - **modules/** - Reusable utilities and global configurations that do not own engine logic.
-    - **pages/** - Navigation pages for program's core navigation and visual interface + logic.
+    - **cli/** - Command line interface (CLI) logic.
+    - **gui/** - Graphical user interface (GUI) logic.
+    - **tui/** - Terminal user interface (TUI) logic.
+        - **main.cpp** - Entry point of the TUI application.
+        - **app/** - Application layer which handles layout, rendering, navigation, and state logic.
+        - **core/** - Integral architectural layer which maintains engine, registry and system invariants.
+        - **modules/** - Reusable utilities and global configurations that do not own engine logic.
+        - **pages/** - Navigation pages for program's core navigation and visual interface + logic.
