@@ -6,17 +6,16 @@ CXX := g++
 
 # SOURCE FILES ---------------------------------------- >>
 SRC := \
+	$(wildcard src/engine/*.cpp) \
+    $(wildcard src/engine/*/*.cpp) \
 	$(wildcard src/interfaces/tui/*.cpp) \
 	$(wildcard src/interfaces/tui/*/*.cpp) \
 	$(wildcard src/interfaces/tui/*/*/*.cpp)
 
 # COMPILER FLAGS ---------------------------------------- >>
 CXXFLAGS := -std=c++20 -Wall -Wextra \
-	-Isrc/interfaces/tui/app \
-	-Isrc/interfaces/tui/core \
-	-Isrc/interfaces/tui/core/reputation \
-	-Isrc/interfaces/tui/modules \
-	# -Ipackages/pdcurses/include
+	-Isrc \
+	-Ipackages
 
 # LINKER FLAGS ---------------------------------------- >>
 LDFLAGS := \
@@ -24,7 +23,7 @@ LDFLAGS := \
 	# -Lpackages/pdcurses/lib -l:pdcurses.a
 
 # OUTPUT ---------------------------------------- >>
-TARGET := RepX.exe
+TARGET := RepX_TUI.exe
 
 
 # ----------------------------------------------------------------------------------------------------
