@@ -1,13 +1,18 @@
 #pragma once
 
 #include <filesystem>
+#include <variant>
 
 #include "extlibs.hpp"
-#include "runtime.hpp"
+#include "standard/runtime.hpp"
+#include "ledger/runtime.hpp"
 
 
 struct Session {
     std::filesystem::path path;
-    Json entries;
-    Runtime runtime;
+    Json history;
+    std::variant<
+        StandardRTS,
+        LedgerRTS
+    > runtime;
 };
