@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "typeconvs.hpp"
+#include "typealias.hpp"
 
 
 struct Genesis {
