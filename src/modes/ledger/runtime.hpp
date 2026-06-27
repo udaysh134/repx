@@ -8,6 +8,41 @@
 #include "typeconvs.hpp"
 
 
+struct SignersOBJ {
+    userID_t uid;
+    std::string name;
+    std::string pubKey;
+    std::string role;
+    bool active;
+    struct Actions {
+        std::vector<entryID_t> sysActs;
+        std::vector<entryID_t> datActs;
+        reps_t repsGiven;
+    } actions;
+    timeMS_t createdAt;
+    timeMS_t modifiedAt;
+};
+
+
+struct SubjectsOBJ {
+    userID_t uid;
+    std::string name;
+    char rating;
+    struct Score {
+        score_t current;
+        score_t lowest;
+        score_t highest;
+    } score;
+    bool active;
+    struct History {
+        std::vector<entryID_t> sys;
+        std::vector<entryID_t> data;
+    } history;
+    timeMS_t createdAt;
+    timeMS_t modifiedAt;
+};
+
+
 struct LedgerRuntime {
     struct Status {
         bool tampered;
@@ -40,9 +75,9 @@ struct LedgerRuntime {
         timeMS_t modifiedAt;
     } meta;
 
-    std::vector<> signers;
+    std::vector<SignersOBJ> signers;
 
-    std::vector<> subjects;
+    std::vector<SubjectsOBJ> subjects;
 
     struct Stats {
         struct Users {
@@ -65,46 +100,6 @@ struct LedgerRuntime {
     } stats;
 
     std::vector<> entries;
-
-    "signers": [
-        {
-            "uid": 1,
-            "name": "user_001",
-            "pubKey": "BASE64...",
-            "role": "OWNER",
-            "active": true,
-            "actions": {
-                "sysActs": [1, 2, 3, 5, 6, 11, 12],
-                "datActs": [4, 7],
-                "repsGiven": 8
-            },
-            "createdAt": 1778936526728,
-            "modifiedAt": 1778936526728
-        }
-    ],
-
-
-    "subjects": [
-        {
-            "uid": 3,
-            "name": "user_003",
-            "rating": "A",
-            "score": {
-                "current": 16,
-                "lowest": 0,
-                "highest": 21
-            },
-            "active": true,
-            "history": {
-                "sys": [8, 13],
-                "data": [3, 5, 12, 14, 15, 16]
-            },
-            "createdAt": 1778936529011,
-            "modifiedAt": 1778936543943
-        }
-    ],
-
-    "entries": []
 };
 
 extern LedgerRuntime LedgerRTS;
