@@ -119,7 +119,7 @@
         "timestamp": 1778936523123,
         "type": "USER_RENAME",
         "target": 2,
-        "new": "Spider Man",
+        "name": "Spider Man",
         "reason": "User requested their name to be changed.",
         "author": 3
     },
