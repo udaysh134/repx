@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <variant>
 
 #include "typealias.hpp"
 
@@ -19,13 +20,12 @@ struct Genesis {
     struct Owner {
         userID_t uid;
         std::string name;
-        struct Auth {
-            std::string salt;
-            std::string hash;
-        } auth;
+        std::string pubKey;
     } owner;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
-
 
 struct SubjectCreate {
     entryID_t id;
@@ -35,8 +35,10 @@ struct SubjectCreate {
     std::string name;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
-
 
 struct SubjectDeactivate {
     entryID_t id;
@@ -45,8 +47,10 @@ struct SubjectDeactivate {
     userID_t target;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
-
 
 struct SubjectReactivate {
     entryID_t id;
@@ -55,8 +59,10 @@ struct SubjectReactivate {
     userID_t target;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
-
 
 struct Rep {
     entryID_t id;
@@ -66,8 +72,10 @@ struct Rep {
     delta_t delta;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
-
 
 struct AdminAssign {
     entryID_t id;
@@ -76,15 +84,14 @@ struct AdminAssign {
     struct Admin {
         userID_t uid;
         std::string name;
-        struct Auth {
-            std::string salt;
-            std::string hash;
-        } auth;
+        std::string pubKey;
     } admin;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
-
 
 struct AdminRevoke {
     entryID_t id;
@@ -93,8 +100,10 @@ struct AdminRevoke {
     userID_t target;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
-
 
 struct AdminRestore {
     entryID_t id;
@@ -103,8 +112,10 @@ struct AdminRestore {
     userID_t target;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
-
 
 struct UserRename {
     entryID_t id;
@@ -114,22 +125,23 @@ struct UserRename {
     std::string name;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
 
-
-struct ChangePass {
+struct RotateKey {
     entryID_t id;
     timeMS_t timestamp;
     std::string type;
     userID_t target;
-    struct Auth {
-        std::string salt;
-        std::string hash;
-    } auth;
+    std::string key;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
-
 
 struct ProjectUpdate {
     entryID_t id;
@@ -141,8 +153,10 @@ struct ProjectUpdate {
     } project;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
-
 
 struct ConfigUpdate {
     entryID_t id;
@@ -153,8 +167,20 @@ struct ConfigUpdate {
     } config;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
 
+struct Tail {
+    entryID_t id;
+    timeMS_t timestamp;
+    std::string type;
+    userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
+};
 
 struct Archive {
     entryID_t id;
@@ -162,8 +188,10 @@ struct Archive {
     std::string type;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
-
 
 struct Unarchive {
     entryID_t id;
@@ -171,4 +199,26 @@ struct Unarchive {
     std::string type;
     std::string reason;
     userID_t author;
+    std::string prevHash;
+    std::string hash;
+    std::string sig;
 };
+
+
+using LedgerEntriesVariant = std::variant<
+    Genesis,
+    SubjectCreate,
+    SubjectDeactivate,
+    SubjectReactivate,
+    Rep,
+    AdminAssign,
+    AdminRevoke,
+    AdminRestore,
+    UserRename,
+    RotateKey,
+    ProjectUpdate,
+    ConfigUpdate,
+    Tail,
+    Archive,
+    Unarchive
+>;
