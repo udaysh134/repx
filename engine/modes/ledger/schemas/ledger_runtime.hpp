@@ -5,7 +5,7 @@
 #include <string>
 #include <cstdint>
 
-#include "typealias.hpp"
+#include "aliases.hpp"
 #include "ledger_entries.hpp"
 
 

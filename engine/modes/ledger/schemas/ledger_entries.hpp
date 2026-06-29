@@ -3,7 +3,7 @@
 #include <string>
 #include <variant>
 
-#include "typealias.hpp"
+#include "aliases.hpp"
 
 
 namespace LedgerEntry {
