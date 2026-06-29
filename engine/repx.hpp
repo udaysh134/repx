@@ -1,6 +1,7 @@
 #pragma once
 
 #include <filesystem>
+#include <string_view>
 
 #include "session.hpp"
 
@@ -14,3 +15,8 @@ class RepX {
     private:
         Session session;
 };
+
+namespace Mode {
+    inline constexpr std::string_view Standard = "standard";
+    inline constexpr std::string_view Ledger = "ledger";
+}

@@ -4,10 +4,6 @@
 
 
 namespace StandardConst {
-    namespace Property {
-        inline constexpr std::string_view MODE_NAME = "standard";
-    }
-
     namespace Role {
         inline constexpr std::string_view OWNER = "OWNER";
         inline constexpr std::string_view ADMIN = "ADMIN";
