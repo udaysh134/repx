@@ -1,19 +1,15 @@
 #pragma once
 
-#include <filesystem>
 #include <string_view>
 
-#include "session.hpp"
+#include "project_manager.hpp"
+#include "credential_manager.hpp"
 
 
 class RepX {
     public:
-        bool createProject(const std::filesystem::path& path);
-        bool openProject(const std::filesystem::path& path);
-        bool unlockProject();
-
-    private:
-        Session session;
+        const ProjectManager project;
+        const CredentialManager credential;
 };
 
 namespace Mode {
