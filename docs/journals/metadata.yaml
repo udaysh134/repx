@@ -1,0 +1,86 @@
+version: 1
+files:
+  credential-origin-concept.jpg:
+    description: "Documents the earliest concept of the credential system, including the initial ideas behind credential generation and key sharing before the subsystem was formally defined."
+    status: "Implemented"
+  engine-development-roadmap-1.jpg:
+    description: "Records the first implementation roadmap used while developing the original RepX engine, outlining the planned development milestones and design progression."
+    status: "Historical"
+  engine-development-roadmap-2.jpg:
+    description: "Continues the original engine development roadmap, capturing the subsequent implementation stages and evolving design decisions."
+    status: "Historical"
+  identity-model-concept.jpg:
+    description: "Explores the early identity model by designing the intended leaderboard output and deriving the data required to support it, ultimately shaping the identity system."
+    status: "Implemented"
+  repx-core-principles.jpg:
+    description: "Defines the foundational principles of RepX, including the immutable reputation model, cryptographic authenticity, and the initial separation of Standard Mode and Ledger Mode."
+    status: "Implemented"
+  application-flow-concept.jpg:
+    description: "Explores the conceptual application flow, mapping how users navigate through major operations such as creating projects, opening existing ones, and generating outputs."
+    status: "Partially Implemented"
+  credential-class-design.jpg:
+    description: "Defines the structure and responsibilities of the credential object used by the RepX engine."
+    status: "Implemented"
+  permission-scope-design.jpg:
+    description: "Documents the permission scope model governing credential capabilities and authorization boundaries."
+    status: "Implemented"
+  engine-folder-structure.jpg:
+    description: "Defines the high-level folder organization of the RepX engine and its major architectural components."
+    status: "Implemented"
+  engine-interface-architecture.jpg:
+    description: "Describes the separation between the shared engine and its interfaces, establishing the architectural foundation of RepX."
+    status: "Implemented"
+  engine-runtime-notes.jpg:
+    description: "Documents runtime concepts, behaviors, and implementation notes for the shared RepX engine."
+    status: "Implemented"
+  engine-source-tree.jpg:
+    description: "Defines the source tree organization of the RepX engine, including the arrangement of source files and directories."
+    status: "Implemented"
+  repx-core-api-sketch.jpg:
+    description: "Early sketch of the core RepX engine API, exploring the primary interfaces exposed by the engine."
+    status: "Partially Implemented"
+  ledger-cryptographic-pipeline.jpg:
+    description: "Defines the Ledger Mode cryptographic pipeline, including canonicalization, canonical strings, hashing, and digital signatures."
+    status: "Implemented"
+  ledger-record-schema.jpg:
+    description: "Defines the schema and organization of ledger records used within Ledger Mode."
+    status: "Implemented"
+  project-open-create-flow.jpg:
+    description: "Documents the workflow for creating new RepX projects and opening existing ones within the application."
+    status: "Implemented"
+  repository-readme-overview.jpg:
+    description: "Sketches the structure and organization of the repository's README documentation."
+    status: "Implemented"
+  system-architecture-overview.jpg:
+    description: "Presents a high-level overview of the complete RepX system architecture and the relationships between its major components."
+    status: "Implemented"
+  project-storage-model.jpg:
+    description: "Defines how RepX projects are stored and organized, including the project's storage model and related considerations."
+    status: "Implemented"
+  launcher-interface-wireframe.jpg:
+    description: "Wireframe of the launcher interface, exploring the layout and interaction of the application's entry point."
+    status: "Historical"
+  launcher-window-concept-1.jpg:
+    description: "Early concept exploring the visual design and organization of the launcher window."
+    status: "Historical"
+  launcher-window-concept-2.jpg:
+    description: "Refined iteration of the launcher window concept with updated interface ideas."
+    status: "Historical"
+  navigation-system-design.jpg:
+    description: "Documents the navigation model used throughout the user interface, including movement between screens and interaction patterns."
+    status: "Historical"
+  renderer-pipeline-notes.jpg:
+    description: "Notes describing the rendering pipeline used by the terminal interface renderer."
+    status: "Historical"
+  terminal-layout-grid.jpg:
+    description: "Defines the terminal screen layout using character-based regions such as the header, body, and footer."
+    status: "Historical"
+  tui-component-architecture.jpg:
+    description: "Illustrates the architectural relationships between the core components of the original terminal interface engine."
+    status: "Historical"
+  tui-layout-and-renderer.jpg:
+    description: "Documents the early design of the terminal layout manager, renderer, and global configuration system."
+    status: "Historical"
+  tui-runtime-cycle.jpg:
+    description: "Describes the runtime cycle of the original terminal interface, including initialization, execution, and shutdown."
+    status: "Historical"
