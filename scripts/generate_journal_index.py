@@ -77,6 +77,7 @@ README_NOTE = [
 
 # Table column headers
 TABLE_HEADERS = [
+    "**S.No.**",
     "**Page**",
     "**Category**",
     "**Description**",
@@ -86,6 +87,7 @@ TABLE_HEADERS = [
 # Table column alignments (matching standard Markdown alignments)
 # :---: for centered, :--- for left-aligned, ---: for right-aligned
 TABLE_ALIGNMENT = [
+    ":---:",
     ":---:",
     ":---:",
     ":---",
@@ -344,9 +346,12 @@ def build_readme_string(
 
     # Generate rows for markdown table
     table_rows = []
-    for file_path in scanned_files:
+    for idx, file_path in enumerate(scanned_files, start=1):
         filename = file_path.name
         file_meta = metadata["files"][filename]
+
+        # Serial Number column: string representation of the number
+        s_no = str(idx)
 
         # Notebook Page column: Clickable relative markdown link
         relative_path = file_path.relative_to(journals_dir).as_posix()
@@ -360,7 +365,7 @@ def build_readme_string(
         description = file_meta.get("description", "")
         status = file_meta.get("status", "")
 
-        table_rows.append([page_link, category_formatted, description, status])
+        table_rows.append([s_no, page_link, category_formatted, description, status])
 
     # 4. Generate table and add to document
     markdown_table = generate_markdown_table(TABLE_HEADERS, TABLE_ALIGNMENT, table_rows)
