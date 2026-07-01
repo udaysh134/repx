@@ -84,3 +84,27 @@ files:
   tui-runtime-cycle.jpg:
     description: "Describes the runtime cycle of the original terminal interface, including initialization, execution, and shutdown."
     status: "Historical"
+  credential-api-finalization.jpg:
+    description: "Finalizes the credential API design by comparing all explored approaches and selecting the unified architecture based on consistency, usability, and separation of responsibilities."
+    status: "Abandoned"
+  credential-method-1-overview.jpg:
+    description: "Introduces the first credential architecture, where mode-specific credential objects are created and managed explicitly by the caller before interacting with the engine."
+    status: "Historical"
+  credential-method-2-overview.jpg:
+    description: "Explores a layered credential management approach that hides mode-specific implementation details behind a centralized credential management interface."
+    status: "Historical"
+  credential-method-3-details.jpg:
+    description: "Refines the third credential architecture by defining a unified entry point that returns mode-specific credential objects with their own specialized operations and parameter requirements."
+    status: "Abandoned"
+  credential-method-3-origin.jpg:
+    description: "Documents the reasoning process that led to the Unified Space Method, examining how mode selection can simplify the public API while preserving internal flexibility."
+    status: "Historical"
+  credential-methods-comparasion-1.jpg:
+    description: "Compares the first and second credential API designs, evaluating their workflow complexity, user responsibilities, and overall developer experience."
+    status: "Historical"
+  credential-methods-comparasion-2.jpg:
+    description: "Continues the comparison by introducing additional alternatives, refining the unified design, and documenting the architectural reasoning behind the final decision."
+    status: "Historical"
+  credential-workflow-exploration.jpg:
+    description: "Explores the initial credential workflow and evaluates different architectural approaches for exposing Standard and Ledger credential operations through the public API."
+    status: "Historical"
