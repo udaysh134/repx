@@ -108,3 +108,9 @@ files:
   credential-workflow-exploration.jpg:
     description: "Explores the initial credential workflow and evaluates different architectural approaches for exposing Standard and Ledger credential operations through the public API."
     status: "Historical"
+  credential-methods-tradeoffs.jpg:
+    description: "Evaluates the trade-offs between the remaining credential API designs, comparing developer experience, internal architecture, and design philosophy before choosing the final approach."
+    status: "Implemented"
+  credential-unknown-discovery.jpg:
+    description: "Explores the limitations of implementing a unified credential API in C++, examining function overloading, mode-dependent parameter handling, and compile-time type constraints that influenced the final architecture."
+    status: "Implemented"
