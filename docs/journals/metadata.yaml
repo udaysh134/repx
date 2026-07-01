@@ -1,8 +1,9 @@
-version: 1
+version: 2
 files:
   credential-origin-concept.jpg:
     description: "Documents the earliest concept of the credential system, including the initial ideas behind credential generation and key sharing before the subsystem was formally defined."
-    status: "Implemented"
+    status: "Partially Implemented"
+    featured: "Captures the birth of the RepX credential system, recording the earliest concepts that ultimately evolved into the current credential architecture."
   engine-development-roadmap-1.jpg:
     description: "Records the first implementation roadmap used while developing the original RepX engine, outlining the planned development milestones and design progression."
     status: "Historical"
@@ -11,53 +12,58 @@ files:
     status: "Historical"
   identity-model-concept.jpg:
     description: "Explores the early identity model by designing the intended leaderboard output and deriving the data required to support it, ultimately shaping the identity system."
-    status: "Implemented"
+    status: "Partially Implemented"
+    featured: "Captures the birth of RepX's identity model by working backwards from the intended leaderboard output while introducing PAAF-C and LRRS as the project's foundational guiding philosophy."
   repx-core-principles.jpg:
     description: "Defines the foundational principles of RepX, including the immutable reputation model, cryptographic authenticity, and the initial separation of Standard Mode and Ledger Mode."
-    status: "Implemented"
-    featured: "Defines the core philosophy that shaped the overall RepX architecture."
+    status: "Partially Implemented"
+    featured: "Defines the core philosophy of RepX by establishing its foundational engineering principles, introducing the deliberate +1/-1 reputation philosophy, and shaping the project's architecture, security model, and long-term evolution."
   application-flow-concept.jpg:
     description: "Explores the conceptual application flow, mapping how users navigate through major operations such as creating projects, opening existing ones, and generating outputs."
-    status: "Partially Implemented"
+    status: "Superseded"
+    featured: "Captures the original application flow that established the user journey through RepX before it evolved into the current workflow."
   credential-class-design.jpg:
     description: "Defines the structure and responsibilities of the credential object used by the RepX engine."
-    status: "Implemented"
+    status: "Partially Implemented"
   permission-scope-design.jpg:
     description: "Documents the permission scope model governing credential capabilities and authorization boundaries."
-    status: "Implemented"
   engine-folder-structure.jpg:
     description: "Defines the high-level folder organization of the RepX engine and its major architectural components."
     status: "Implemented"
+    featured: "Introduces the architectural organization of the RepX engine folder, providing the foundational project structure that guides the separation of responsibilities throughout the codebase."
   engine-interface-architecture.jpg:
     description: "Describes the separation between the shared engine and its interfaces, establishing the architectural foundation of RepX."
     status: "Implemented"
   engine-runtime-notes.jpg:
     description: "Documents runtime concepts, behaviors, and implementation notes for the shared RepX engine."
-    status: "Implemented"
+    status: "Partially Implemented"
   engine-source-tree.jpg:
     description: "Defines the source tree organization of the RepX engine, including the arrangement of source files and directories."
     status: "Implemented"
+    featured: "Illustrates the implementation layout of the RepX engine, helping contributors understand where each subsystem resides and how the source tree is organized."
   repx-core-api-sketch.jpg:
     description: "Early sketch of the core RepX engine API, exploring the primary interfaces exposed by the engine."
-    status: "Partially Implemented"
+    status: "Superseded"
   ledger-cryptographic-pipeline.jpg:
     description: "Defines the Ledger Mode cryptographic pipeline, including canonicalization, canonical strings, hashing, and digital signatures."
     status: "Implemented"
+    featured: "Explains the cryptographic trust pipeline that enables Ledger Mode to produce tamper-resistant, verifiable, and cryptographically authenticated reputation records."
   ledger-record-schema.jpg:
     description: "Defines the schema and organization of ledger records used within Ledger Mode."
-    status: "Implemented"
+    status: "Superseded"
   project-open-create-flow.jpg:
     description: "Documents the workflow for creating new RepX projects and opening existing ones within the application."
-    status: "Implemented"
+    status: "Historical"
   repository-readme-overview.jpg:
     description: "Sketches the structure and organization of the repository's README documentation."
-    status: "Implemented"
+    status: "Superseded"
   system-architecture-overview.jpg:
     description: "Presents a high-level overview of the complete RepX system architecture and the relationships between its major components."
-    status: "Implemented"
+    status: "Historical"
   project-storage-model.jpg:
     description: "Defines how RepX projects are stored and organized, including the project's storage model and related considerations."
-    status: "Implemented"
+    status: "Superseded"
+    featured: "Documents the original project storage architecture that laid the foundation for the later .repx file format and the refined storage model."
   launcher-interface-wireframe.jpg:
     description: "Wireframe of the launcher interface, exploring the layout and interaction of the application's entry point."
     status: "Historical"
@@ -69,22 +75,22 @@ files:
     status: "Historical"
   navigation-system-design.jpg:
     description: "Documents the navigation model used throughout the user interface, including movement between screens and interaction patterns."
-    status: "Historical"
+    status: "Implemented"
   renderer-pipeline-notes.jpg:
     description: "Notes describing the rendering pipeline used by the terminal interface renderer."
-    status: "Historical"
+    status: "Implemented"
   terminal-layout-grid.jpg:
     description: "Defines the terminal screen layout using character-based regions such as the header, body, and footer."
-    status: "Historical"
+    status: "Implemented"
   tui-component-architecture.jpg:
     description: "Illustrates the architectural relationships between the core components of the original terminal interface engine."
-    status: "Historical"
+    status: "Implemented"
   tui-layout-and-renderer.jpg:
     description: "Documents the early design of the terminal layout manager, renderer, and global configuration system."
-    status: "Historical"
+    status: "Implemented"
   tui-runtime-cycle.jpg:
     description: "Describes the runtime cycle of the original terminal interface, including initialization, execution, and shutdown."
-    status: "Historical"
+    status: "Implemented"
   credential-api-finalization.jpg:
     description: "Finalizes the credential API design by comparing all explored approaches and selecting the unified architecture based on consistency, usability, and separation of responsibilities."
     status: "Abandoned"
@@ -99,7 +105,7 @@ files:
     status: "Abandoned"
   credential-method-3-origin.jpg:
     description: "Documents the reasoning process that led to the Unified Space Method, examining how mode selection can simplify the public API while preserving internal flexibility."
-    status: "Historical"
+    status: "Superseded"
   credential-methods-comparasion-1.jpg:
     description: "Compares the first and second credential API designs, evaluating their workflow complexity, user responsibilities, and overall developer experience."
     status: "Historical"
@@ -108,10 +114,24 @@ files:
     status: "Historical"
   credential-workflow-exploration.jpg:
     description: "Explores the initial credential workflow and evaluates different architectural approaches for exposing Standard and Ledger credential operations through the public API."
-    status: "Historical"
+    status: "Superseded"
   credential-methods-tradeoffs.jpg:
     description: "Evaluates the trade-offs between the remaining credential API designs, comparing developer experience, internal architecture, and design philosophy before choosing the final approach."
-    status: "Implemented"
+    status: "Historical"
   credential-unknown-discovery.jpg:
     description: "Explores the limitations of implementing a unified credential API in C++, examining function overloading, mode-dependent parameter handling, and compile-time type constraints that influenced the final architecture."
+    status: "Abandoned"
+  credential-context-realization.jpg:
+    description: "Explores a context-based credential API and examines whether a shared context object can unify mode-specific operations, ultimately recognizing its limitations due to differing parameter and return-type requirements across credential workflows."
+    status: "Abandoned"
+  credential-explored-methods.jpg:
+    decription: "Summarizes all explored credential API designs and evaluates their architectural trade-offs, concluding with the Modularity Method as the most stable solution based on API simplicity, maintainability, scalability, mode isolation, and internal modularity."
     status: "Implemented"
+    featured: "Summarizes every explored credential architecture and explains why the Modularity Method became the foundation of the RepX credential API."
+  modes-classes-origin.jpg:
+    description: "Documents the origin of mode-specific credential classes and their integration into the RepX API, introducing dedicated implementations for Ledger and Standard modes alongside the corresponding source tree organization."
+    status: "Historical"
+  modularity-method-origin.jpg:
+    decription: "Documents the initial design of the Modularity Method, exploring how mode-specific credential operations can be exposed through dedicated API objects while preserving a unified and extensible credential architecture."
+    status: "Historical"
+    featured: Introduces the Modularity Method and its initial API structure, establishing the foundation for RepX's mode-specific credential architecture.
