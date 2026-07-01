@@ -15,6 +15,7 @@ files:
   repx-core-principles.jpg:
     description: "Defines the foundational principles of RepX, including the immutable reputation model, cryptographic authenticity, and the initial separation of Standard Mode and Ledger Mode."
     status: "Implemented"
+    featured: "Defines the core philosophy that shaped the overall RepX architecture."
   application-flow-concept.jpg:
     description: "Explores the conceptual application flow, mapping how users navigate through major operations such as creating projects, opening existing ones, and generating outputs."
     status: "Partially Implemented"

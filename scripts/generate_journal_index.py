@@ -68,7 +68,7 @@ README_INTRODUCTION = [
 ]
 
 # Section title of the table section
-README_TABLE_TITLE = "Notebook Pages"
+README_TABLE_TITLE = "📄 Notebook Pages"
 
 # Paragraphs of the closing note (rendered as a callout block)
 README_NOTE = [
@@ -93,6 +93,42 @@ TABLE_ALIGNMENT = [
     ":---",
     ":---:"
 ]
+
+# Placeholder for missing optional metadata values
+MISSING_VALUE = "-"
+
+# Featured section generation control
+GENERATE_FEATURED_SECTION = True
+
+# Title of the Featured section
+README_FEATURED_TITLE = "⭐ Featured Notebook Pages"
+
+# Description paragraphs for the Featured section
+README_FEATURED_DESCRIPTION = [
+    "The following pages represent key milestones, core concepts, or foundational architectural designs of RepX."
+]
+
+# Featured table column headers
+FEATURED_TABLE_HEADERS = [
+    "**S.No.**",
+    "**Page**",
+    "**Category**",
+    "**Reason**",
+    "**Status**"
+]
+
+# Featured table column alignments
+FEATURED_TABLE_ALIGNMENT = [
+    ":---:",
+    ":---:",
+    ":---:",
+    ":---",
+    ":---:"
+]
+
+# Dynamic journal summary template strings
+README_SUMMARY_TEMPLATE = "This document currently indexes {total} design journal pages, including {featured} featured notebook pages and {regular} additional notebook pages."
+README_SUMMARY_TEMPLATE_NO_FEATURED = "This document currently indexes {total} design journal pages."
 
 # Minimum similarity ratio (0.0 to 1.0) to warn about potential file renames
 SIMILARITY_THRESHOLD = 0.70
@@ -202,17 +238,19 @@ def validate_metadata(
             malformed_errors.append(f"Metadata entry for '{filename}' must be a dictionary/object.")
             continue
         
-        if "description" not in data:
-            malformed_errors.append(f"Metadata entry for '{filename}' is missing 'description' key.")
-        elif not isinstance(data["description"], str):
-            malformed_errors.append(f"Description for '{filename}' must be a string.")
+        if "description" in data and data["description"] is not None:
+            if not isinstance(data["description"], str):
+                malformed_errors.append(f"Description for '{filename}' must be a string.")
 
-        if "status" not in data:
-            malformed_errors.append(f"Metadata entry for '{filename}' is missing 'status' key.")
-        elif not isinstance(data["status"], str):
-            malformed_errors.append(f"Status for '{filename}' must be a string.")
-        elif data["status"] not in STATUS_VALUES:
-            invalid_status_filenames.append(filename)
+        if "status" in data and data["status"] is not None:
+            if not isinstance(data["status"], str):
+                malformed_errors.append(f"Status for '{filename}' must be a string.")
+            elif data["status"] not in STATUS_VALUES:
+                invalid_status_filenames.append(filename)
+
+        if "featured" in data and data["featured"] is not None:
+            if not isinstance(data["featured"], str):
+                malformed_errors.append(f"Featured for '{filename}' must be a string.")
 
     # 2. Filesystem vs Metadata alignment
     scanned_filenames = {p.name for p in scanned_files}
@@ -327,7 +365,7 @@ def build_readme_string(
 ) -> str:
     """
     Assembles the final README.md content from configuration constants
-    and dynamically generated table rows.
+    and dynamically generated table rows, including featured and regular sections.
     """
     readme_lines = []
 
@@ -340,36 +378,103 @@ def build_readme_string(
         readme_lines.append(para)
         readme_lines.append("")
 
-    # 3. Section Title
-    readme_lines.append(f"## {README_TABLE_TITLE}")
+    # Calculate summary numbers
+    num_total = len(scanned_files)
+    num_featured = 0
+    files_metadata = metadata.get("files", {})
+    for file_path in scanned_files:
+        file_meta = files_metadata.get(file_path.name, {})
+        if file_meta and "featured" in file_meta and file_meta["featured"] is not None:
+            num_featured += 1
+    num_regular = num_total - num_featured
+
+    # Choose and format the dynamic summary template
+    if num_featured > 0 and GENERATE_FEATURED_SECTION:
+        summary_text = README_SUMMARY_TEMPLATE.format(
+            total=num_total,
+            featured=num_featured,
+            regular=num_regular
+        )
+    else:
+        summary_text = README_SUMMARY_TEMPLATE_NO_FEATURED.format(
+            total=num_total,
+            featured=num_featured,
+            regular=num_regular
+        )
+
+    readme_lines.append(summary_text)
     readme_lines.append("")
 
-    # Generate rows for markdown table
-    table_rows = []
-    for idx, file_path in enumerate(scanned_files, start=1):
+    # Separate featured and regular rows
+    featured_rows = []
+    regular_rows = []
+    
+    featured_idx = 1
+    regular_idx = 1
+
+    for file_path in scanned_files:
         filename = file_path.name
-        file_meta = metadata["files"][filename]
+        file_meta = files_metadata.get(filename, {})
 
-        # Serial Number column: string representation of the number
-        s_no = str(idx)
+        is_featured = file_meta and "featured" in file_meta and file_meta["featured"] is not None
 
-        # Notebook Page column: Clickable relative markdown link
+        # Relative paths and markdown links
         relative_path = file_path.relative_to(journals_dir).as_posix()
         page_link = f"[{filename}]({relative_path})"
 
-        # Category column: Dynamic path relative to journals root, wrapped in backticks
         category = file_path.parent.relative_to(journals_dir).as_posix()
         category_formatted = f"`{category}`"
 
-        # Description & Status columns: Plain text from metadata
-        description = file_meta.get("description", "")
-        status = file_meta.get("status", "")
+        if is_featured and GENERATE_FEATURED_SECTION:
+            # Featured Notebook Pages table row
+            s_no = str(featured_idx)
+            featured_idx += 1
+            reason = file_meta.get("featured")
+            if reason is None or reason == "":
+                reason = MISSING_VALUE
+            # Status column: same metadata field and placeholder behavior as the main table
+            status = file_meta.get("status")
+            if status is None or status == "":
+                status = MISSING_VALUE
+            featured_rows.append([s_no, page_link, category_formatted, reason, status])
+        else:
+            # Regular Notebook Pages table row
+            s_no = str(regular_idx)
+            regular_idx += 1
+            description = file_meta.get("description")
+            if description is None or description == "":
+                description = MISSING_VALUE
+            status = file_meta.get("status")
+            if status is None or status == "":
+                status = MISSING_VALUE
+            regular_rows.append([s_no, page_link, category_formatted, description, status])
 
-        table_rows.append([s_no, page_link, category_formatted, description, status])
+    # 3. Featured Notebook Pages section (if enabled and non-empty)
+    if GENERATE_FEATURED_SECTION and len(featured_rows) > 0:
+        readme_lines.append(f"## {README_FEATURED_TITLE}")
+        readme_lines.append("")
+        for para in README_FEATURED_DESCRIPTION:
+            readme_lines.append(para)
+            readme_lines.append("")
+        
+        featured_table = generate_markdown_table(
+            FEATURED_TABLE_HEADERS,
+            FEATURED_TABLE_ALIGNMENT,
+            featured_rows
+        )
+        readme_lines.append(featured_table)
+        readme_lines.append("")
 
-    # 4. Generate table and add to document
-    markdown_table = generate_markdown_table(TABLE_HEADERS, TABLE_ALIGNMENT, table_rows)
-    readme_lines.append(markdown_table)
+    # 4. Notebook Pages section
+    readme_lines.append(f"## {README_TABLE_TITLE}")
+    readme_lines.append("")
+
+    regular_table = generate_markdown_table(
+        TABLE_HEADERS,
+        TABLE_ALIGNMENT,
+        regular_rows
+    )
+    readme_lines.append(regular_table)
     readme_lines.append("")
 
     # 5. Callout note
