@@ -11,15 +11,15 @@ class Ledger {
                     std::string public_key;
                     std::string private_key;
                 };
-
-
+            
+            
             public:
                 struct Create {
                     Context forLedger();
-                } create;
-
+                };
+            
                 struct Authenticate {
                     bool forLedger(std::string public_key, std::string private_key);
-                } authenticate;
+                };
         };
 };

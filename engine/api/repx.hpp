@@ -8,8 +8,8 @@
 
 class RepX {
     public:
-        const ProjectManager project;
-        const CredentialManager credential;
+        ProjectManager project;
+        CredentialManager credential;
 };
 
 namespace Mode {
