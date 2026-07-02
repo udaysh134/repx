@@ -12,7 +12,7 @@ struct Session {
     std::filesystem::path path;
     Json history;
     std::variant<
-        StandardRTS,
-        LedgerRTS
+        StandardRuntime,
+        LedgerRuntime
     > runtime;
 };

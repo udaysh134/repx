@@ -9,7 +9,7 @@
 #include "ledger_entries.hpp"
 
 
-struct LedgerRTS {
+struct LedgerRuntime {
     struct Status {
         bool tampered;
         bool terminated;

@@ -9,7 +9,7 @@
 #include "standard_entries.hpp"
 
 
-struct StandardRTS {
+struct StandardRuntime {
     struct Status {
         std::vector<entryID_t> archived;
     };
