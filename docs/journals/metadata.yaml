@@ -125,13 +125,26 @@ files:
     description: "Explores a context-based credential API and examines whether a shared context object can unify mode-specific operations, ultimately recognizing its limitations due to differing parameter and return-type requirements across credential workflows."
     status: "Abandoned"
   credential-explored-methods.jpg:
-    decription: "Summarizes all explored credential API designs and evaluates their architectural trade-offs, concluding with the Modularity Method as the most stable solution based on API simplicity, maintainability, scalability, mode isolation, and internal modularity."
+    description: "Summarizes all explored credential API designs and evaluates their architectural trade-offs, concluding with the Modularity Method as the most stable solution based on API simplicity, maintainability, scalability, mode isolation, and internal modularity."
     status: "Implemented"
     featured: "Summarizes every explored credential architecture and explains why the Modularity Method became the foundation of the RepX credential API."
   modes-classes-origin.jpg:
     description: "Documents the origin of mode-specific credential classes and their integration into the RepX API, introducing dedicated implementations for Ledger and Standard modes alongside the corresponding source tree organization."
     status: "Historical"
   modularity-method-origin.jpg:
-    decription: "Documents the initial design of the Modularity Method, exploring how mode-specific credential operations can be exposed through dedicated API objects while preserving a unified and extensible credential architecture."
+    description: "Documents the initial design of the Modularity Method, exploring how mode-specific credential operations can be exposed through dedicated API objects while preserving a unified and extensible credential architecture."
     status: "Historical"
     featured: Introduces the Modularity Method and its initial API structure, establishing the foundation for RepX's mode-specific credential architecture.
+  repx-implementation-diversion.jpg:
+    description: "Explores how the Project API should internally diverge into mode-specific implementations while preserving a unified public interface."
+    status: "Historical"
+  repx-diversion-solution-1.jpg:
+    description: "Explores the first solution for mode-specific project implementations by extending the Modularity Method across the engine, exposing mode-specific operations while evaluating their architectural trade-offs."
+    status: "Abandoned"
+  repx-diversion-solution-2.jpg:
+    description: "Explores an alternative Context Registry Method that encapsulates mode-specific data within context objects, allowing RepX systems to expose a unified public API while selecting implementations internally."
+    status: "Abandoned"
+  repx-philosophy-upgrade.jpg:
+    description: "Reframes the relationship between the RepX API and RepX Engine by separating interface from philosophy, establishing the engine as the implementation of RepX's design principles through independently responsible execution modes."
+    status: "Implemented"
+    featured: "Introduces one of RepX's core architectural philosophies by distinguishing the API as a communication interface and the Engine as the implementation of RepX's design philosophy through independent execution modes."
