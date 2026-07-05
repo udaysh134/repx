@@ -127,8 +127,8 @@ FEATURED_TABLE_ALIGNMENT = [
 ]
 
 # Dynamic journal summary template strings
-README_SUMMARY_TEMPLATE = "This document currently indexes {total} design journal pages, including {featured} featured notebook pages and {regular} additional notebook pages."
-README_SUMMARY_TEMPLATE_NO_FEATURED = "This document currently indexes {total} design journal pages."
+README_SUMMARY_TEMPLATE = "This document currently indexes **{total}** Design Journal Pages ({featured} Featured + {regular} Regular)."
+README_SUMMARY_TEMPLATE_NO_FEATURED = "This document currently indexes **{total}** Design Journal Pages."
 
 # Minimum similarity ratio (0.0 to 1.0) to warn about potential file renames
 SIMILARITY_THRESHOLD = 0.70
