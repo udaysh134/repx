@@ -148,3 +148,24 @@ files:
     description: "Reframes the relationship between the RepX API and RepX Engine by separating interface from philosophy, establishing the engine as the implementation of RepX's design principles through independently responsible execution modes."
     status: "Implemented"
     featured: "Introduces one of RepX's core architectural philosophies by distinguishing the API as a communication interface and the Engine as the implementation of RepX's design philosophy through independent execution modes."
+  api-architecture-exploration-1.jpg:
+    description: "Explores multiple experimental API architectures for exposing mode-specific functionality across the RepX engine, evaluating approaches such as persistent mode selection, mode accessors, and global context before they were discarded."
+    status: "Abandoned"
+  api-architecture-exploration-2.jpg:
+    description: "Continues the exploration of alternative API architectures by experimenting with context-based workflows and mode-specific objects to understand their impact on usability, responsibility distribution, and long-term maintainability."
+    status: "Abandoned"
+  context-registry-finalization.jpg:
+    description: "Finalizes the Context Registry Method by defining a centralized registry of mode-specific contexts that enables a unified public API while internally dispatching operations to the appropriate mode implementations."
+    status: "Implemented"
+  workflow-amendment-timeline-1.jpg:
+    description: "Documents the beginning of the API workflow evolution by identifying the scalability limitations of the Modularity Method and motivating the search for a more maintainable architecture as RepX expanded."
+    status: "Historical"
+  workflow-amendment-timeline-2.jpg:
+    description: "Continues the API workflow evolution by introducing the Context Registry Method, comparing it against the earlier Object Method, and evaluating the architectural improvements it provides."
+    status: "Historical"
+  workflow-amendment-timeline-3.jpg:
+    description: "Explains how the Context Registry Method operates internally by centralizing mode-specific contexts, delegating operations to their respective implementations, and establishing the engine as the system orchestrator."
+    status: "Historical"
+  workflow-amendment-timeline-4.jpg:
+    description: "Concludes the API workflow evolution by summarizing the advantages of the Context Registry Method and finalizing its adoption as the architectural direction for unifying RepX's public API."
+    status: "Historical"
