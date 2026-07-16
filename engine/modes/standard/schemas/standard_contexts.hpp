@@ -9,7 +9,7 @@
 class Standard;
 
 
-namespace StandardContexts {
+namespace StandardContext {
     struct Project_Create : Resolver<Standard> {
         std::string _01_project_name;
         std::string _02_project_description;

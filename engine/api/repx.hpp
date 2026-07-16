@@ -21,6 +21,6 @@ namespace Mode {
 }
 
 namespace Context {
-    namespace Ledger = ::LedgerContexts;
-    namespace Standard = ::StandardContexts;
+    namespace Ledger = ::LedgerContext;
+    namespace Standard = ::StandardContext;
 }

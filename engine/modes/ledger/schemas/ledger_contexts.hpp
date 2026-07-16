@@ -9,7 +9,7 @@
 class Ledger;
 
 
-namespace LedgerContexts {
+namespace LedgerContext {
     struct Project_Create : Resolver<Ledger> {
         std::string _01_project_name;
         std::string _02_project_description;

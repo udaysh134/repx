@@ -3,7 +3,7 @@
 #include <string_view>
 
 
-namespace LedgerConst {
+namespace LedgerConstant {
     namespace Role {
         inline constexpr std::string_view OWNER = "OWNER";
         inline constexpr std::string_view ADMIN = "ADMIN";
