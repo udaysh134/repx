@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <string>
 
 
 using schema_t = std::uint16_t;
@@ -14,3 +15,10 @@ using timeMS_t = std::uint64_t;
 using delta_t = std::int8_t;
 using score_t = std::int64_t;
 using reps_t = std::int64_t;
+
+// --------
+
+using keyPair_t = std::string;
+
+using salt_t = std::string;
+using hash_t = std::string;
