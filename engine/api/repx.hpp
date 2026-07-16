@@ -5,6 +5,9 @@
 #include "project_manager.hpp"
 #include "credential_manager.hpp"
 
+#include "ledger_contexts.hpp"
+#include "standard_contexts.hpp"
+
 
 class RepX {
     public:
@@ -15,4 +18,9 @@ class RepX {
 namespace Mode {
     inline constexpr std::string_view Standard = "standard";
     inline constexpr std::string_view Ledger = "ledger";
+}
+
+namespace Context {
+    namespace Ledger = ::LedgerContexts;
+    namespace Standard = ::StandardContexts;
 }
