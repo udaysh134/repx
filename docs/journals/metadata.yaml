@@ -174,19 +174,20 @@ files:
     status: "Historical"
   context-namespace-organization.jpg:
     description: "Defines the organization of the Context subsystem, establishing Context as the parent namespace responsible for managing all mode-specific context objects while allowing each mode to own and maintain its own implementations."
-    status: "Implemented"
-  context-registry-resolver-architecture.jpg:
+    status: "Partially Implemented"
+  registry-resolver-pair-architecture.jpg:
     description: "Defines the Context Registry and Context Resolver architecture, establishing the communication layer between the API and the engine by separating context construction from mode-specific implementation resolution."
-    status: "Implemented"
-  context-registry-resolver-roles.jpg:
+    status: "Partially Implemented"
+  registry-resolver-roles.jpg:
     description: "Defines the respective responsibilities of the Context Registry and Context Resolver, explaining how user-defined contexts are interpreted and transformed into mode-specific implementations for engine orchestration."
-    status: "Implemented"
+    status: "Superseded"
+    featured: "Introduces the Registry-Resolver architecture, one of RepX's core abstractions that decouples the public API from mode implementations while preserving a unified API language."
   context-registry-concept-1.jpg:
     description: "Defines the structure of the Context Registry by organizing mode-specific context definitions into dedicated headers and exposing them through a unified Context namespace for API users."
-    status: "Implemented"
+    status: "Superseded"
   context-registry-concept-2.jpg:
     description: ""
-    status: "Implemented"
+    status: "Superseded"
   context-resolver-concept-1.jpg:
     description: "Explores the concept of the Context Resolver, introducing how context objects supplied through the Context Registry are interpreted and translated into mode-specific implementation objects for the engine."
     status: "Implemented"
@@ -195,10 +196,10 @@ files:
     status: "Implemented"
   context-metadata-exploration.jpg:
     description: "Explores embedding mode information directly into context types using template-based metadata, evaluating compile-time context identification as an alternative to the Context Registry and Resolver architecture."
-    status: "Abandoned"
+    status: "Implemented"
   context-mode-mapping-exploration.jpg:
     description: "Explores mechanisms for mapping context types to their corresponding mode implementations, investigating how the engine can associate mode-specific context structures with the appropriate runtime without explicit user intervention."
-    status: "Abandoned"
+    status: "Superseded"
   template-context-resolution-exploration.jpg:
     description: "Explores using template-based metadata to implicitly associate context types with their corresponding modes, investigating whether compile-time templates could replace the Context Registry and Context Resolver architecture."
-    status: "Abandoned"
+    status: "Implemented"
