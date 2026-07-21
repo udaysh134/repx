@@ -8,7 +8,6 @@
 
 class Ledger;
 
-
 namespace LedgerContext {
     struct Project_Create : Resolver<Ledger> {
         std::string _01_project_name;

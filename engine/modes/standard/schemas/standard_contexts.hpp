@@ -8,7 +8,6 @@
 
 class Standard;
 
-
 namespace StandardContext {
     struct Project_Create : Resolver<Standard> {
         std::string _01_project_name;
