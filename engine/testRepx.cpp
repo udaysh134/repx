@@ -10,4 +10,10 @@ int main() {
         ._02_project_description = "",
         ._03_owner_name = ""
     };
+
+    repx.project.create(Context::Ledger::Project_Create{
+        ._01_project_name = "",
+        ._02_project_description = "",
+        ._03_owner_name = ""
+    });
 }

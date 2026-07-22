@@ -15,6 +15,7 @@ class Standard {
     private:
         struct Project {
             Session create(const Ctx::Project_Create& ctx);
+            Session open(const path_t& path);
         };
 
         struct Credential {

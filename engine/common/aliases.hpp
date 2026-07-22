@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <string>
+#include <filesystem>
 
 
 using schema_t = std::uint16_t;
@@ -22,3 +23,7 @@ using keyPair_t = std::string;
 
 using salt_t = std::string;
 using hash_t = std::string;
+
+// --------
+
+using path_t = std::filesystem::path;
