@@ -55,7 +55,9 @@ STATUS_VALUES = [
     "Implemented",
     "Partially Implemented",
     "Superseded",
-    "Abandoned"
+    "Abandoned",
+    "Finalized",
+    "Educational"
 ]
 
 # Title of the README document
