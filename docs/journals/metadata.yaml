@@ -236,3 +236,21 @@ files:
   engine-mode-session-wrapper.jpg:
     description: "Finalizes the Engine-mode interaction model, resolving the create()/open() dependency and establishing Session as the mode-owned object behind the unified Project API."
     status: "Finalized"
+  context-resolver-simplification.jpg:
+    description: "Documents the simplification of the context architecture by eliminating the Context Registry and retaining only the Context Resolver, treating mode contexts as static configuration structures consumed directly by mode implementations."
+    status: "Implemented"
+  context-to-mode-mapping.jpg:
+    description: "Explores mapping API-facing context structures to their corresponding mode implementations through the Context Resolver before the Context Registry was ultimately removed."
+    status: "Superseded"
+  mode-specific-project-opening.jpg:
+    description: "Explores delegating project opening to the detected mode, allowing each mode to perform its own reconstruction and recomputation logic while the Engine orchestrates the dispatch."
+    status: "Superseded"
+  project-api-over-session.jpg:
+    description: "Establishes the public Project API as a wrapper over the internal Session, allowing create() to reuse the project opening pipeline while exposing a unified interface to API users."
+    status: "Implemented"
+  project-session-api-layout.jpg:
+    description: "Finalizes the public Project API structure, separating informational and operational APIs from the internal Session, while documenting the finalized Credential API requirements for Standard and Ledger modes."
+    status: "Partially Implemented"
+  credential-api-return-types.jpg:
+    description: "Investigates return type consistency for the Credential API, concluding that authentication can expose a unified boolean result while credential creation requires mode-dependent return types."
+    status: "Finalized"
