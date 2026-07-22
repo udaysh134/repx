@@ -203,3 +203,36 @@ files:
   template-context-resolution-exploration.jpg:
     description: "Explores using template-based metadata to implicitly associate context types with their corresponding modes, investigating whether compile-time templates could replace the Context Registry and Context Resolver architecture."
     status: "Implemented"
+  resolver-template-mechanics-1.jpg:
+    description: "Explores how dependent types and type aliases can be used within templates to expose mode-specific type information required by the Context Resolver."
+    status: "Educational"
+  resolver-template-mechanics-2.jpg:
+    description: "Documents the role of the `typename` keyword in dependent names, explaining how template-based type retrieval enables compile-time access to mode information."
+    status: "Educational"
+  resolver-template-mechanics-3.jpg:
+    description: "Applies dependent type retrieval to the Context Resolver architecture, exploring compile-time extraction of mode-specific types from context metadata."
+    status: "Educational"
+  project-lifecycle-return-model-1.jpg:
+    description: "Explores the architectural contradiction surrounding the Engine's responsibility in returning public Project objects while remaining only an orchestration layer."
+    status: "Finalized"
+  project-lifecycle-return-model-2.jpg:
+    description: "Investigates ownership boundaries between the Engine, ProjectManager, Project, and mode-specific implementations, ultimately defining the return contract expected by API consumers."
+    status: "Finalized"
+  project-object-session-architecture-1.jpg:
+    description: "Introduces the final architectural direction for Project and ProjectManager, identifying the ownership contradiction between the Engine and mode implementations."
+    status: "Implemented"
+  project-object-session-architecture-2.jpg:
+    description: "Resolves the ownership model by establishing that mode implementations return their Project object to the Engine, which transparently exposes it through the public API."
+    status: "Implemented"
+  project-object-session-architecture-3.jpg:
+    description: "Defines the Session as the runtime state returned by mode-specific project creation and establishes it as the core object encapsulated by the public Project abstraction."
+    status: "Implemented"
+  project-object-session-architecture-4.jpg:
+    description: "Finalizes the project lifecycle by defining create() as a wrapper over the complete project opening pipeline, ensuring newly created projects are immediately opened through the same validation flow."
+    status: "Implemented"
+  project-object-session-architecture-5.jpg:
+    description: "Extends the finalized delegation architecture to CredentialManager, completing the unified mode-dispatch structure for project and credential operations while preserving a single Engine-facing API."
+    status: "Implemented"
+  engine-mode-session-wrapper.jpg:
+    description: "Finalizes the Engine-mode interaction model, resolving the create()/open() dependency and establishing Session as the mode-owned object behind the unified Project API."
+    status: "Finalized"
