@@ -5,9 +5,6 @@
 
 class Project {
     public:
-        // create();
-        // open();
-
         // runtime();
         // history();
 

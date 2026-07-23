@@ -5,14 +5,15 @@
 #include "project.hpp"
 #include "aliases.hpp"
 
-using ProjectContext = std::variant<
-    Context::Standard::Project_Create,
-    Context::Ledger::Project_Create
->;
-
 
 class ProjectManager {
     public:
-        Project create(const ProjectContext& ctx);
+        Project create(const Context::Standard::Project_Create& ctx);
+        Project create(const Context::Ledger::Project_Create& ctx);
+
         Project open(const path_t& path);
+    
+    private:
+        template <typename Context>
+        Project DISPATCH_create(const Context& ctx);
 };
