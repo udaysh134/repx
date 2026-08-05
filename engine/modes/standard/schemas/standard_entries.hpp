@@ -22,8 +22,8 @@ namespace StandardEntry {
             userID_t uid;
             std::string name;
             struct Auth {
-                std::string salt;
-                std::string hash;
+                salt_t salt;
+                hash_t hash;
             } auth;
         } owner;
     };
@@ -74,8 +74,8 @@ namespace StandardEntry {
             userID_t uid;
             std::string name;
             struct Auth {
-                std::string salt;
-                std::string hash;
+                salt_t salt;
+                hash_t hash;
             } auth;
         } admin;
         std::string reason;
@@ -116,8 +116,8 @@ namespace StandardEntry {
         std::string type;
         userID_t target;
         struct Auth {
-            std::string salt;
-            std::string hash;
+            salt_t salt;
+            hash_t hash;
         } auth;
         std::string reason;
         userID_t author;

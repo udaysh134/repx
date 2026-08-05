@@ -6,6 +6,8 @@
 #include "aliases.hpp"
 
 
+class RepX;
+
 namespace LedgerEntry {
     struct Genesis {
         entryID_t id;
@@ -21,11 +23,11 @@ namespace LedgerEntry {
         struct Owner {
             userID_t uid;
             std::string name;
-            std::string pubKey;
+            keyPair_t pubKey;
         } owner;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct SubjectCreate {
@@ -36,9 +38,9 @@ namespace LedgerEntry {
         std::string name;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct SubjectDeactivate {
@@ -48,9 +50,9 @@ namespace LedgerEntry {
         userID_t target;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct SubjectReactivate {
@@ -60,9 +62,9 @@ namespace LedgerEntry {
         userID_t target;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct Rep {
@@ -73,9 +75,9 @@ namespace LedgerEntry {
         delta_t delta;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct AdminAssign {
@@ -85,13 +87,13 @@ namespace LedgerEntry {
         struct Admin {
             userID_t uid;
             std::string name;
-            std::string pubKey;
+            keyPair_t pubKey;
         } admin;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct AdminRevoke {
@@ -101,9 +103,9 @@ namespace LedgerEntry {
         userID_t target;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct AdminRestore {
@@ -113,9 +115,9 @@ namespace LedgerEntry {
         userID_t target;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct UserRename {
@@ -126,9 +128,9 @@ namespace LedgerEntry {
         std::string name;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct RotateKey {
@@ -136,12 +138,12 @@ namespace LedgerEntry {
         timeMS_t timestamp;
         std::string type;
         userID_t target;
-        std::string key;
+        keyPair_t key;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct ProjectUpdate {
@@ -154,9 +156,9 @@ namespace LedgerEntry {
         } project;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct ConfigUpdate {
@@ -168,9 +170,9 @@ namespace LedgerEntry {
         } config;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct Tail {
@@ -178,9 +180,9 @@ namespace LedgerEntry {
         timeMS_t timestamp;
         std::string type;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct Archive {
@@ -189,9 +191,9 @@ namespace LedgerEntry {
         std::string type;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
     
     struct Unarchive {
@@ -200,9 +202,9 @@ namespace LedgerEntry {
         std::string type;
         std::string reason;
         userID_t author;
-        std::string prevHash;
-        std::string hash;
-        std::string sig;
+        hash_t prevHash;
+        hash_t hash;
+        sig_t sig;
     };
 }
 

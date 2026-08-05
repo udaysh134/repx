@@ -23,6 +23,7 @@ using keyPair_t = std::string;
 
 using salt_t = std::string;
 using hash_t = std::string;
+using sig_t = std::string;
 
 // --------
 
