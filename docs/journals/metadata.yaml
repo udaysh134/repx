@@ -263,3 +263,15 @@ files:
   public-api-dispatch-operations-3.jpg:
     description: "Returns focus to the core Project API, outlining its operational interface and identifying the project-level functions that will form the main API surface."
     status: "Partially Implemented"
+  project-api-operations.jpg:
+    description: "Defines the initial requirements and natural flow for Project API operations, focusing on project creation, metadata, key handling, user information, and how that information should be stored and retrieved."
+    status: "Implemented"
+  project-api-grouping-1.jpg:
+    description: "Explores potential Project API groups, separating project information and user-related operations while introducing grouped interfaces with restricted and overloaded operations."
+    status: "Partially Implemented"
+  project-api-grouping-2.jpg:
+    description: "Refines the Project API structure by organizing information and user operations into nested groups, defining access boundaries and operator overloads for different user roles."
+    status: "Partially Implemented"
+  project-api-grouping-3.jpg:
+    description: "Further decomposes the API into role-specific groups and identifies additional domain groups such as entries, sessions, credentials, and exports for future implementation."
+    status: "Partially Implemented"
