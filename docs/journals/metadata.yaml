@@ -295,10 +295,74 @@ files:
     status: "Implemented"
   entops-origin.jpg:
     description: "Defines the foundational EntOps entry schema, distinguishing identity, domain-specific data, and ledger integrity fields while clarifying which fields the API user must supply and which are generated internally by the RepX engine."
-    status: "Finalized"
+    status: "Historical"
   entops-schema-design-1.jpg:
     description: "Explores a dynamic schema design for EntOps and general RepX requirements, aiming to eliminate duplicated schema definitions by centralizing their structure while allowing each system to use the fields it needs."
-    status: "Finalized"
+    status: "Historical"
   entops-schema-design-2.jpg:
     description: "Explores how EntOps and RepX's general schema can remain separate in responsibility while staying coordinated, considering a shared schema definition that maps each field to its owner."
+    status: "Historical"
+  entops-schema-finalization-1.jpg:
+    description: "Refines the EntOps schema by exploring access control through private and public members, internal signature validation, and the possibility of requiring signatures explicitly as API parameters."
+    status: "Superseded"
+  entops-schema-finalization-2.jpg:
+    description: "Finalizes the separation of entry fields into identity metadata, domain-specific payload, and ledger integrity data, while exploring access control and signature handling through the Engine friendship."
+    status: "Superseded"
+  entops-schema-finalization-3.jpg:
+    description: "Consolidates the EntOps schema design decisions, establishing field separation through access control and favoring explicit signature parameters over a dedicated permission-management system."
+    status: "Superseded"
+  entops-system-operation-1.jpg:
+    description: "Defines the EntOps schema structure, separating public entry-specific fields from private engine-managed metadata and integrity fields, while establishing the rationale for a dedicated entry schema and its access patterns."
     status: "Finalized"
+  entops-system-operation-2.jpg:
+    description: "Develops the EntOps integration model, proposing a unified entry-type registry with structured field access, a dedicated entry namespace in the RepX API, and authentication-based operations that remove signatures from individual operation calls."
+    status: "Finalized"
+  project-auth-origin.jpg:
+    description: "Introduces the Project-level authentication interface, defining authentication-related operations for signing and session access while illustrating how authenticated entry operations fit into the Project API and Session architecture."
+    status: "Partially Implemented"
+  repx-pipeline-explaination-1.jpg:
+    description: "Documents the origin of RepX, tracing the problem of low team motivation, participation, and contribution to the need for accountable reputation tracking through justified evaluations and immutable records."
+    status: "Educational"
+  repx-pipeline-explaination-2.jpg:
+    description: "Defines RepX's core concept as trust infrastructure built around recording, verifying, and preserving accountable human judgments across individuals, teams, organizations, and communities."
+    status: "Educational"
+  repx-pipeline-explaination-3.jpg:
+    description: "Explains the RepX workflow, covering project ownership, administrator management, reputation entries with mandatory reasons and digital signatures, historical recording, and access restrictions for project modifications."
+    status: "Educational"
+  repx-pipeline-explaination-4.jpg:
+    description: "Illustrates RepX's append-only history and hash-chain integrity model, explaining how entries are linked, project history is recomputed, and leaderboards are generated from recorded reputation events."
+    status: "Educational"
+  repx-pipeline-explaination-5.jpg:
+    description: "Explains independently verifiable filtered histories for subjects and administrators, demonstrating how immutable records preserve accountability and prevent past events from being altered, fabricated, or concealed."
+    status: "Educational"
+  repx-pipeline-explaination-6.jpg:
+    description: "Describes the intended real-world distribution and verification workflow, in which users open a RepX project file and verify its history through cryptographic chaining, signatures, and duplicate detection."
+    status: "Educational"
+  repx-pipeline-explaination-7.jpg:
+    description: "Summarizes RepX's development roadmap across completed foundations, ongoing engine and API implementation, and planned interfaces, alongside an initial GUI concept for the project homepage."
+    status: "Educational"
+  repx-pipeline-explaination-8.jpg:
+    description: "Presents early GUI concepts for an opened RepX project, illustrating the entries and leaderboard views, project navigation, metadata panel, and controls for switching between the two main sections."
+    status: "Educational"
+  category-profiling-addition-1.jpg:
+    description: "Introduces Category Profiling, allowing project administrators to define custom categories for evaluating subjects and displaying individual category ratings that contribute to a broader profile."
+    status: "Historical"
+    featured: "Introduces Category Profiling, expanding RepX beyond a single reputation score toward a more nuanced, multidimensional representation of an individual's qualities."
+  category-profiling-addition-2.jpg:
+    description: "Develops Category Profiling's rating model, distinguishing positive and negative categories and defining how manually assigned category ratings can be interpreted to represent a subject's overall profile accurately."
+    status: "Historical"
+    featured: "Explores how category-specific ratings can represent different qualities with distinct meanings, forming the conceptual basis for a more expressive reputation profile."
+  ruleset-addition-1.jpg:
+    description: "Introduces Rulesets as a RepX feature, defining predefined positive and negative evaluation criteria that administrators can assign during reputation operations to improve transparency, consistency, and accountability."
+    status: "Historical"
+    featured: "Introduces predefined evaluation criteria as a way to make reputation decisions more consistent, predictable, and understandable to the people being evaluated."
+  ruleset-addition-2.jpg:
+    description: "Refines the Rulesets concept, establishing mandatory ruleset selection alongside optional reasoning and illustrating how predefined criteria can reduce disputes over reputation decisions."
+    status: "Historical"
+    featured: "Develops the accountability implications of Rulesets by exploring how predefined criteria can reduce ambiguity and disputes surrounding reputation decisions."
+  category-profiling-ui-concept.jpg:
+    description: "Presents an early Category Profiling UI concept, showing individual profile categories with directional rating controls to distinguish positive and negative evaluations within a subject’s profile."
+    status: "Superseded"
+  ruleset-ui-concept.jpg:
+    description: "Presents an early Rulesets UI concept, organizing positive and negative rulesets into separate lists with controls for adding rulesets and editing individual rule definitions."
+    status: "Superseded"
