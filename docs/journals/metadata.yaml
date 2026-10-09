@@ -254,115 +254,115 @@ files:
   credential-api-return-types.jpg:
     description: "Investigates return type consistency for the Credential API, concluding that authentication can expose a unified boolean result while credential creation requires mode-dependent return types."
     status: "Finalized"
-  public-api-dispatch-operations-1.jpg:
+  public-api-dispatch-operations-1.png:
     description: "Establishes the public API dispatch convention, defining explicit overloads for API users while resolving calls internally through context-specific dispatchers."
     status: "Historical"
-  public-api-dispatch-operations-2.jpg:
+  public-api-dispatch-operations-2.png:
     description: "Finalizes the RepX entry-point structure, confirming ProjectManager and CredentialManager as the primary public interfaces for project and credential operations."
     status: "Implemented"
-  public-api-dispatch-operations-3.jpg:
+  public-api-dispatch-operations-3.png:
     description: "Returns focus to the core Project API, outlining its operational interface and identifying the project-level functions that will form the main API surface."
     status: "Partially Implemented"
-  project-api-operations.jpg:
+  project-api-operations.png:
     description: "Defines the initial requirements and natural flow for Project API operations, focusing on project creation, metadata, key handling, user information, and how that information should be stored and retrieved."
     status: "Implemented"
-  project-api-grouping-1.jpg:
+  project-api-grouping-1.png:
     description: "Explores potential Project API groups, separating project information and user-related operations while introducing grouped interfaces with restricted and overloaded operations."
     status: "Partially Implemented"
-  project-api-grouping-2.jpg:
+  project-api-grouping-2.png:
     description: "Refines the Project API structure by organizing information and user operations into nested groups, defining access boundaries and operator overloads for different user roles."
     status: "Partially Implemented"
-  project-api-grouping-3.jpg:
+  project-api-grouping-3.png:
     description: "Further decomposes the API into role-specific groups and identifies additional domain groups such as entries, sessions, credentials, and exports for future implementation."
     status: "Partially Implemented"
-  session-api-model-1.jpg:
+  session-api-model-1.png:
     description: "Reconsiders the Session API's mutability model, identifying which operations should remain read-only and which require controlled modification while preserving the integrity of project data."
     status: "Educational"
-  session-api-model-2.jpg:
+  session-api-model-2.png:
     description: "Refines the Project class into read-only and command-oriented operation layers, restricting direct data modification while exposing controlled API functions for updates and entry management."
     status: "Educational"
-  session-api-model-3.jpg:
+  session-api-model-3.png:
     description: "Establishes the two-layer Session API structure and begins defining the operation groups within the command layer, setting up the next stage of detailing entry-related operations."
     status: "Historical"
-  entry-api-design-contradiction-1.jpg:
+  entry-api-design-contradiction-1.png:
     description: "Examines the trade-off between natural-language-style API calls and a canonical entry-based operation system, comparing indirect and direct methods for accessing project functionality."
     status: "Implemented"
-  entry-api-design-contradiction-2.jpg:
+  entry-api-design-contradiction-2.png:
     description: "Establishes both direct and indirect API access methods, allowing newcomers to use intuitive interfaces while experienced developers access RepX operations through explicit, consistent entry-based calls."
     status: "Implemented"
-  entry-api-design-contradiction-3.jpg:
+  entry-api-design-contradiction-3.png:
     description: "Introduces the Entry Processor as a centralized system for managing entry operations, routing indirect API calls through canonical entry methods and enabling consistent entry recognition and processing."
     status: "Implemented"
-  entops-origin.jpg:
+  entops-origin.png:
     description: "Defines the foundational EntOps entry schema, distinguishing identity, domain-specific data, and ledger integrity fields while clarifying which fields the API user must supply and which are generated internally by the RepX engine."
     status: "Historical"
-  entops-schema-design-1.jpg:
+  entops-schema-design-1.png:
     description: "Explores a dynamic schema design for EntOps and general RepX requirements, aiming to eliminate duplicated schema definitions by centralizing their structure while allowing each system to use the fields it needs."
     status: "Historical"
-  entops-schema-design-2.jpg:
+  entops-schema-design-2.png:
     description: "Explores how EntOps and RepX's general schema can remain separate in responsibility while staying coordinated, considering a shared schema definition that maps each field to its owner."
     status: "Historical"
-  entops-schema-finalization-1.jpg:
+  entops-schema-finalization-1.png:
     description: "Refines the EntOps schema by exploring access control through private and public members, internal signature validation, and the possibility of requiring signatures explicitly as API parameters."
     status: "Superseded"
-  entops-schema-finalization-2.jpg:
+  entops-schema-finalization-2.png:
     description: "Finalizes the separation of entry fields into identity metadata, domain-specific payload, and ledger integrity data, while exploring access control and signature handling through the Engine friendship."
     status: "Superseded"
-  entops-schema-finalization-3.jpg:
+  entops-schema-finalization-3.png:
     description: "Consolidates the EntOps schema design decisions, establishing field separation through access control and favoring explicit signature parameters over a dedicated permission-management system."
     status: "Superseded"
-  entops-system-operation-1.jpg:
+  entops-system-operation-1.png:
     description: "Defines the EntOps schema structure, separating public entry-specific fields from private engine-managed metadata and integrity fields, while establishing the rationale for a dedicated entry schema and its access patterns."
     status: "Finalized"
-  entops-system-operation-2.jpg:
+  entops-system-operation-2.png:
     description: "Develops the EntOps integration model, proposing a unified entry-type registry with structured field access, a dedicated entry namespace in the RepX API, and authentication-based operations that remove signatures from individual operation calls."
     status: "Finalized"
-  project-auth-origin.jpg:
+  project-auth-origin.png:
     description: "Introduces the Project-level authentication interface, defining authentication-related operations for signing and session access while illustrating how authenticated entry operations fit into the Project API and Session architecture."
     status: "Partially Implemented"
-  repx-pipeline-explaination-1.jpg:
+  repx-pipeline-explaination-1.png:
     description: "Documents the origin of RepX, tracing the problem of low team motivation, participation, and contribution to the need for accountable reputation tracking through justified evaluations and immutable records."
     status: "Educational"
-  repx-pipeline-explaination-2.jpg:
+  repx-pipeline-explaination-2.png:
     description: "Defines RepX's core concept as trust infrastructure built around recording, verifying, and preserving accountable human judgments across individuals, teams, organizations, and communities."
     status: "Educational"
-  repx-pipeline-explaination-3.jpg:
+  repx-pipeline-explaination-3.png:
     description: "Explains the RepX workflow, covering project ownership, administrator management, reputation entries with mandatory reasons and digital signatures, historical recording, and access restrictions for project modifications."
     status: "Educational"
-  repx-pipeline-explaination-4.jpg:
+  repx-pipeline-explaination-4.png:
     description: "Illustrates RepX's append-only history and hash-chain integrity model, explaining how entries are linked, project history is recomputed, and leaderboards are generated from recorded reputation events."
     status: "Educational"
-  repx-pipeline-explaination-5.jpg:
+  repx-pipeline-explaination-5.png:
     description: "Explains independently verifiable filtered histories for subjects and administrators, demonstrating how immutable records preserve accountability and prevent past events from being altered, fabricated, or concealed."
     status: "Educational"
-  repx-pipeline-explaination-6.jpg:
+  repx-pipeline-explaination-6.png:
     description: "Describes the intended real-world distribution and verification workflow, in which users open a RepX project file and verify its history through cryptographic chaining, signatures, and duplicate detection."
     status: "Educational"
-  repx-pipeline-explaination-7.jpg:
+  repx-pipeline-explaination-7.png:
     description: "Summarizes RepX's development roadmap across completed foundations, ongoing engine and API implementation, and planned interfaces, alongside an initial GUI concept for the project homepage."
     status: "Educational"
-  repx-pipeline-explaination-8.jpg:
+  repx-pipeline-explaination-8.png:
     description: "Presents early GUI concepts for an opened RepX project, illustrating the entries and leaderboard views, project navigation, metadata panel, and controls for switching between the two main sections."
     status: "Educational"
-  category-profiling-addition-1.jpg:
+  category-profiling-addition-1.png:
     description: "Introduces Category Profiling, allowing project administrators to define custom categories for evaluating subjects and displaying individual category ratings that contribute to a broader profile."
     status: "Historical"
     featured: "Introduces Category Profiling, expanding RepX beyond a single reputation score toward a more nuanced, multidimensional representation of an individual's qualities."
-  category-profiling-addition-2.jpg:
+  category-profiling-addition-2.png:
     description: "Develops Category Profiling's rating model, distinguishing positive and negative categories and defining how manually assigned category ratings can be interpreted to represent a subject's overall profile accurately."
     status: "Historical"
     featured: "Explores how category-specific ratings can represent different qualities with distinct meanings, forming the conceptual basis for a more expressive reputation profile."
-  ruleset-addition-1.jpg:
+  ruleset-addition-1.png:
     description: "Introduces Rulesets as a RepX feature, defining predefined positive and negative evaluation criteria that administrators can assign during reputation operations to improve transparency, consistency, and accountability."
     status: "Historical"
     featured: "Introduces predefined evaluation criteria as a way to make reputation decisions more consistent, predictable, and understandable to the people being evaluated."
-  ruleset-addition-2.jpg:
+  ruleset-addition-2.png:
     description: "Refines the Rulesets concept, establishing mandatory ruleset selection alongside optional reasoning and illustrating how predefined criteria can reduce disputes over reputation decisions."
     status: "Historical"
     featured: "Develops the accountability implications of Rulesets by exploring how predefined criteria can reduce ambiguity and disputes surrounding reputation decisions."
-  category-profiling-ui-concept.jpg:
+  category-profiling-ui-concept.png:
     description: "Presents an early Category Profiling UI concept, showing individual profile categories with directional rating controls to distinguish positive and negative evaluations within a subject’s profile."
     status: "Superseded"
-  ruleset-ui-concept.jpg:
+  ruleset-ui-concept.png:
     description: "Presents an early Rulesets UI concept, organizing positive and negative rulesets into separate lists with controls for adding rulesets and editing individual rule definitions."
     status: "Superseded"
