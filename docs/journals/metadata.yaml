@@ -4,365 +4,482 @@ files:
     description: "Documents the earliest concept of the credential system, including the initial ideas behind credential generation and key sharing before the subsystem was formally defined."
     status: "Partially Implemented"
     featured: "Captures the birth of the RepX credential system, recording the earliest concepts that ultimately evolved into the current credential architecture."
+    date: "30-06-2026"
   engine-development-roadmap-1.jpg:
     description: "Records the first implementation roadmap used while developing the original RepX engine, outlining the planned development milestones and design progression."
     status: "Historical"
+    date: "30-06-2026"
   engine-development-roadmap-2.jpg:
     description: "Continues the original engine development roadmap, capturing the subsequent implementation stages and evolving design decisions."
     status: "Historical"
+    date: "30-06-2026"
   identity-model-concept.jpg:
     description: "Explores the early identity model by designing the intended leaderboard output and deriving the data required to support it, ultimately shaping the identity system."
     status: "Partially Implemented"
     featured: "Captures the birth of RepX's identity model by working backwards from the intended leaderboard output while introducing PAAF-C and LRRS as the project's foundational guiding philosophy."
+    date: "30-06-2026"
   repx-core-principles.jpg:
     description: "Defines the foundational principles of RepX, including the immutable reputation model, cryptographic authenticity, and the initial separation of Standard Mode and Ledger Mode."
     status: "Partially Implemented"
     featured: "Defines the core philosophy of RepX by establishing its foundational engineering principles, introducing the deliberate +1/-1 reputation philosophy, and shaping the project's architecture, security model, and long-term evolution."
+    date: "30-06-2026"
   application-flow-concept.jpg:
     description: "Explores the conceptual application flow, mapping how users navigate through major operations such as creating projects, opening existing ones, and generating outputs."
     status: "Superseded"
     featured: "Captures the original application flow that established the user journey through RepX before it evolved into the current workflow."
+    date: "30-06-2026"
   credential-class-design.jpg:
     description: "Defines the structure and responsibilities of the credential object used by the RepX engine."
     status: "Partially Implemented"
+    date: "30-06-2026"
   permission-scope-design.jpg:
     description: "Documents the permission scope model governing credential capabilities and authorization boundaries."
+    date: "30-06-2026"
   engine-folder-structure.jpg:
     description: "Defines the high-level folder organization of the RepX engine and its major architectural components."
     status: "Implemented"
     featured: "Introduces the architectural organization of the RepX engine folder, providing the foundational project structure that guides the separation of responsibilities throughout the codebase."
+    date: "30-06-2026"
   engine-interface-architecture.jpg:
     description: "Describes the separation between the shared engine and its interfaces, establishing the architectural foundation of RepX."
     status: "Implemented"
+    date: "30-06-2026"
   engine-runtime-notes.jpg:
     description: "Documents runtime concepts, behaviors, and implementation notes for the shared RepX engine."
     status: "Partially Implemented"
+    date: "30-06-2026"
   engine-source-tree.jpg:
     description: "Defines the source tree organization of the RepX engine, including the arrangement of source files and directories."
     status: "Implemented"
     featured: "Illustrates the implementation layout of the RepX engine, helping contributors understand where each subsystem resides and how the source tree is organized."
+    date: "30-06-2026"
   repx-core-api-sketch.jpg:
     description: "Early sketch of the core RepX engine API, exploring the primary interfaces exposed by the engine."
     status: "Superseded"
+    date: "30-06-2026"
   ledger-cryptographic-pipeline.jpg:
     description: "Defines the Ledger Mode cryptographic pipeline, including canonicalization, canonical strings, hashing, and digital signatures."
     status: "Implemented"
     featured: "Explains the cryptographic trust pipeline that enables Ledger Mode to produce tamper-resistant, verifiable, and cryptographically authenticated reputation records."
+    date: "30-06-2026"
   ledger-record-schema.jpg:
     description: "Defines the schema and organization of ledger records used within Ledger Mode."
     status: "Superseded"
+    date: "30-06-2026"
   project-open-create-flow.jpg:
     description: "Documents the workflow for creating new RepX projects and opening existing ones within the application."
     status: "Historical"
+    date: "30-06-2026"
   repository-readme-overview.jpg:
     description: "Sketches the structure and organization of the repository's README documentation."
     status: "Superseded"
+    date: "30-06-2026"
   system-architecture-overview.jpg:
     description: "Presents a high-level overview of the complete RepX system architecture and the relationships between its major components."
     status: "Historical"
+    date: "30-06-2026"
   project-storage-model.jpg:
     description: "Defines how RepX projects are stored and organized, including the project's storage model and related considerations."
     status: "Superseded"
     featured: "Documents the original project storage architecture that laid the foundation for the later .repx file format and the refined storage model."
+    date: "30-06-2026"
   launcher-interface-wireframe.jpg:
     description: "Wireframe of the launcher interface, exploring the layout and interaction of the application's entry point."
     status: "Historical"
+    date: "30-06-2026"
   launcher-window-concept-1.jpg:
     description: "Early concept exploring the visual design and organization of the launcher window."
     status: "Historical"
+    date: "30-06-2026"
   launcher-window-concept-2.jpg:
     description: "Refined iteration of the launcher window concept with updated interface ideas."
     status: "Historical"
+    date: "30-06-2026"
   navigation-system-design.jpg:
     description: "Documents the navigation model used throughout the user interface, including movement between screens and interaction patterns."
     status: "Implemented"
+    date: "30-06-2026"
   renderer-pipeline-notes.jpg:
     description: "Notes describing the rendering pipeline used by the terminal interface renderer."
     status: "Implemented"
+    date: "30-06-2026"
   terminal-layout-grid.jpg:
     description: "Defines the terminal screen layout using character-based regions such as the header, body, and footer."
     status: "Implemented"
+    date: "30-06-2026"
   tui-component-architecture.jpg:
     description: "Illustrates the architectural relationships between the core components of the original terminal interface engine."
     status: "Implemented"
+    date: "30-06-2026"
   tui-layout-and-renderer.jpg:
     description: "Documents the early design of the terminal layout manager, renderer, and global configuration system."
     status: "Implemented"
+    date: "30-06-2026"
   tui-runtime-cycle.jpg:
     description: "Describes the runtime cycle of the original terminal interface, including initialization, execution, and shutdown."
     status: "Implemented"
+    date: "30-06-2026"
   credential-api-finalization.jpg:
     description: "Finalizes the credential API design by comparing all explored approaches and selecting the unified architecture based on consistency, usability, and separation of responsibilities."
     status: "Abandoned"
+    date: "01-07-2026"
   credential-method-1-overview.jpg:
     description: "Introduces the first credential architecture, where mode-specific credential objects are created and managed explicitly by the caller before interacting with the engine."
     status: "Historical"
+    date: "01-07-2026"
   credential-method-2-overview.jpg:
     description: "Explores a layered credential management approach that hides mode-specific implementation details behind a centralized credential management interface."
     status: "Historical"
+    date: "01-07-2026"
   credential-method-3-details.jpg:
     description: "Refines the third credential architecture by defining a unified entry point that returns mode-specific credential objects with their own specialized operations and parameter requirements."
     status: "Abandoned"
+    date: "01-07-2026"
   credential-method-3-origin.jpg:
     description: "Documents the reasoning process that led to the Unified Space Method, examining how mode selection can simplify the public API while preserving internal flexibility."
     status: "Superseded"
+    date: "01-07-2026"
   credential-methods-comparasion-1.jpg:
     description: "Compares the first and second credential API designs, evaluating their workflow complexity, user responsibilities, and overall developer experience."
     status: "Historical"
+    date: "01-07-2026"
   credential-methods-comparasion-2.jpg:
     description: "Continues the comparison by introducing additional alternatives, refining the unified design, and documenting the architectural reasoning behind the final decision."
     status: "Historical"
+    date: "01-07-2026"
   credential-workflow-exploration.jpg:
     description: "Explores the initial credential workflow and evaluates different architectural approaches for exposing Standard and Ledger credential operations through the public API."
     status: "Superseded"
+    date: "01-07-2026"
   credential-methods-tradeoffs.jpg:
     description: "Evaluates the trade-offs between the remaining credential API designs, comparing developer experience, internal architecture, and design philosophy before choosing the final approach."
     status: "Historical"
+    date: "01-07-2026"
   credential-unknown-discovery.jpg:
     description: "Explores the limitations of implementing a unified credential API in C++, examining function overloading, mode-dependent parameter handling, and compile-time type constraints that influenced the final architecture."
     status: "Abandoned"
+    date: "01-07-2026"
   credential-context-realization.jpg:
     description: "Explores a context-based credential API and examines whether a shared context object can unify mode-specific operations, ultimately recognizing its limitations due to differing parameter and return-type requirements across credential workflows."
     status: "Abandoned"
+    date: "01-07-2026"
   credential-explored-methods.jpg:
     description: "Summarizes all explored credential API designs and evaluates their architectural trade-offs, concluding with the Modularity Method as the most stable solution based on API simplicity, maintainability, scalability, mode isolation, and internal modularity."
     status: "Implemented"
     featured: "Summarizes every explored credential architecture and explains why the Modularity Method became the foundation of the RepX credential API."
+    date: "01-07-2026"
   modes-classes-origin.jpg:
     description: "Documents the origin of mode-specific credential classes and their integration into the RepX API, introducing dedicated implementations for Ledger and Standard modes alongside the corresponding source tree organization."
     status: "Historical"
+    date: "01-07-2026"
   modularity-method-origin.jpg:
     description: "Documents the initial design of the Modularity Method, exploring how mode-specific credential operations can be exposed through dedicated API objects while preserving a unified and extensible credential architecture."
     status: "Historical"
     featured: Introduces the Modularity Method and its initial API structure, establishing the foundation for RepX's mode-specific credential architecture.
+    date: "01-07-2026"
   repx-implementation-diversion.jpg:
     description: "Explores how the Project API should internally diverge into mode-specific implementations while preserving a unified public interface."
     status: "Historical"
+    date: "05-07-2026"
   repx-diversion-solution-1.jpg:
     description: "Explores the first solution for mode-specific project implementations by extending the Modularity Method across the engine, exposing mode-specific operations while evaluating their architectural trade-offs."
     status: "Abandoned"
+    date: "05-07-2026"
   repx-diversion-solution-2.jpg:
     description: "Explores an alternative Context Registry Method that encapsulates mode-specific data within context objects, allowing RepX systems to expose a unified public API while selecting implementations internally."
     status: "Abandoned"
+    date: "05-07-2026"
   repx-philosophy-upgrade.jpg:
     description: "Reframes the relationship between the RepX API and RepX Engine by separating interface from philosophy, establishing the engine as the implementation of RepX's design principles through independently responsible execution modes."
     status: "Implemented"
     featured: "Introduces one of RepX's core architectural philosophies by distinguishing the API as a communication interface and the Engine as the implementation of RepX's design philosophy through independent execution modes."
+    date: "05-07-2026"
   api-architecture-exploration-1.jpg:
     description: "Explores multiple experimental API architectures for exposing mode-specific functionality across the RepX engine, evaluating approaches such as persistent mode selection, mode accessors, and global context before they were discarded."
     status: "Abandoned"
+    date: "14-07-2026"
   api-architecture-exploration-2.jpg:
     description: "Continues the exploration of alternative API architectures by experimenting with context-based workflows and mode-specific objects to understand their impact on usability, responsibility distribution, and long-term maintainability."
     status: "Abandoned"
+    date: "14-07-2026"
   context-registry-finalization.jpg:
     description: "Finalizes the Context Registry Method by defining a centralized registry of mode-specific contexts that enables a unified public API while internally dispatching operations to the appropriate mode implementations."
     status: "Implemented"
+    date: "14-07-2026"
   workflow-amendment-timeline-1.jpg:
     description: "Documents the beginning of the API workflow evolution by identifying the scalability limitations of the Modularity Method and motivating the search for a more maintainable architecture as RepX expanded."
     status: "Historical"
+    date: "14-07-2026"
   workflow-amendment-timeline-2.jpg:
     description: "Continues the API workflow evolution by introducing the Context Registry Method, comparing it against the earlier Object Method, and evaluating the architectural improvements it provides."
     status: "Historical"
+    date: "14-07-2026"
   workflow-amendment-timeline-3.jpg:
     description: "Explains how the Context Registry Method operates internally by centralizing mode-specific contexts, delegating operations to their respective implementations, and establishing the engine as the system orchestrator."
     status: "Historical"
+    date: "14-07-2026"
   workflow-amendment-timeline-4.jpg:
     description: "Concludes the API workflow evolution by summarizing the advantages of the Context Registry Method and finalizing its adoption as the architectural direction for unifying RepX's public API."
     status: "Historical"
+    date: "14-07-2026"
   context-type-dispatch-exploration.jpg:
     description: "Explores using mode-specific context types as an implicit dispatch mechanism, allowing the engine to automatically route operations to the appropriate mode implementation based solely on the received context object."
     status: "Historical"
+    date: "16-07-2026"
   context-namespace-organization.jpg:
     description: "Defines the organization of the Context subsystem, establishing Context as the parent namespace responsible for managing all mode-specific context objects while allowing each mode to own and maintain its own implementations."
     status: "Partially Implemented"
+    date: "16-07-2026"
   registry-resolver-pair-architecture.jpg:
     description: "Defines the Context Registry and Context Resolver architecture, establishing the communication layer between the API and the engine by separating context construction from mode-specific implementation resolution."
     status: "Partially Implemented"
+    date: "17-07-2026"
   registry-resolver-roles.jpg:
     description: "Defines the respective responsibilities of the Context Registry and Context Resolver, explaining how user-defined contexts are interpreted and transformed into mode-specific implementations for engine orchestration."
     status: "Superseded"
     featured: "Introduces the Registry-Resolver architecture, one of RepX's core abstractions that decouples the public API from mode implementations while preserving a unified API language."
+    date: "16-07-2026"
   context-registry-concept-1.jpg:
     description: "Defines the structure of the Context Registry by organizing mode-specific context definitions into dedicated headers and exposing them through a unified Context namespace for API users."
     status: "Superseded"
+    date: "16-07-2026"
   context-registry-concept-2.jpg:
     description: ""
     status: "Superseded"
+    date: "16-07-2026"
   context-resolver-concept-1.jpg:
     description: "Explores the concept of the Context Resolver, introducing how context objects supplied through the Context Registry are interpreted and translated into mode-specific implementation objects for the engine."
     status: "Implemented"
+    date: "16-07-2026"
   context-resolver-concept-2.jpg:
     description: ""
     status: "Implemented"
+    date: "16-07-2026"
   context-metadata-exploration.jpg:
     description: "Explores embedding mode information directly into context types using template-based metadata, evaluating compile-time context identification as an alternative to the Context Registry and Resolver architecture."
     status: "Implemented"
+    date: "16-07-2026"
   context-mode-mapping-exploration.jpg:
     description: "Explores mechanisms for mapping context types to their corresponding mode implementations, investigating how the engine can associate mode-specific context structures with the appropriate runtime without explicit user intervention."
     status: "Superseded"
+    date: "16-07-2026"
   template-context-resolution-exploration.jpg:
     description: "Explores using template-based metadata to implicitly associate context types with their corresponding modes, investigating whether compile-time templates could replace the Context Registry and Context Resolver architecture."
     status: "Implemented"
+    date: "16-07-2026"
   resolver-template-mechanics-1.jpg:
     description: "Explores how dependent types and type aliases can be used within templates to expose mode-specific type information required by the Context Resolver."
     status: "Educational"
+    date: "22-07-2026"
   resolver-template-mechanics-2.jpg:
     description: "Documents the role of the `typename` keyword in dependent names, explaining how template-based type retrieval enables compile-time access to mode information."
     status: "Educational"
+    date: "22-07-2026"
   resolver-template-mechanics-3.jpg:
     description: "Applies dependent type retrieval to the Context Resolver architecture, exploring compile-time extraction of mode-specific types from context metadata."
     status: "Educational"
+    date: "22-07-2026"
   project-lifecycle-return-model-1.jpg:
     description: "Explores the architectural contradiction surrounding the Engine's responsibility in returning public Project objects while remaining only an orchestration layer."
     status: "Finalized"
+    date: "22-07-2026"
   project-lifecycle-return-model-2.jpg:
     description: "Investigates ownership boundaries between the Engine, ProjectManager, Project, and mode-specific implementations, ultimately defining the return contract expected by API consumers."
     status: "Finalized"
+    date: "22-07-2026"
   project-object-session-architecture-1.jpg:
     description: "Introduces the final architectural direction for Project and ProjectManager, identifying the ownership contradiction between the Engine and mode implementations."
     status: "Implemented"
+    date: "22-07-2026"
   project-object-session-architecture-2.jpg:
     description: "Resolves the ownership model by establishing that mode implementations return their Project object to the Engine, which transparently exposes it through the public API."
     status: "Implemented"
+    date: "22-07-2026"
   project-object-session-architecture-3.jpg:
     description: "Defines the Session as the runtime state returned by mode-specific project creation and establishes it as the core object encapsulated by the public Project abstraction."
     status: "Implemented"
+    date: "22-07-2026"
   project-object-session-architecture-4.jpg:
     description: "Finalizes the project lifecycle by defining create() as a wrapper over the complete project opening pipeline, ensuring newly created projects are immediately opened through the same validation flow."
     status: "Implemented"
+    date: "22-07-2026"
   project-object-session-architecture-5.jpg:
     description: "Extends the finalized delegation architecture to CredentialManager, completing the unified mode-dispatch structure for project and credential operations while preserving a single Engine-facing API."
     status: "Implemented"
+    date: "22-07-2026"
   engine-mode-session-wrapper.jpg:
     description: "Finalizes the Engine-mode interaction model, resolving the create()/open() dependency and establishing Session as the mode-owned object behind the unified Project API."
     status: "Finalized"
+    date: "22-07-2026"
   context-resolver-simplification.jpg:
     description: "Documents the simplification of the context architecture by eliminating the Context Registry and retaining only the Context Resolver, treating mode contexts as static configuration structures consumed directly by mode implementations."
     status: "Implemented"
+    date: "23-07-2026"
   context-to-mode-mapping.jpg:
     description: "Explores mapping API-facing context structures to their corresponding mode implementations through the Context Resolver before the Context Registry was ultimately removed."
     status: "Superseded"
+    date: "23-07-2026"
   mode-specific-project-opening.jpg:
     description: "Explores delegating project opening to the detected mode, allowing each mode to perform its own reconstruction and recomputation logic while the Engine orchestrates the dispatch."
     status: "Superseded"
+    date: "23-07-2026"
   project-api-over-session.jpg:
     description: "Establishes the public Project API as a wrapper over the internal Session, allowing create() to reuse the project opening pipeline while exposing a unified interface to API users."
     status: "Implemented"
+    date: "23-07-2026"
   project-session-api-layout.jpg:
     description: "Finalizes the public Project API structure, separating informational and operational APIs from the internal Session, while documenting the finalized Credential API requirements for Standard and Ledger modes."
     status: "Partially Implemented"
+    date: "23-07-2026"
   credential-api-return-types.jpg:
     description: "Investigates return type consistency for the Credential API, concluding that authentication can expose a unified boolean result while credential creation requires mode-dependent return types."
     status: "Finalized"
+    date: "23-07-2026"
   public-api-dispatch-operations-1.png:
     description: "Establishes the public API dispatch convention, defining explicit overloads for API users while resolving calls internally through context-specific dispatchers."
     status: "Historical"
+    date: "07-10-2026"
   public-api-dispatch-operations-2.png:
     description: "Finalizes the RepX entry-point structure, confirming ProjectManager and CredentialManager as the primary public interfaces for project and credential operations."
     status: "Implemented"
+    date: "07-10-2026"
   public-api-dispatch-operations-3.png:
     description: "Returns focus to the core Project API, outlining its operational interface and identifying the project-level functions that will form the main API surface."
     status: "Partially Implemented"
+    date: "07-10-2026"
   project-api-operations.png:
     description: "Defines the initial requirements and natural flow for Project API operations, focusing on project creation, metadata, key handling, user information, and how that information should be stored and retrieved."
     status: "Implemented"
+    date: "08-10-2026"
   project-api-grouping-1.png:
     description: "Explores potential Project API groups, separating project information and user-related operations while introducing grouped interfaces with restricted and overloaded operations."
     status: "Partially Implemented"
+    date: "08-10-2026"
   project-api-grouping-2.png:
     description: "Refines the Project API structure by organizing information and user operations into nested groups, defining access boundaries and operator overloads for different user roles."
     status: "Partially Implemented"
+    date: "08-10-2026"
   project-api-grouping-3.png:
     description: "Further decomposes the API into role-specific groups and identifies additional domain groups such as entries, sessions, credentials, and exports for future implementation."
     status: "Partially Implemented"
+    date: "08-10-2026"
   session-api-model-1.png:
     description: "Reconsiders the Session API's mutability model, identifying which operations should remain read-only and which require controlled modification while preserving the integrity of project data."
     status: "Educational"
+    date: "09-10-2026"
   session-api-model-2.png:
     description: "Refines the Project class into read-only and command-oriented operation layers, restricting direct data modification while exposing controlled API functions for updates and entry management."
     status: "Educational"
+    date: "09-10-2026"
   session-api-model-3.png:
     description: "Establishes the two-layer Session API structure and begins defining the operation groups within the command layer, setting up the next stage of detailing entry-related operations."
     status: "Historical"
+    date: "09-10-2026"
   entry-api-design-contradiction-1.png:
     description: "Examines the trade-off between natural-language-style API calls and a canonical entry-based operation system, comparing indirect and direct methods for accessing project functionality."
     status: "Implemented"
+    date: "09-10-2026"
   entry-api-design-contradiction-2.png:
     description: "Establishes both direct and indirect API access methods, allowing newcomers to use intuitive interfaces while experienced developers access RepX operations through explicit, consistent entry-based calls."
     status: "Implemented"
+    date: "09-10-2026"
   entry-api-design-contradiction-3.png:
     description: "Introduces the Entry Processor as a centralized system for managing entry operations, routing indirect API calls through canonical entry methods and enabling consistent entry recognition and processing."
     status: "Implemented"
+    date: "09-10-2026"
   entops-origin.png:
     description: "Defines the foundational EntOps entry schema, distinguishing identity, domain-specific data, and ledger integrity fields while clarifying which fields the API user must supply and which are generated internally by the RepX engine."
     status: "Historical"
+    date: "09-10-2026"
   entops-schema-design-1.png:
     description: "Explores a dynamic schema design for EntOps and general RepX requirements, aiming to eliminate duplicated schema definitions by centralizing their structure while allowing each system to use the fields it needs."
     status: "Historical"
+    date: "09-10-2026"
   entops-schema-design-2.png:
     description: "Explores how EntOps and RepX's general schema can remain separate in responsibility while staying coordinated, considering a shared schema definition that maps each field to its owner."
     status: "Historical"
+    date: "09-10-2026"
   entops-schema-finalization-1.png:
     description: "Refines the EntOps schema by exploring access control through private and public members, internal signature validation, and the possibility of requiring signatures explicitly as API parameters."
     status: "Superseded"
+    date: "09-10-2026"
   entops-schema-finalization-2.png:
     description: "Finalizes the separation of entry fields into identity metadata, domain-specific payload, and ledger integrity data, while exploring access control and signature handling through the Engine friendship."
     status: "Superseded"
+    date: "09-10-2026"
   entops-schema-finalization-3.png:
     description: "Consolidates the EntOps schema design decisions, establishing field separation through access control and favoring explicit signature parameters over a dedicated permission-management system."
     status: "Superseded"
+    date: "09-10-2026"
   entops-system-operation-1.png:
     description: "Defines the EntOps schema structure, separating public entry-specific fields from private engine-managed metadata and integrity fields, while establishing the rationale for a dedicated entry schema and its access patterns."
     status: "Finalized"
+    date: "09-10-2026"
   entops-system-operation-2.png:
     description: "Develops the EntOps integration model, proposing a unified entry-type registry with structured field access, a dedicated entry namespace in the RepX API, and authentication-based operations that remove signatures from individual operation calls."
     status: "Finalized"
+    date: "09-10-2026"
   project-auth-origin.png:
     description: "Introduces the Project-level authentication interface, defining authentication-related operations for signing and session access while illustrating how authenticated entry operations fit into the Project API and Session architecture."
     status: "Partially Implemented"
+    date: "09-10-2026"
   repx-pipeline-explaination-1.png:
     description: "Documents the origin of RepX, tracing the problem of low team motivation, participation, and contribution to the need for accountable reputation tracking through justified evaluations and immutable records."
     status: "Educational"
+    date: "09-10-2026"
   repx-pipeline-explaination-2.png:
     description: "Defines RepX's core concept as trust infrastructure built around recording, verifying, and preserving accountable human judgments across individuals, teams, organizations, and communities."
     status: "Educational"
+    date: "09-10-2026"
   repx-pipeline-explaination-3.png:
     description: "Explains the RepX workflow, covering project ownership, administrator management, reputation entries with mandatory reasons and digital signatures, historical recording, and access restrictions for project modifications."
     status: "Educational"
+    date: "09-10-2026"
   repx-pipeline-explaination-4.png:
     description: "Illustrates RepX's append-only history and hash-chain integrity model, explaining how entries are linked, project history is recomputed, and leaderboards are generated from recorded reputation events."
     status: "Educational"
+    date: "09-10-2026"
   repx-pipeline-explaination-5.png:
     description: "Explains independently verifiable filtered histories for subjects and administrators, demonstrating how immutable records preserve accountability and prevent past events from being altered, fabricated, or concealed."
     status: "Educational"
+    date: "09-10-2026"
   repx-pipeline-explaination-6.png:
     description: "Describes the intended real-world distribution and verification workflow, in which users open a RepX project file and verify its history through cryptographic chaining, signatures, and duplicate detection."
     status: "Educational"
+    date: "09-10-2026"
   repx-pipeline-explaination-7.png:
     description: "Summarizes RepX's development roadmap across completed foundations, ongoing engine and API implementation, and planned interfaces, alongside an initial GUI concept for the project homepage."
     status: "Educational"
+    date: "09-10-2026"
   repx-pipeline-explaination-8.png:
     description: "Presents early GUI concepts for an opened RepX project, illustrating the entries and leaderboard views, project navigation, metadata panel, and controls for switching between the two main sections."
     status: "Educational"
+    date: "09-10-2026"
   category-profiling-addition-1.png:
     description: "Introduces Category Profiling, allowing project administrators to define custom categories for evaluating subjects and displaying individual category ratings that contribute to a broader profile."
     status: "Historical"
     featured: "Introduces Category Profiling, expanding RepX beyond a single reputation score toward a more nuanced, multidimensional representation of an individual's qualities."
+    date: "09-10-2026"
   category-profiling-addition-2.png:
     description: "Develops Category Profiling's rating model, distinguishing positive and negative categories and defining how manually assigned category ratings can be interpreted to represent a subject's overall profile accurately."
     status: "Historical"
     featured: "Explores how category-specific ratings can represent different qualities with distinct meanings, forming the conceptual basis for a more expressive reputation profile."
+    date: "09-10-2026"
   ruleset-addition-1.png:
     description: "Introduces Rulesets as a RepX feature, defining predefined positive and negative evaluation criteria that administrators can assign during reputation operations to improve transparency, consistency, and accountability."
     status: "Historical"
     featured: "Introduces predefined evaluation criteria as a way to make reputation decisions more consistent, predictable, and understandable to the people being evaluated."
+    date: "09-10-2026"
   ruleset-addition-2.png:
     description: "Refines the Rulesets concept, establishing mandatory ruleset selection alongside optional reasoning and illustrating how predefined criteria can reduce disputes over reputation decisions."
     status: "Historical"
     featured: "Develops the accountability implications of Rulesets by exploring how predefined criteria can reduce ambiguity and disputes surrounding reputation decisions."
+    date: "09-10-2026"
   category-profiling-ui-concept.png:
     description: "Presents an early Category Profiling UI concept, showing individual profile categories with directional rating controls to distinguish positive and negative evaluations within a subject’s profile."
     status: "Superseded"
+    date: "09-10-2026"
   ruleset-ui-concept.png:
     description: "Presents an early Rulesets UI concept, organizing positive and negative rulesets into separate lists with controls for adding rulesets and editing individual rule definitions."
     status: "Superseded"
+    date: "09-10-2026"

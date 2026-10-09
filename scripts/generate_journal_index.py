@@ -11,8 +11,9 @@ The README is generated entirely from scratch on every run.
 
 import sys
 import difflib
+from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Set, Tuple, Any
+from typing import List, Dict, Set, Tuple, Any, Optional
 import yaml
 
 # Reconfigure stdout/stderr to support Unicode characters on Windows terminal if possible
@@ -59,6 +60,10 @@ STATUS_VALUES = [
     "Finalized",
     "Educational"
 ]
+
+# Date format for journal page metadata
+DATE_FORMAT = "%d-%m-%Y"
+DATE_FORMAT_DISPLAY = "DD-MM-YYYY"
 
 # Title of the README document
 README_TITLE = "RepX Journal Index"
@@ -200,11 +205,58 @@ def scan_directory(dir_path: Path, supported_exts: List[str]) -> List[Path]:
     return result
 
 
+def parse_entry_date(date_val: Any, filename: str) -> Tuple[Optional[datetime.date], Optional[str]]:
+    """
+    Validates and parses a date value from metadata.
+    Returns (date_obj, None) on success.
+    Returns (None, error_description) on failure.
+    """
+    if date_val is None:
+        return None, f"Missing 'date' field for '{filename}'."
+
+    if not isinstance(date_val, str):
+        return None, f"Invalid date type for '{filename}': expected string formatted as {DATE_FORMAT_DISPLAY}, got {type(date_val).__name__}."
+
+    date_str = date_val.strip()
+    if not date_str:
+        return None, f"Empty 'date' field for '{filename}'. Expected format is {DATE_FORMAT_DISPLAY}."
+
+    try:
+        parsed_date = datetime.strptime(date_str, DATE_FORMAT).date()
+        return parsed_date, None
+    except ValueError:
+        return None, f"Invalid date format or value for '{filename}': '{date_val}'. Expected format is {DATE_FORMAT_DISPLAY} (e.g. 30-06-2026)."
+
+
+def sort_notebook_pages(
+    files: List[Path],
+    files_metadata: Dict[str, Any],
+    journals_dir: Path
+) -> List[Path]:
+    """
+    Sorts notebook page Path objects:
+    1. Primary: Descending by date (newest first, oldest last).
+    2. Secondary (tie-breaker for identical dates): Ascending alphabetically
+       by directory hierarchy and filename relative to journals_dir.
+    """
+    def sort_key(file_path: Path) -> Tuple[int, str]:
+        filename = file_path.name
+        file_meta = files_metadata.get(filename, {})
+        date_val = file_meta.get("date")
+        date_obj, _ = parse_entry_date(date_val, filename)
+        # Higher date -> higher ordinal -> more negative -> comes first in ascending sort
+        ordinal = -date_obj.toordinal() if date_obj else 0
+        rel_path = file_path.relative_to(journals_dir).as_posix()
+        return (ordinal, rel_path)
+
+    return sorted(files, key=sort_key)
+
+
 def validate_metadata(
     metadata: Any,
     scanned_files: List[Path],
     journals_dir: Path
-) -> Tuple[List[str], List[str], List[str], List[str]]:
+) -> Tuple[List[str], List[str], List[str], List[str], List[str]]:
     """
     Validates metadata contents and directory structure.
     Returns a tuple of:
@@ -212,25 +264,27 @@ def validate_metadata(
     - missing_metadata: Paths of filesystem files that have no metadata
     - metadata_without_file: Names of files in metadata that do not exist on disk
     - invalid_status_filenames: Filenames with invalid status values
+    - date_errors: Errors related to missing, empty, or malformed date fields
     """
     malformed_errors: List[str] = []
     missing_metadata: List[str] = []
     metadata_without_file: List[str] = []
     invalid_status_filenames: List[str] = []
+    date_errors: List[str] = []
 
     # 1. Structure / Malformed check
     if not isinstance(metadata, dict):
         malformed_errors.append("Metadata root is not a dictionary/object.")
-        return malformed_errors, missing_metadata, metadata_without_file, invalid_status_filenames
+        return malformed_errors, missing_metadata, metadata_without_file, invalid_status_filenames, date_errors
 
     if "files" not in metadata:
         malformed_errors.append("Metadata is missing 'files' key.")
-        return malformed_errors, missing_metadata, metadata_without_file, invalid_status_filenames
+        return malformed_errors, missing_metadata, metadata_without_file, invalid_status_filenames, date_errors
 
     files_section = metadata["files"]
     if not isinstance(files_section, dict):
         malformed_errors.append("'files' key in metadata must be a dictionary mapping filenames to details.")
-        return malformed_errors, missing_metadata, metadata_without_file, invalid_status_filenames
+        return malformed_errors, missing_metadata, metadata_without_file, invalid_status_filenames, date_errors
 
     # Validate each metadata entry structure
     metadata_filenames = set()
@@ -254,6 +308,14 @@ def validate_metadata(
             if not isinstance(data["featured"], str):
                 malformed_errors.append(f"Featured for '{filename}' must be a string.")
 
+        # Date validation: required, non-empty, and must follow DATE_FORMAT
+        if "date" not in data or data["date"] is None:
+            date_errors.append(f"Missing date: '{filename}' has no 'date' field. Each entry must specify a date in {DATE_FORMAT_DISPLAY} format.")
+        else:
+            _, date_err = parse_entry_date(data["date"], filename)
+            if date_err:
+                date_errors.append(date_err)
+
     # 2. Filesystem vs Metadata alignment
     scanned_filenames = {p.name for p in scanned_files}
 
@@ -269,7 +331,7 @@ def validate_metadata(
         if filename not in scanned_filenames:
             metadata_without_file.append(filename)
 
-    return malformed_errors, missing_metadata, metadata_without_file, invalid_status_filenames
+    return malformed_errors, missing_metadata, metadata_without_file, invalid_status_filenames, date_errors
 
 
 def detect_renames(missing_metadata: List[str], metadata_without_file: List[str]) -> None:
@@ -407,49 +469,62 @@ def build_readme_string(
     readme_lines.append(summary_text)
     readme_lines.append("")
 
-    # Separate featured and regular rows
-    featured_rows = []
-    regular_rows = []
-    
-    featured_idx = 1
-    regular_idx = 1
+    # Separate featured and regular files
+    featured_files: List[Path] = []
+    regular_files: List[Path] = []
 
     for file_path in scanned_files:
         filename = file_path.name
         file_meta = files_metadata.get(filename, {})
-
         is_featured = file_meta and "featured" in file_meta and file_meta["featured"] is not None
 
-        # Relative paths and markdown links
+        if is_featured and GENERATE_FEATURED_SECTION:
+            featured_files.append(file_path)
+        else:
+            regular_files.append(file_path)
+
+    # Sort each group independently: newest additions at top, oldest at bottom
+    # Tie-breaker for identical dates: alphabetical by directory structure hierarchy and filename
+    sorted_featured_files = sort_notebook_pages(featured_files, files_metadata, journals_dir)
+    sorted_regular_files = sort_notebook_pages(regular_files, files_metadata, journals_dir)
+
+    # Build featured rows
+    featured_rows = []
+    for idx, file_path in enumerate(sorted_featured_files, start=1):
+        filename = file_path.name
+        file_meta = files_metadata.get(filename, {})
         relative_path = file_path.relative_to(journals_dir).as_posix()
         page_link = f"[{filename}]({relative_path})"
-
         category = file_path.parent.relative_to(journals_dir).as_posix()
         category_formatted = f"`{category}`"
 
-        if is_featured and GENERATE_FEATURED_SECTION:
-            # Featured Notebook Pages table row
-            s_no = str(featured_idx)
-            featured_idx += 1
-            reason = file_meta.get("featured")
-            if reason is None or reason == "":
-                reason = MISSING_VALUE
-            # Status column: same metadata field and placeholder behavior as the main table
-            status = file_meta.get("status")
-            if status is None or status == "":
-                status = MISSING_VALUE
-            featured_rows.append([s_no, page_link, category_formatted, reason, status])
-        else:
-            # Regular Notebook Pages table row
-            s_no = str(regular_idx)
-            regular_idx += 1
-            description = file_meta.get("description")
-            if description is None or description == "":
-                description = MISSING_VALUE
-            status = file_meta.get("status")
-            if status is None or status == "":
-                status = MISSING_VALUE
-            regular_rows.append([s_no, page_link, category_formatted, description, status])
+        s_no = str(idx)
+        reason = file_meta.get("featured")
+        if reason is None or reason == "":
+            reason = MISSING_VALUE
+        status = file_meta.get("status")
+        if status is None or status == "":
+            status = MISSING_VALUE
+        featured_rows.append([s_no, page_link, category_formatted, reason, status])
+
+    # Build regular rows
+    regular_rows = []
+    for idx, file_path in enumerate(sorted_regular_files, start=1):
+        filename = file_path.name
+        file_meta = files_metadata.get(filename, {})
+        relative_path = file_path.relative_to(journals_dir).as_posix()
+        page_link = f"[{filename}]({relative_path})"
+        category = file_path.parent.relative_to(journals_dir).as_posix()
+        category_formatted = f"`{category}`"
+
+        s_no = str(idx)
+        description = file_meta.get("description")
+        if description is None or description == "":
+            description = MISSING_VALUE
+        status = file_meta.get("status")
+        if status is None or status == "":
+            status = MISSING_VALUE
+        regular_rows.append([s_no, page_link, category_formatted, description, status])
 
     # 3. Featured Notebook Pages section (if enabled and non-empty)
     if GENERATE_FEATURED_SECTION and len(featured_rows) > 0:
@@ -522,7 +597,7 @@ def main() -> None:
     scanned_files = scan_directory(journals_dir, SUPPORTED_EXTENSIONS)
 
     # 4. Validate metadata and files compatibility
-    malformed_errors, missing_metadata, metadata_without_file, invalid_status_filenames = validate_metadata(
+    malformed_errors, missing_metadata, metadata_without_file, invalid_status_filenames, date_errors = validate_metadata(
         metadata, scanned_files, journals_dir
     )
 
@@ -543,6 +618,7 @@ def main() -> None:
         missing_metadata or
         metadata_without_file or
         invalid_status_filenames or
+        date_errors or
         duplicate_errors
     )
 
@@ -571,6 +647,9 @@ def main() -> None:
                 error_blocks.append(
                     f"Invalid status\n{fn}\n(value: {status_val})\nAllowed values\n" + "\n".join(STATUS_VALUES)
                 )
+
+        if date_errors:
+            error_blocks.append("Invalid or missing date metadata\n" + "\n".join(date_errors))
 
         print("ERROR\n")
         print("\n--------------------------------\n".join(error_blocks))
