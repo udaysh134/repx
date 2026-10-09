@@ -275,3 +275,30 @@ files:
   project-api-grouping-3.jpg:
     description: "Further decomposes the API into role-specific groups and identifies additional domain groups such as entries, sessions, credentials, and exports for future implementation."
     status: "Partially Implemented"
+  session-api-model-1.jpg:
+    description: "Reconsiders the Session API's mutability model, identifying which operations should remain read-only and which require controlled modification while preserving the integrity of project data."
+    status: "Educational"
+  session-api-model-2.jpg:
+    description: "Refines the Project class into read-only and command-oriented operation layers, restricting direct data modification while exposing controlled API functions for updates and entry management."
+    status: "Educational"
+  session-api-model-3.jpg:
+    description: "Establishes the two-layer Session API structure and begins defining the operation groups within the command layer, setting up the next stage of detailing entry-related operations."
+    status: "Historical"
+  entry-api-design-contradiction-1.jpg:
+    description: "Examines the trade-off between natural-language-style API calls and a canonical entry-based operation system, comparing indirect and direct methods for accessing project functionality."
+    status: "Implemented"
+  entry-api-design-contradiction-2.jpg:
+    description: "Establishes both direct and indirect API access methods, allowing newcomers to use intuitive interfaces while experienced developers access RepX operations through explicit, consistent entry-based calls."
+    status: "Implemented"
+  entry-api-design-contradiction-3.jpg:
+    description: "Introduces the Entry Processor as a centralized system for managing entry operations, routing indirect API calls through canonical entry methods and enabling consistent entry recognition and processing."
+    status: "Implemented"
+  entops-origin.jpg:
+    description: "Defines the foundational EntOps entry schema, distinguishing identity, domain-specific data, and ledger integrity fields while clarifying which fields the API user must supply and which are generated internally by the RepX engine."
+    status: "Finalized"
+  entops-schema-design-1.jpg:
+    description: "Explores a dynamic schema design for EntOps and general RepX requirements, aiming to eliminate duplicated schema definitions by centralizing their structure while allowing each system to use the fields it needs."
+    status: "Finalized"
+  entops-schema-design-2.jpg:
+    description: "Explores how EntOps and RepX's general schema can remain separate in responsibility while staying coordinated, considering a shared schema definition that maps each field to its owner."
+    status: "Finalized"
