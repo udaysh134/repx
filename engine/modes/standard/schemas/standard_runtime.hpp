@@ -105,5 +105,5 @@ struct StandardRuntime {
     std::vector<SignersOBJ> signers;
     std::vector<SubjectsOBJ> subjects;
     Stats stats;
-    std::vector<StandardEntriesVariant> entries;
+    std::vector<StandardEntry::Variants> entries;
 };

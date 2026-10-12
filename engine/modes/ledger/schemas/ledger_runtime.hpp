@@ -101,5 +101,5 @@ struct LedgerRuntime {
     std::vector<SignersOBJ> signers;
     std::vector<SubjectsOBJ> subjects;
     Stats stats;
-    std::vector<LedgerEntriesVariant> entries;
+    std::vector<LedgerEntry::Variants> entries;
 };

@@ -6,222 +6,366 @@
 #include "aliases.hpp"
 
 
+#define FRIEND_CLASSES friend class RepX
+
+
 class RepX;
 
-namespace LedgerEntry {
-    struct Genesis {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        schema_t schema;
-        std::string engine;
-        std::string mode;
-        struct Project {
-            std::string name;
-            std::string description;
-        } project;
-        struct Owner {
-            userID_t uid;
-            std::string name;
-            keyPair_t pubKey;
-        } owner;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct SubjectCreate {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        userID_t uid;
-        std::string name;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct SubjectDeactivate {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        userID_t target;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct SubjectReactivate {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        userID_t target;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct Rep {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        userID_t target;
-        delta_t delta;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct AdminAssign {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        struct Admin {
-            userID_t uid;
-            std::string name;
-            keyPair_t pubKey;
-        } admin;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct AdminRevoke {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        userID_t target;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct AdminRestore {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        userID_t target;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct UserRename {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        userID_t target;
-        std::string name;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct RotateKey {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        userID_t target;
-        keyPair_t key;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct ProjectUpdate {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        struct Project {
-            std::string name;
-            std::string description;
-        } project;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct ConfigUpdate {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        struct Config {
-            // Empty intentionally, data fields unknown
-        } config;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct Tail {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct Archive {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-    
-    struct Unarchive {
-        entryID_t id;
-        timeMS_t timestamp;
-        std::string type;
-        std::string reason;
-        userID_t author;
-        hash_t prevHash;
-        hash_t hash;
-        sig_t sig;
-    };
-}
+class LedgerEntry final {
+    LedgerEntry() = delete;
 
-using LedgerEntriesVariant = std::variant<
-    LedgerEntry::Genesis,
-    LedgerEntry::SubjectCreate,
-    LedgerEntry::SubjectDeactivate,
-    LedgerEntry::SubjectReactivate,
-    LedgerEntry::Rep,
-    LedgerEntry::AdminAssign,
-    LedgerEntry::AdminRevoke,
-    LedgerEntry::AdminRestore,
-    LedgerEntry::UserRename,
-    LedgerEntry::RotateKey,
-    LedgerEntry::ProjectUpdate,
-    LedgerEntry::ConfigUpdate,
-    LedgerEntry::Tail,
-    LedgerEntry::Archive,
-    LedgerEntry::Unarchive
->;
+    private:
+        FRIEND_CLASSES;
+
+        struct Genesis {
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    schema_t _04_schema;
+                    std::string _05_engine;
+                    std::string _06_mode;
+                    struct Project {
+                        std::string _01_name;
+                        std::string _02_description;
+                    } _07_project;
+                    struct Owner {
+                        userID_t _01_uid;
+                        std::string _02_name;
+                        keyPair_t _03_pubKey;
+                    } _08_owner;
+                    hash_t _09_prevHash;
+                    hash_t _10_hash;
+                    sig_t _11_sig;
+                };
+        };
+
+        struct Tail {
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    userID_t _04_author;
+                    hash_t _05_prevHash;
+                    hash_t _06_hash;
+                    sig_t _07_sig;
+                };
+        };
+
+        
+    public:
+        struct SubjectCreate {
+            public:
+                std::string _01_name;
+                std::string _02_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    userID_t _04_uid;
+                    std::string _05_name;
+                    std::string _06_reason;
+                    userID_t _07_author;
+                    hash_t _08_prevHash;
+                    hash_t _09_hash;
+                    sig_t _10_sig;
+                };
+        };
+
+        struct SubjectDeactivate {
+            public:
+                userID_t _01_target;
+                std::string _02_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    userID_t _04_target;
+                    std::string _05_reason;
+                    userID_t _06_author;
+                    hash_t _07_prevHash;
+                    hash_t _08_hash;
+                    sig_t _09_sig;
+                };
+        };
+
+        struct SubjectReactivate {
+            public:
+                userID_t _01_target;
+                std::string _02_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    userID_t _04_target;
+                    std::string _05_reason;
+                    userID_t _06_author;
+                    hash_t _07_prevHash;
+                    hash_t _08_hash;
+                    sig_t _09_sig;
+                };
+        };
+
+        struct Rep {
+            public:
+                userID_t _01_target;
+                delta_t _02_delta;
+                std::string _03_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    userID_t _04_target;
+                    delta_t _05_delta;
+                    std::string _06_reason;
+                    userID_t _07_author;
+                    hash_t _08_prevHash;
+                    hash_t _09_hash;
+                    sig_t _10_sig;
+                };
+        };
+
+        struct AdminAssign {
+            public:
+                std::string _01_name;
+                keyPair_t _02_pubKey;
+                std::string _03_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    struct Admin {
+                        userID_t _01_uid;
+                        std::string _02_name;
+                        keyPair_t _03_pubKey;
+                    } _04_admin;
+                    std::string _05_reason;
+                    userID_t _06_author;
+                    hash_t _07_prevHash;
+                    hash_t _08_hash;
+                    sig_t _09_sig;
+                };
+        };
+
+        struct AdminRevoke {
+            public:
+                userID_t _01_target;
+                std::string _02_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    userID_t _04_target;
+                    std::string _05_reason;
+                    userID_t _06_author;
+                    hash_t _07_prevHash;
+                    hash_t _08_hash;
+                    sig_t _09_sig;
+                };
+        };
+
+        struct AdminRestore {
+            public:
+                userID_t _01_target;
+                std::string _02_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    userID_t _04_target;
+                    std::string _05_reason;
+                    userID_t _06_author;
+                    hash_t _07_prevHash;
+                    hash_t _08_hash;
+                    sig_t _09_sig;
+                };
+        };
+
+        struct UserRename {
+            public:
+                userID_t _01_target;
+                std::string _02_name;
+                std::string _03_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    userID_t _04_target;
+                    std::string _05_name;
+                    std::string _06_reason;
+                    userID_t _07_author;
+                    hash_t _08_prevHash;
+                    hash_t _09_hash;
+                    sig_t _10_sig;
+                };
+        };
+
+        struct RotateKey {
+            public:
+                userID_t _01_target;
+                keyPair_t _02_key;
+                std::string _03_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    userID_t _04_target;
+                    keyPair_t _05_key;
+                    std::string _06_reason;
+                    userID_t _07_author;
+                    hash_t _08_prevHash;
+                    hash_t _09_hash;
+                    sig_t _10_sig;
+                };
+        };
+
+        struct ProjectUpdate {
+            public:
+                std::string _01_name;
+                std::string _02_description;
+                std::string _03_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    struct Project {
+                        std::string _01_name;
+                        std::string _02_description;
+                    } _04_project;
+                    std::string _05_reason;
+                    userID_t _06_author;
+                    hash_t _07_prevHash;
+                    hash_t _08_hash;
+                    sig_t _09_sig;
+                };
+        };
+
+        struct ConfigUpdate {
+            public:
+                struct Config {
+                    // Empty intentionally, data fields unknown
+                } _01_config;
+                std::string _02_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    struct Config {
+                        // Empty intentionally, data fields unknown
+                    } _04_config;
+                    std::string _05_reason;
+                    userID_t _06_author;
+                    hash_t _07_prevHash;
+                    hash_t _08_hash;
+                    sig_t _09_sig;
+                };
+        };
+
+        struct Archive {
+            public:
+                std::string _01_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    std::string _04_reason;
+                    userID_t _05_author;
+                    hash_t _06_prevHash;
+                    hash_t _07_hash;
+                    sig_t _08_sig;
+                };
+        };
+
+        struct Unarchive {
+            public:
+                std::string _01_reason;
+
+            private:
+                FRIEND_CLASSES;
+
+                struct Internal {
+                    entryID_t _01_id;
+                    timeMS_t _02_timestamp;
+                    std::string _03_type;
+                    std::string _04_reason;
+                    userID_t _05_author;
+                    hash_t _06_prevHash;
+                    hash_t _07_hash;
+                    sig_t _08_sig;
+                };
+        };
+
+        
+    public:
+        using Variants = std::variant<
+            Genesis,
+            SubjectCreate,
+            SubjectDeactivate,
+            SubjectReactivate,
+            Rep,
+            AdminAssign,
+            AdminRevoke,
+            AdminRestore,
+            UserRename,
+            RotateKey,
+            ProjectUpdate,
+            ConfigUpdate,
+            Tail,
+            Archive,
+            Unarchive
+        >;
+};

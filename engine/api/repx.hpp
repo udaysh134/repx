@@ -5,8 +5,11 @@
 #include "project_manager.hpp"
 #include "credential_manager.hpp"
 
-#include "ledger_contexts.hpp"
 #include "standard_contexts.hpp"
+#include "ledger_contexts.hpp"
+
+#include "standard_entries.hpp"
+#include "ledger_entries.hpp"
 
 
 class RepX {
@@ -21,6 +24,11 @@ namespace Mode {
 }
 
 namespace Context {
-    namespace Ledger = ::LedgerContext;
     namespace Standard = ::StandardContext;
+    namespace Ledger = ::LedgerContext;
+}
+
+namespace Entry {
+    using Standard = ::StandardEntry;
+    using Ledger = ::LedgerEntry;
 }
