@@ -13,7 +13,7 @@
 
     "session": {
         "locked": false,
-        "pubKey": "BASE64..."
+        "uid": 1
     },
 
     // METADATA ABOUT THIS PROJECT ---------------------------------------- >>
