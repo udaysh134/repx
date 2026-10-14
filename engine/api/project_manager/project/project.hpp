@@ -22,7 +22,7 @@ class Project {
         const Session::Path& path() const;
         const Session::History& history() const;
         const Session::Runtime& runtime() const;
-        const Session::Auth& auth() const;
+        Session::Auth& auth() const;
 
     private:
         Session session;

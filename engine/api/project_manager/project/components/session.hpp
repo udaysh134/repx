@@ -2,10 +2,13 @@
 
 #include <filesystem>
 #include <variant>
+#include <optional>
 
 #include "extlibs.hpp"
 #include "standard_runtime.hpp"
 #include "ledger_runtime.hpp"
+#include "standard_contexts.hpp"
+#include "ledger_contexts.hpp"
 
 #include "aliases.hpp"
 
