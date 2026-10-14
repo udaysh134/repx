@@ -18,7 +18,7 @@ struct LedgerRuntime {
 
     struct Session {
         bool locked;
-        std::optional<std::string> pubKey;
+        userID_t uid;
     };
 
     struct Meta {

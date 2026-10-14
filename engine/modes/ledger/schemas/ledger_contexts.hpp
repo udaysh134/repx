@@ -17,8 +17,12 @@ namespace LedgerContext {
 
     struct Credential_Create : Resolver<Ledger> {};
 
-    struct Credential_Authenticate : Resolver<Ledger> {
+    struct Credential_Verify : Resolver<Ledger> {
         keyPair_t _01_public_key;
         keyPair_t _02_private_key;
+    };
+
+    struct Session_Authenticate : Resolver<Ledger> {
+        keyPair_t _01_private_key;
     };
 }

@@ -3,11 +3,12 @@
 
 class Project;
 
-struct Entry {
+struct Entries {
     private:
         // append();
-        // discard_last();
-        // discard_all();
+        // pop();
+        // save();
+        // discard();
 
         friend class Project;
     

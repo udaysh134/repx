@@ -20,9 +20,13 @@ namespace StandardContext {
         std::string _01_password;
     };
 
-    struct Credential_Authenticate : Resolver<Standard> {
+    struct Credential_Verify : Resolver<Standard> {
         std::string _01_password;
         salt_t _02_salt;
         hash_t _03_hash;
+    };
+
+    struct Session_Authenticate : Resolver<Standard> {
+        std::string _01_password;
     };
 }

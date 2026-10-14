@@ -37,4 +37,14 @@ int main() {
     myProj.info.project_name();
     myProj.info.project_description();
     myProj.info.owner_name();
+
+    myProj.entry.append(Entry::Standard::Rep{
+        ._01_target = 123456789,
+        ._02_delta = -1,
+        ._03_reason = ""
+    });
+
+    myProj.auth().authenticate(Context::Standard::Session_Authenticate{
+        ._01_password = ""
+    });
 }

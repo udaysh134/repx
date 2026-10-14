@@ -4,24 +4,25 @@
 
 #include "update.hpp"
 #include "info.hpp"
-#include "entry.hpp"
+#include "entries.hpp"
 #include "user.hpp"
 
 
 class Project {
     public:
-        Update update;
         Info info;
-        
-        Entry entry;
+
         User user;
+        
+        Entries entries;
+
+        // archive();
+        // unarchive();
 
         const Session::Path& path() const;
         const Session::History& history() const;
         const Session::Runtime& runtime() const;
-
-        // archive();
-        // unarchive();
+        const Session::Auth& auth() const;
 
     private:
         Session session;

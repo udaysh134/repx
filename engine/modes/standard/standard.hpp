@@ -26,7 +26,7 @@ class Standard {
             };
         
             Data create(const Ctx::Credential_Create& ctx);
-            bool authenticate(const Ctx::Credential_Authenticate& ctx);
+            bool verify(const Ctx::Credential_Verify& ctx);
         };
 
     private:
