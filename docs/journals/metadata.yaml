@@ -483,3 +483,33 @@ files:
     description: "Presents an early Rulesets UI concept, organizing positive and negative rulesets into separate lists with controls for adding rulesets and editing individual rule definitions."
     status: "Superseded"
     date: "09-10-2026"
+  mode-schema-finalization.png:
+    description: "Finalizes the mode-specific entry schemas for Standard and Ledger modes, illustrating how API-provided context fields support entry recognition and how explicit and implicit API calls map to the appropriate entry structures."
+    status: "Historical"
+    date: "16-10-2026"
+  entops-facade-architecture.png:
+    description: "Establishes the two entry-operation paths in EntOps, distinguishing direct entry appending from higher-level Project API operations that delegate to the entry-processing pipeline."
+    status: "Implemented"
+    date: "16-10-2026"
+  session-authentication-design.png:
+    description: "Introduces authentication state within the Session object, defining the proposed Auth interface and examining how authentication, credential retrieval, and session operations should interact."
+    status: "Implemented"
+    date: "16-10-2026"
+  session-credential-retrieval-investigation.png:
+    description: "Investigates the return-value design of credential retrieval, comparing access to the current authentication credential with access to the credentials associated with the active session."
+    status: "Abandoned"
+    date: "16-10-2026"
+  project-api-utility-classification.png:
+    description: "Classifies Project API utilities into integrated, extended, and foundational groups, distinguishing common operations shared across modes from mode-specific extensions and core project functionality."
+    status: "Educational"
+    date: "16-10-2026"
+  project-api-utility-segregation-1.png:
+    description: "Refines the Project API structure by separating information, entry, and session operations from configuration, user, and state utilities, establishing a consistent foundation with mode-specific extensions."
+    status: "Historical"
+    date: "16-10-2026"
+    featured: "Establishes the three-part utility classification that organizes the Project API into integrated, extended, and foundational operations."
+  project-api-utility-segregation-2.png:
+    description: ""
+    status: "Historical"
+    date: "16-10-2026"
+    featured: "Develops the utility classification into a concrete API structure, clarifying which operations are shared across modes and which are provided by individual modes."
