@@ -12,12 +12,16 @@ class Project {
     public:
         Info info;
 
-        User user;
-        
         Entries entries;
+        
+        User user;
 
         // archive();
         // unarchive();
+
+        // subject_create();
+        // subject_deactivate();
+        // subject_reactivate();
 
         const Session::Path& path() const;
         const Session::History& history() const;

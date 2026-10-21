@@ -6,19 +6,26 @@
 #include "session.hpp"
 #include "ledger_contexts.hpp"
 
+
+#define FRIEND_CLASSES \
+    friend class RepX; \
+    friend class ProjectManager;
+
 namespace Ctx = LedgerContext;
 
 
 class RepX;
+class ProjectManager;
+
 
 class Ledger {
     private:
-        struct Project {
+        struct L_ProjectManager {
             Session create(const Ctx::Project_Create& ctx);
             Session open(const path_t& path);
         };
 
-        struct Credential {
+        struct L_CredentialManager {
             struct Data {
                 keyPair_t public_key;
                 keyPair_t private_key;
@@ -28,9 +35,13 @@ class Ledger {
             bool verify(const Ctx::Credential_Verify& ctx);
         };
 
-    private:
-        Project project;
-        Credential credential;
+        struct L_Project {
 
-        friend class RepX;
+        };
+
+    private:
+        L_ProjectManager project;
+        L_CredentialManager credential;
+
+        FRIEND_CLASSES
 };

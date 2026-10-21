@@ -6,19 +6,26 @@
 #include "session.hpp"
 #include "standard_contexts.hpp"
 
+
+#define FRIEND_CLASSES \
+    friend class RepX; \
+    friend class ProjectManager;
+
 namespace Ctx = StandardContext;
 
 
 class RepX;
+class ProjectManager;
+
 
 class Standard {
     private:
-        struct Project {
+        struct S_ProjectManager {
             Session create(const Ctx::Project_Create& ctx);
             Session open(const path_t& path);
         };
 
-        struct Credential {
+        struct S_CredentialManager {
             struct Data {
                 std::string password;
                 salt_t salt;
@@ -29,9 +36,13 @@ class Standard {
             bool verify(const Ctx::Credential_Verify& ctx);
         };
 
-    private:
-        Project project;
-        Credential credential;
+        struct S_Project {
+            
+        };
 
-        friend class RepX;
+    private:
+        ProjectManager project;
+        CredentialManager credential;
+
+        FRIEND_CLASSES
 };

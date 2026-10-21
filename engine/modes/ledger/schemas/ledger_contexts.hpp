@@ -15,6 +15,10 @@ namespace LedgerContext {
         std::string _03_owner_name;
     };
 
+    struct Project_Open : Resolver<Ledger> {
+        path_t _01_path;
+    };
+
     struct Credential_Create : Resolver<Ledger> {};
 
     struct Credential_Verify : Resolver<Ledger> {

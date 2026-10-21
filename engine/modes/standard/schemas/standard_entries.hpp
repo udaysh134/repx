@@ -6,7 +6,8 @@
 #include "aliases.hpp"
 
 
-#define FRIEND_CLASSES friend class RepX
+#define FRIEND_CLASSES \
+    friend class RepX;
 
 
 class RepX;
@@ -15,11 +16,11 @@ class StandardEntry final {
     StandardEntry() = delete;
 
     private:
-        FRIEND_CLASSES;
+        FRIEND_CLASSES
 
         struct Genesis {
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -51,7 +52,7 @@ class StandardEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -70,7 +71,7 @@ class StandardEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -88,7 +89,7 @@ class StandardEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -107,7 +108,7 @@ class StandardEntry final {
                 std::string _03_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -128,7 +129,7 @@ class StandardEntry final {
                 std::string _04_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -153,7 +154,7 @@ class StandardEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -171,7 +172,7 @@ class StandardEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -190,7 +191,7 @@ class StandardEntry final {
                 std::string _03_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -211,7 +212,7 @@ class StandardEntry final {
                 std::string _04_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -234,7 +235,7 @@ class StandardEntry final {
                 std::string _03_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -257,7 +258,7 @@ class StandardEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -276,7 +277,7 @@ class StandardEntry final {
                 std::string _01_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;
@@ -292,7 +293,7 @@ class StandardEntry final {
                 std::string _01_reason;
 
             private:
-                FRIEND_CLASSES;
+                FRIEND_CLASSES
 
                 struct Internal {
                     entryID_t _01_id;

@@ -16,6 +16,10 @@ namespace StandardContext {
         std::string _04_owner_name;
     };
 
+    struct Project_Open : Resolver<Standard> {
+        path_t _01_path;
+    };
+
     struct Credential_Create : Resolver<Standard> {
         std::string _01_password;
     };
