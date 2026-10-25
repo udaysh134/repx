@@ -5,7 +5,7 @@
 
 
 struct Base {
-    private:
+    protected:
         virtual ~Base() = default;
 
     public:

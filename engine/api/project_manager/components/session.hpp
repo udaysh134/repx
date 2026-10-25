@@ -11,7 +11,7 @@
 #include "ledger.hpp"
 
 
-#define FRIEND_CLASSES \
+#define FRIEND_CLASSES_SESSION \
     friend class Base;
 
 
@@ -48,5 +48,5 @@ struct Session {
         Runtime runtime;
         Auth auth;
 
-        FRIEND_CLASSES
+        FRIEND_CLASSES_SESSION
 };

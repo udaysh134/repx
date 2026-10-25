@@ -1,7 +1,7 @@
 #pragma once
 
 
-#define FRIEND_CLASSES \
+#define FRIEND_CLASSES_ENTRIES \
     friend class Base;
 
 
@@ -14,7 +14,7 @@ struct Entries {
         // save();
         // discard();
 
-        FRIEND_CLASSES
+        FRIEND_CLASSES_ENTRIES
     
     private:
         Base* base;

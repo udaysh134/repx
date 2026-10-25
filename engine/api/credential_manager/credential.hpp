@@ -4,10 +4,13 @@
 #include "ledger.hpp"
 
 
-class Credential {    
+class Credential {
+    using StandardData = Standard::StandardCredential::Data;
+    using LedgerData = Ledger::LedgerCredential::Data;
+
     public:
-        auto create(const Context::Standard::Credential_Create& ctx);
-        auto create(const Context::Ledger::Credential_Create& ctx);
+        StandardData create(const Context::Standard::Credential_Create& ctx);
+        LedgerData create(const Context::Ledger::Credential_Create& ctx);
 
         bool verify(const Context::Standard::Credential_Verify& ctx);
         bool verify(const Context::Ledger::Credential_Verify& ctx);

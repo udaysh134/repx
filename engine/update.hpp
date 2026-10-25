@@ -1,7 +1,7 @@
 #pragma once
 
 
-#define FRIEND_CLASSES \
+#define FRIEND_CLASSES_UPDATE \
     friend class Base;
 
 
@@ -12,7 +12,7 @@ struct Update {
         // name();
         // description();
 
-        FRIEND_CLASSES
+        FRIEND_CLASSES_UPDATE
     
     private:
         Base* base;

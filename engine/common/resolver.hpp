@@ -1,7 +1,7 @@
 #pragma once
 
 
-#define FRIEND_CLASSES \
+#define FRIEND_CLASSES_RESOLVER \
     // friend class Base;
 
 
@@ -12,5 +12,5 @@ struct Resolver {
     protected:
         using ModeClass = T;
         
-        // FRIEND_CLASSES
+        // FRIEND_CLASSES_RESOLVER
 };

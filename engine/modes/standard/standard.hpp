@@ -3,7 +3,6 @@
 #include <string>
 
 #include "aliases.hpp"
-#include "session.hpp"
 
 #include "standard_base.hpp"
 #include "standard_constants.hpp"
@@ -12,13 +11,15 @@
 #include "standard_runtime.hpp"
 
 
-#define FRIEND_CLASSES \
+#define FRIEND_CLASSES_STANDARD \
     friend class RepX; \
-    friend class Project;
+    friend class Project; \
+    friend class Credential;
 
 
 class RepX;
 class Project;
+class Credential;
 
 class Standard {
     private:
@@ -42,5 +43,5 @@ class Standard {
         StandardProject project;
         StandardCredential credential;
 
-        FRIEND_CLASSES
+        FRIEND_CLASSES_STANDARD
 };

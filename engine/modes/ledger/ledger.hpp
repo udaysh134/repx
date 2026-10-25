@@ -3,7 +3,6 @@
 #include <string>
 
 #include "aliases.hpp"
-#include "session.hpp"
 
 #include "ledger_base.hpp"
 #include "ledger_constants.hpp"
@@ -12,13 +11,15 @@
 #include "ledger_runtime.hpp"
 
 
-#define FRIEND_CLASSES \
+#define FRIEND_CLASSES_LEDGER \
     friend class RepX; \
-    friend class Project;
+    friend class Project; \
+    friend class Credential;
 
 
 class RepX;
 class Project;
+class Credential;
 
 class Ledger {
     private:        
@@ -41,5 +42,5 @@ class Ledger {
         LedgerProject project;
         LedgerCredential credential;
 
-        FRIEND_CLASSES
+        FRIEND_CLASSES_LEDGER
 };

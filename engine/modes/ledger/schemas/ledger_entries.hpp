@@ -6,7 +6,7 @@
 #include "aliases.hpp"
 
 
-#define FRIEND_CLASSES \
+#define FRIEND_CLASSES_LEDGER_ENTRY \
     friend class RepX;
 
 
@@ -16,11 +16,11 @@ class LedgerEntry final {
     LedgerEntry() = delete;
 
     private:
-        FRIEND_CLASSES
+        FRIEND_CLASSES_LEDGER_ENTRY
 
         struct Genesis {
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -46,7 +46,7 @@ class LedgerEntry final {
 
         struct Tail {
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -67,7 +67,7 @@ class LedgerEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -89,7 +89,7 @@ class LedgerEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -110,7 +110,7 @@ class LedgerEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -132,7 +132,7 @@ class LedgerEntry final {
                 std::string _03_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -155,7 +155,7 @@ class LedgerEntry final {
                 std::string _03_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -180,7 +180,7 @@ class LedgerEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -201,7 +201,7 @@ class LedgerEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -223,7 +223,7 @@ class LedgerEntry final {
                 std::string _03_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -246,7 +246,7 @@ class LedgerEntry final {
                 std::string _03_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -269,7 +269,7 @@ class LedgerEntry final {
                 std::string _03_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -295,7 +295,7 @@ class LedgerEntry final {
                 std::string _02_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -317,7 +317,7 @@ class LedgerEntry final {
                 std::string _01_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;
@@ -336,7 +336,7 @@ class LedgerEntry final {
                 std::string _01_reason;
 
             private:
-                FRIEND_CLASSES
+                FRIEND_CLASSES_LEDGER_ENTRY
 
                 struct Internal {
                     entryID_t _01_id;

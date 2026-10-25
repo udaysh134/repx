@@ -4,20 +4,11 @@
 
 #include "constants.hpp"
 
-#include "project.hpp"
-#include "credential.hpp"
-
 #include "standard.hpp"
 #include "ledger.hpp"
 
 
 using Mode = ::ModeID;
-
-class RepX {
-    public:
-        Project project;
-        Credential credential;
-};
 
 namespace Context {
     namespace Standard = ::StandardContext;
@@ -28,3 +19,14 @@ namespace Entry {
     using Standard = ::StandardEntry;
     using Ledger = ::LedgerEntry;
 }
+
+
+#include "project.hpp"
+#include "credential.hpp"
+
+
+class RepX {
+    public:
+        Project project;
+        Credential credential;
+};
