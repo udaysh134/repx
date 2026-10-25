@@ -1,10 +1,16 @@
 #pragma once
 
 
+#define FRIEND_CLASSES \
+    // friend class Base;
+
+
+// class Repx;
+
 template <typename T>
 struct Resolver {
     protected:
         using ModeClass = T;
         
-        // friend class Repx;
+        // FRIEND_CLASSES
 };

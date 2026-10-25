@@ -2,8 +2,12 @@
 
 #include <string_view>
 
+#include "constants.hpp"
+
 
 namespace LedgerConstant {
+    inline constexpr std::string_view MODE_NAME = ModeName::Ledger;
+
     namespace Role {
         inline constexpr std::string_view OWNER = "OWNER";
         inline constexpr std::string_view ADMIN = "ADMIN";

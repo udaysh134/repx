@@ -3,7 +3,11 @@
 #include <string>
 
 
-class Project;
+#define FRIEND_CLASSES \
+    friend class Base;
+
+
+class Base;
 
 struct Info {
     private:
@@ -12,8 +16,8 @@ struct Info {
         std::string owner() const;
         std::string mode() const;
 
-        friend class Project;
+        FRIEND_CLASSES
     
     private:
-        Project* _project;
+        Base* base;
 };

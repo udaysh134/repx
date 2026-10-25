@@ -5,15 +5,17 @@
 #include <optional>
 
 #include "extlibs.hpp"
-#include "standard_runtime.hpp"
-#include "ledger_runtime.hpp"
-#include "standard_contexts.hpp"
-#include "ledger_contexts.hpp"
-
 #include "aliases.hpp"
 
+#include "standard.hpp"
+#include "ledger.hpp"
 
-class Project;
+
+#define FRIEND_CLASSES \
+    friend class Base;
+
+
+class Base;
 
 struct Session {
     public:
@@ -46,5 +48,5 @@ struct Session {
         Runtime runtime;
         Auth auth;
 
-        friend class Project;
+        FRIEND_CLASSES
 };

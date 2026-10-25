@@ -4,44 +4,42 @@
 
 #include "aliases.hpp"
 #include "session.hpp"
+
+#include "ledger_base.hpp"
+#include "ledger_constants.hpp"
 #include "ledger_contexts.hpp"
+#include "ledger_entries.hpp"
+#include "ledger_runtime.hpp"
 
 
 #define FRIEND_CLASSES \
     friend class RepX; \
-    friend class ProjectManager;
-
-namespace Ctx = LedgerContext;
+    friend class Project;
 
 
 class RepX;
-class ProjectManager;
-
+class Project;
 
 class Ledger {
-    private:
-        struct L_ProjectManager {
-            Session create(const Ctx::Project_Create& ctx);
-            Session open(const path_t& path);
+    private:        
+        struct LedgerProject {
+            LedgerBase create(const LedgerContext::Project_Create& ctx);
+            LedgerBase open(const path_t& path);
         };
 
-        struct L_CredentialManager {
+        struct LedgerCredential {
             struct Data {
                 keyPair_t public_key;
                 keyPair_t private_key;
             };
         
-            Data create(const Ctx::Credential_Create& ctx);
-            bool verify(const Ctx::Credential_Verify& ctx);
-        };
-
-        struct L_Project {
-
+            Data create(const LedgerContext::Credential_Create& ctx);
+            bool verify(const LedgerContext::Credential_Verify& ctx);
         };
 
     private:
-        L_ProjectManager project;
-        L_CredentialManager credential;
+        LedgerProject project;
+        LedgerCredential credential;
 
         FRIEND_CLASSES
 };

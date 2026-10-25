@@ -1,27 +1,15 @@
 #pragma once
 
+#include "entries.hpp"
 #include "session.hpp"
 
-#include "update.hpp"
-#include "info.hpp"
-#include "entries.hpp"
-#include "user.hpp"
 
+struct Base {
+    private:
+        virtual ~Base() = default;
 
-class Project {
     public:
-        Info info;
-
         Entries entries;
-        
-        User user;
-
-        // archive();
-        // unarchive();
-
-        // subject_create();
-        // subject_deactivate();
-        // subject_reactivate();
 
         const Session::Path& path() const;
         const Session::History& history() const;

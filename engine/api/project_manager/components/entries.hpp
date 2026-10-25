@@ -1,7 +1,11 @@
 #pragma once
 
 
-class Project;
+#define FRIEND_CLASSES \
+    friend class Base;
+
+
+class Base;
 
 struct Entries {
     private:
@@ -10,8 +14,8 @@ struct Entries {
         // save();
         // discard();
 
-        friend class Project;
+        FRIEND_CLASSES
     
     private:
-        Project* _project;
+        Base* base;
 };

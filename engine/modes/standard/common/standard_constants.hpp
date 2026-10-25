@@ -2,8 +2,12 @@
 
 #include <string_view>
 
+#include "constants.hpp"
+
 
 namespace StandardConstant {
+    inline constexpr std::string_view MODE_NAME = ModeName::Standard;
+
     namespace Role {
         inline constexpr std::string_view OWNER = "OWNER";
         inline constexpr std::string_view ADMIN = "ADMIN";

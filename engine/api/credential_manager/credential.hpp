@@ -4,7 +4,7 @@
 #include "ledger.hpp"
 
 
-class CredentialManager {    
+class Credential {    
     public:
         auto create(const Context::Standard::Credential_Create& ctx);
         auto create(const Context::Ledger::Credential_Create& ctx);

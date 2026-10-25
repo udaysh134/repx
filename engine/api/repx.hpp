@@ -2,26 +2,22 @@
 
 #include <string_view>
 
-#include "project_manager.hpp"
-#include "credential_manager.hpp"
+#include "constants.hpp"
 
-#include "standard_contexts.hpp"
-#include "ledger_contexts.hpp"
+#include "project.hpp"
+#include "credential.hpp"
 
-#include "standard_entries.hpp"
-#include "ledger_entries.hpp"
+#include "standard.hpp"
+#include "ledger.hpp"
 
+
+using Mode = ::ModeID;
 
 class RepX {
     public:
-        ProjectManager project;
-        CredentialManager credential;
+        Project project;
+        Credential credential;
 };
-
-namespace Mode {
-    inline constexpr std::string_view Standard = "standard";
-    inline constexpr std::string_view Ledger = "ledger";
-}
 
 namespace Context {
     namespace Standard = ::StandardContext;
