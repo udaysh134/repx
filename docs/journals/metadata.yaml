@@ -513,3 +513,23 @@ files:
     status: "Historical"
     date: "16-10-2026"
     featured: "Develops the utility classification into a concrete API structure, clarifying which operations are shared across modes and which are provided by individual modes."
+  project-api-mode-resolution-1.png:
+    description: "Refines the Project API structure by separating information, entry, and session operations from configuration, user, and state utilities, establishing a consistent foundation with mode-specific extensions."
+    status: "Abandoned"
+    date: "25-10-2026"
+  project-api-mode-resolution-2.png:
+    description: "Explores template-based Project classes and mode-specific return types, then develops mode detection and overloaded create/open functions to expose the appropriate Project API while keeping mode selection explicit."
+    status: "Abandoned"
+    date: "25-10-2026"
+  project-api-mode-resolution-3.png:
+    description: "Explores explicit mode-type selection during project creation and opening, using mode detection to identify the appropriate Project type from the project's stored context."
+    status: "Superseded"
+    date: "25-10-2026"
+  project-api-mode-resolution-4.png:
+    description: "Develops overloaded open functions for different modes, allowing mode-specific Project return types to be selected through explicit parameters or detected mode information."
+    status: "Abandoned"
+    date: "25-10-2026"
+  project-api-mode-resolution-5.png:
+    description: "Concludes the API investigation by outlining how mode-aware project opening returns the appropriate Project interface, coordinating mode-specific extensions for maintainers and API users."
+    status: "Superseded"
+    date: "25-10-2026"
